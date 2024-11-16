@@ -1,0 +1,889 @@
+{
+  "message": "Data fetched from cache",
+  "data": {
+    "standingData": {
+      "get": "standings",
+      "parameters": {
+        "season": "2024",
+        "league": "203"
+      },
+      "errors": [],
+      "results": 1,
+      "paging": {
+        "current": 1,
+        "total": 1
+      },
+      "response": [
+        {
+          "league": {
+            "id": 203,
+            "name": "Süper Lig",
+            "country": "Turkey",
+            "logo": "https://media.api-sports.io/football/leagues/203.png",
+            "flag": "https://media.api-sports.io/flags/tr.svg",
+            "season": 2024,
+            "standings": [
+              [
+                {
+                  "rank": 1,
+                  "team": {
+                    "id": 645,
+                    "name": "Galatasaray",
+                    "logo": "https://media.api-sports.io/football/teams/645.png"
+                  },
+                  "points": 28,
+                  "goalsDiff": 20,
+                  "group": "Süper Lig",
+                  "form": "WWWDW",
+                  "status": "same",
+                  "description": "Promotion - Champions League (League phase: )",
+                  "all": {
+                    "played": 10,
+                    "win": 9,
+                    "draw": 1,
+                    "lose": 0,
+                    "goals": {
+                      "for": 29,
+                      "against": 9
+                    }
+                  },
+                  "home": {
+                    "played": 6,
+                    "win": 5,
+                    "draw": 1,
+                    "lose": 0,
+                    "goals": {
+                      "for": 16,
+                      "against": 6
+                    }
+                  },
+                  "away": {
+                    "played": 4,
+                    "win": 4,
+                    "draw": 0,
+                    "lose": 0,
+                    "goals": {
+                      "for": 13,
+                      "against": 3
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 2,
+                  "team": {
+                    "id": 3603,
+                    "name": "Samsunspor",
+                    "logo": "https://media.api-sports.io/football/teams/3603.png"
+                  },
+                  "points": 22,
+                  "goalsDiff": 10,
+                  "group": "Süper Lig",
+                  "form": "WDWWW",
+                  "status": "same",
+                  "description": "Promotion - Champions League (Qualification: )",
+                  "all": {
+                    "played": 10,
+                    "win": 7,
+                    "draw": 1,
+                    "lose": 2,
+                    "goals": {
+                      "for": 20,
+                      "against": 10
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 2,
+                    "draw": 1,
+                    "lose": 2,
+                    "goals": {
+                      "for": 8,
+                      "against": 8
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 5,
+                    "draw": 0,
+                    "lose": 0,
+                    "goals": {
+                      "for": 12,
+                      "against": 2
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 3,
+                  "team": {
+                    "id": 611,
+                    "name": "Fenerbahce",
+                    "logo": "https://media.api-sports.io/football/teams/611.png"
+                  },
+                  "points": 20,
+                  "goalsDiff": 13,
+                  "group": "Süper Lig",
+                  "form": "WDWLW",
+                  "status": "same",
+                  "description": "Promotion - Europa League (Qualification: )",
+                  "all": {
+                    "played": 9,
+                    "win": 6,
+                    "draw": 2,
+                    "lose": 1,
+                    "goals": {
+                      "for": 20,
+                      "against": 7
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 3,
+                    "draw": 0,
+                    "lose": 1,
+                    "goals": {
+                      "for": 7,
+                      "against": 3
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 3,
+                    "draw": 2,
+                    "lose": 0,
+                    "goals": {
+                      "for": 13,
+                      "against": 4
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 4,
+                  "team": {
+                    "id": 549,
+                    "name": "Besiktas",
+                    "logo": "https://media.api-sports.io/football/teams/549.png"
+                  },
+                  "points": 20,
+                  "goalsDiff": 11,
+                  "group": "Süper Lig",
+                  "form": "LWDWW",
+                  "status": "same",
+                  "description": "Promotion - Conference League (Qualification: )",
+                  "all": {
+                    "played": 9,
+                    "win": 6,
+                    "draw": 2,
+                    "lose": 1,
+                    "goals": {
+                      "for": 18,
+                      "against": 7
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 4,
+                    "draw": 0,
+                    "lose": 0,
+                    "goals": {
+                      "for": 10,
+                      "against": 3
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 2,
+                    "draw": 2,
+                    "lose": 1,
+                    "goals": {
+                      "for": 8,
+                      "against": 4
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 5,
+                  "team": {
+                    "id": 3588,
+                    "name": "Eyüpspor",
+                    "logo": "https://media.api-sports.io/football/teams/3588.png"
+                  },
+                  "points": 16,
+                  "goalsDiff": 4,
+                  "group": "Süper Lig",
+                  "form": "DWLWL",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 10,
+                    "win": 4,
+                    "draw": 4,
+                    "lose": 2,
+                    "goals": {
+                      "for": 15,
+                      "against": 11
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 3,
+                    "draw": 1,
+                    "lose": 0,
+                    "goals": {
+                      "for": 8,
+                      "against": 3
+                    }
+                  },
+                  "away": {
+                    "played": 6,
+                    "win": 1,
+                    "draw": 3,
+                    "lose": 2,
+                    "goals": {
+                      "for": 7,
+                      "against": 8
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 6,
+                  "team": {
+                    "id": 994,
+                    "name": "Goztepe",
+                    "logo": "https://media.api-sports.io/football/teams/994.png"
+                  },
+                  "points": 15,
+                  "goalsDiff": 5,
+                  "group": "Süper Lig",
+                  "form": "WLWLW",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 9,
+                    "win": 4,
+                    "draw": 3,
+                    "lose": 2,
+                    "goals": {
+                      "for": 16,
+                      "against": 11
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 4,
+                    "draw": 1,
+                    "lose": 0,
+                    "goals": {
+                      "for": 12,
+                      "against": 5
+                    }
+                  },
+                  "away": {
+                    "played": 4,
+                    "win": 0,
+                    "draw": 2,
+                    "lose": 2,
+                    "goals": {
+                      "for": 4,
+                      "against": 6
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 7,
+                  "team": {
+                    "id": 564,
+                    "name": "Istanbul Basaksehir",
+                    "logo": "https://media.api-sports.io/football/teams/564.png"
+                  },
+                  "points": 15,
+                  "goalsDiff": 4,
+                  "group": "Süper Lig",
+                  "form": "DLDWL",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 9,
+                    "win": 4,
+                    "draw": 3,
+                    "lose": 2,
+                    "goals": {
+                      "for": 15,
+                      "against": 11
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 2,
+                    "draw": 2,
+                    "lose": 0,
+                    "goals": {
+                      "for": 11,
+                      "against": 6
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 2,
+                    "draw": 1,
+                    "lose": 2,
+                    "goals": {
+                      "for": 4,
+                      "against": 5
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 8,
+                  "team": {
+                    "id": 1002,
+                    "name": "Sivasspor",
+                    "logo": "https://media.api-sports.io/football/teams/1002.png"
+                  },
+                  "points": 14,
+                  "goalsDiff": 0,
+                  "group": "Süper Lig",
+                  "form": "WWLLD",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 10,
+                    "win": 4,
+                    "draw": 2,
+                    "lose": 4,
+                    "goals": {
+                      "for": 15,
+                      "against": 15
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 2,
+                    "draw": 1,
+                    "lose": 2,
+                    "goals": {
+                      "for": 7,
+                      "against": 7
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 2,
+                    "draw": 1,
+                    "lose": 2,
+                    "goals": {
+                      "for": 8,
+                      "against": 8
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 9,
+                  "team": {
+                    "id": 998,
+                    "name": "Trabzonspor",
+                    "logo": "https://media.api-sports.io/football/teams/998.png"
+                  },
+                  "points": 12,
+                  "goalsDiff": 1,
+                  "group": "Süper Lig",
+                  "form": "LWDWD",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 9,
+                    "win": 2,
+                    "draw": 6,
+                    "lose": 1,
+                    "goals": {
+                      "for": 9,
+                      "against": 8
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 2,
+                    "draw": 2,
+                    "lose": 0,
+                    "goals": {
+                      "for": 7,
+                      "against": 5
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 0,
+                    "draw": 4,
+                    "lose": 1,
+                    "goals": {
+                      "for": 2,
+                      "against": 3
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 10,
+                  "team": {
+                    "id": 1004,
+                    "name": "Kasimpasa",
+                    "logo": "https://media.api-sports.io/football/teams/1004.png"
+                  },
+                  "points": 11,
+                  "goalsDiff": -4,
+                  "group": "Süper Lig",
+                  "form": "LWDDD",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 10,
+                    "win": 2,
+                    "draw": 5,
+                    "lose": 3,
+                    "goals": {
+                      "for": 12,
+                      "against": 16
+                    }
+                  },
+                  "home": {
+                    "played": 6,
+                    "win": 0,
+                    "draw": 3,
+                    "lose": 3,
+                    "goals": {
+                      "for": 5,
+                      "against": 11
+                    }
+                  },
+                  "away": {
+                    "played": 4,
+                    "win": 2,
+                    "draw": 2,
+                    "lose": 0,
+                    "goals": {
+                      "for": 7,
+                      "against": 5
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 11,
+                  "team": {
+                    "id": 607,
+                    "name": "Konyaspor",
+                    "logo": "https://media.api-sports.io/football/teams/607.png"
+                  },
+                  "points": 11,
+                  "goalsDiff": -5,
+                  "group": "Süper Lig",
+                  "form": "LLWLD",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 10,
+                    "win": 3,
+                    "draw": 2,
+                    "lose": 5,
+                    "goals": {
+                      "for": 11,
+                      "against": 16
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 1,
+                    "draw": 2,
+                    "lose": 1,
+                    "goals": {
+                      "for": 3,
+                      "against": 3
+                    }
+                  },
+                  "away": {
+                    "played": 6,
+                    "win": 2,
+                    "draw": 0,
+                    "lose": 4,
+                    "goals": {
+                      "for": 8,
+                      "against": 13
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 12,
+                  "team": {
+                    "id": 1005,
+                    "name": "Antalyaspor",
+                    "logo": "https://media.api-sports.io/football/teams/1005.png"
+                  },
+                  "points": 11,
+                  "goalsDiff": -8,
+                  "group": "Süper Lig",
+                  "form": "WLLLD",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 10,
+                    "win": 3,
+                    "draw": 2,
+                    "lose": 5,
+                    "goals": {
+                      "for": 12,
+                      "against": 20
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 2,
+                    "draw": 1,
+                    "lose": 2,
+                    "goals": {
+                      "for": 5,
+                      "against": 8
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 1,
+                    "draw": 1,
+                    "lose": 3,
+                    "goals": {
+                      "for": 7,
+                      "against": 12
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 13,
+                  "team": {
+                    "id": 3583,
+                    "name": "BB Bodrumspor",
+                    "logo": "https://media.api-sports.io/football/teams/3583.png"
+                  },
+                  "points": 10,
+                  "goalsDiff": -5,
+                  "group": "Süper Lig",
+                  "form": "LLDWW",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 10,
+                    "win": 3,
+                    "draw": 1,
+                    "lose": 6,
+                    "goals": {
+                      "for": 8,
+                      "against": 13
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 2,
+                    "draw": 0,
+                    "lose": 3,
+                    "goals": {
+                      "for": 6,
+                      "against": 5
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 1,
+                    "draw": 1,
+                    "lose": 3,
+                    "goals": {
+                      "for": 2,
+                      "against": 8
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 14,
+                  "team": {
+                    "id": 1007,
+                    "name": "Rizespor",
+                    "logo": "https://media.api-sports.io/football/teams/1007.png"
+                  },
+                  "points": 10,
+                  "goalsDiff": -10,
+                  "group": "Süper Lig",
+                  "form": "WWLLL",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 9,
+                    "win": 3,
+                    "draw": 1,
+                    "lose": 5,
+                    "goals": {
+                      "for": 6,
+                      "against": 16
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 1,
+                    "draw": 1,
+                    "lose": 3,
+                    "goals": {
+                      "for": 3,
+                      "against": 9
+                    }
+                  },
+                  "away": {
+                    "played": 4,
+                    "win": 2,
+                    "draw": 0,
+                    "lose": 2,
+                    "goals": {
+                      "for": 3,
+                      "against": 7
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 15,
+                  "team": {
+                    "id": 3573,
+                    "name": "Gazişehir Gaziantep",
+                    "logo": "https://media.api-sports.io/football/teams/3573.png"
+                  },
+                  "points": 9,
+                  "goalsDiff": -2,
+                  "group": "Süper Lig",
+                  "form": "WDDLD",
+                  "status": "same",
+                  "description": null,
+                  "all": {
+                    "played": 9,
+                    "win": 2,
+                    "draw": 3,
+                    "lose": 4,
+                    "goals": {
+                      "for": 12,
+                      "against": 14
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 1,
+                    "draw": 2,
+                    "lose": 1,
+                    "goals": {
+                      "for": 4,
+                      "against": 3
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 1,
+                    "draw": 1,
+                    "lose": 3,
+                    "goals": {
+                      "for": 8,
+                      "against": 11
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 16,
+                  "team": {
+                    "id": 996,
+                    "name": "Alanyaspor",
+                    "logo": "https://media.api-sports.io/football/teams/996.png"
+                  },
+                  "points": 9,
+                  "goalsDiff": -5,
+                  "group": "Süper Lig",
+                  "form": "LLLWW",
+                  "status": "same",
+                  "description": "Relegation - 1. Lig",
+                  "all": {
+                    "played": 10,
+                    "win": 2,
+                    "draw": 3,
+                    "lose": 5,
+                    "goals": {
+                      "for": 9,
+                      "against": 14
+                    }
+                  },
+                  "home": {
+                    "played": 6,
+                    "win": 1,
+                    "draw": 3,
+                    "lose": 2,
+                    "goals": {
+                      "for": 5,
+                      "against": 6
+                    }
+                  },
+                  "away": {
+                    "played": 4,
+                    "win": 1,
+                    "draw": 0,
+                    "lose": 3,
+                    "goals": {
+                      "for": 4,
+                      "against": 8
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 17,
+                  "team": {
+                    "id": 1001,
+                    "name": "Kayserispor",
+                    "logo": "https://media.api-sports.io/football/teams/1001.png"
+                  },
+                  "points": 8,
+                  "goalsDiff": -6,
+                  "group": "Süper Lig",
+                  "form": "WDDLL",
+                  "status": "same",
+                  "description": "Relegation - 1. Lig",
+                  "all": {
+                    "played": 9,
+                    "win": 1,
+                    "draw": 5,
+                    "lose": 3,
+                    "goals": {
+                      "for": 9,
+                      "against": 15
+                    }
+                  },
+                  "home": {
+                    "played": 4,
+                    "win": 0,
+                    "draw": 2,
+                    "lose": 2,
+                    "goals": {
+                      "for": 5,
+                      "against": 9
+                    }
+                  },
+                  "away": {
+                    "played": 5,
+                    "win": 1,
+                    "draw": 3,
+                    "lose": 1,
+                    "goals": {
+                      "for": 4,
+                      "against": 6
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 18,
+                  "team": {
+                    "id": 3575,
+                    "name": "Hatayspor",
+                    "logo": "https://media.api-sports.io/football/teams/3575.png"
+                  },
+                  "points": 3,
+                  "goalsDiff": -8,
+                  "group": "Süper Lig",
+                  "form": "LLDLD",
+                  "status": "same",
+                  "description": "Relegation - 1. Lig",
+                  "all": {
+                    "played": 9,
+                    "win": 0,
+                    "draw": 3,
+                    "lose": 6,
+                    "goals": {
+                      "for": 7,
+                      "against": 15
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 0,
+                    "draw": 2,
+                    "lose": 3,
+                    "goals": {
+                      "for": 2,
+                      "against": 7
+                    }
+                  },
+                  "away": {
+                    "played": 4,
+                    "win": 0,
+                    "draw": 1,
+                    "lose": 3,
+                    "goals": {
+                      "for": 5,
+                      "against": 8
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                },
+                {
+                  "rank": 19,
+                  "team": {
+                    "id": 3563,
+                    "name": "Adana Demirspor",
+                    "logo": "https://media.api-sports.io/football/teams/3563.png"
+                  },
+                  "points": 1,
+                  "goalsDiff": -15,
+                  "group": "Süper Lig",
+                  "form": "LLLLL",
+                  "status": "same",
+                  "description": "Relegation - 1. Lig",
+                  "all": {
+                    "played": 9,
+                    "win": 0,
+                    "draw": 1,
+                    "lose": 8,
+                    "goals": {
+                      "for": 9,
+                      "against": 24
+                    }
+                  },
+                  "home": {
+                    "played": 5,
+                    "win": 0,
+                    "draw": 0,
+                    "lose": 5,
+                    "goals": {
+                      "for": 5,
+                      "against": 16
+                    }
+                  },
+                  "away": {
+                    "played": 4,
+                    "win": 0,
+                    "draw": 1,
+                    "lose": 3,
+                    "goals": {
+                      "for": 4,
+                      "against": 8
+                    }
+                  },
+                  "update": "2024-10-28T00:00:00+00:00"
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

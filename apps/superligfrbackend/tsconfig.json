@@ -1,0 +1,10 @@
+{
+  "extends": "@adonisjs/tsconfig/tsconfig.app.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./build",
+    "paths": {
+      "@monorepo/shared/types/*": ["../../packages/shared/types/*"]
+    }
+  }
+}
