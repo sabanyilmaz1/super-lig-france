@@ -21,8 +21,6 @@ export const BestTeamsHomeView = ({ standingData }: BestTeamsHomeViewProps) => {
     .slice()
     .sort((a, b) => a.all.goals.against - b.all.goals.against);
 
-  console.log(sortAttack, sortDefense);
-
   return (
     <Card className="min-h-96 border-2 border-redsuperlig shadow-lg">
       <CardHeader className="bg-gradient-to-r from-red-500 to-red-700 rounded-t-md text-white flex items-center justify-center text-center">

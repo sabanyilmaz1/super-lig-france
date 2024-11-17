@@ -26,18 +26,17 @@ export const NextGamesHomeView = ({
     {} as Record<string, Fixture[]>
   );
 
-  console.log(fixturesByDate);
-
   const sortedEntries = Object.entries(fixturesByDate).sort(
     ([dateA], [dateB]) => new Date(dateA).getTime() - new Date(dateB).getTime()
   );
 
-  const sortedFixturesByDate = sortedEntries.reduce((acc, [date, fixtures]) => {
-    acc[date] = fixtures;
-    return acc;
-  }, {} as Record<string, Fixture[]>);
-
-  console.log(sortedFixturesByDate);
+  const sortedFixturesByDate = sortedEntries.reduce(
+    (acc, [date, fixtures]) => {
+      acc[date] = fixtures;
+      return acc;
+    },
+    {} as Record<string, Fixture[]>
+  );
 
   return (
     <Card className="min-h-96 border-2 border-redsuperlig shadow-lg">
