@@ -13,8 +13,6 @@ export let loader = loaderHome;
 export default function HomePage() {
   const data = useLoaderData<typeof loader>();
 
-  console.log("dataa", data);
-
   const { lastFixtureData, standingData, topscorersData, topassistsData } =
     data;
 
