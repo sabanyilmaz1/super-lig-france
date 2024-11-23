@@ -2,7 +2,7 @@ import { HttpContext } from '@adonisjs/core/http'
 import User from '../../models/user.js'
 import { apiFoot } from '../../services/fetch-football-api.js'
 import redis from '@adonisjs/redis/services/main'
-import { timeToSaveInRedis } from '../../utils/catch-redis-time.js'
+import { getTTL } from '../../utils/match-windows.js'
 
 export default class TeamController {
   public async showTeam({ params, auth, response }: HttpContext) {
@@ -44,7 +44,7 @@ export default class TeamController {
       const statisticsData = (await statisticsResponse.json()) as any
       const playersData = (await playersResponse.json()) as any
 
-      const ttl = await timeToSaveInRedis()
+      const ttl = await getTTL()
       await redis.setex(
         cacheKey,
         ttl,

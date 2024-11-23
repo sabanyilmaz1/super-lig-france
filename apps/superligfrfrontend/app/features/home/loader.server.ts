@@ -26,7 +26,7 @@ export let loaderHome: ActionFunction = async ({ request }) => {
 
     return json({
       lastFixtureData: lastFixtureData.data,
-      standingData: standingData.data.standingData,
+      standingData: standingData.data,
       topscorersData: topscorersData.data,
       topassistsData: topassistsData.data,
     });
@@ -34,9 +34,3 @@ export let loaderHome: ActionFunction = async ({ request }) => {
     return json({ error: "Something went wrong" }, { status: 500 });
   }
 };
-
-// import lastFixtureData from "../../data/lastFixture.json";
-
-// export let loaderHome: ActionFunction = async ({ request }) => {
-//   return json(lastFixtureData);
-// };

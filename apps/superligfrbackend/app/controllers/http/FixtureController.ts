@@ -11,10 +11,7 @@ import { ResponseApiFoot } from '@monorepo/shared/types/api-foot.js'
 export default class FixtureController {
   public async showLastFixture({ auth, response }: HttpContext) {
     try {
-      const userConnected = await AuthService.getAuthenticatedUser(auth)
-      if (!userConnected) {
-        return ErrorResponse.send(response, 'User not found')
-      }
+      const userConnected = await AuthService.getAuthenticatedUser(auth, response)
 
       const apiKey = userConnected?.api_football_key
       if (!apiKey) {

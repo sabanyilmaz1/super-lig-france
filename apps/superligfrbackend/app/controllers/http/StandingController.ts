@@ -2,19 +2,16 @@ import { HttpContext } from '@adonisjs/core/http'
 
 import { apiFoot } from '../../services/fetch-football-api.js'
 import redis from '@adonisjs/redis/services/main'
-import { timeToSaveInRedis } from '../../utils/catch-redis-time.js'
 import { AuthService } from '../../services/auth.js'
 import { ErrorResponse } from '../../utils/error-response.js'
 import { CacheService } from '../../services/catch-redis.js'
 import { ResponseHelper } from '../../utils/response-helper.js'
+import { getTTL } from '../../utils/match-windows.js'
 
 export default class StandingController {
   public async showStanding({ auth, response }: HttpContext) {
     try {
-      const userConnected = await AuthService.getAuthenticatedUser(auth)
-      if (!userConnected) {
-        return ErrorResponse.send(response, 'User not found')
-      }
+      const userConnected = await AuthService.getAuthenticatedUser(auth, response)
 
       const apiKey = userConnected?.api_football_key
       if (!apiKey) {
@@ -41,7 +38,7 @@ export default class StandingController {
 
   public async showTopScorers({ auth, response }: HttpContext) {
     try {
-      const userConnected = await AuthService.getAuthenticatedUser(auth)
+      const userConnected = await AuthService.getAuthenticatedUser(auth, response)
       if (!userConnected) {
         return ErrorResponse.send(response, 'User not found')
       }
@@ -74,7 +71,7 @@ export default class StandingController {
 
   public async showTopAssists({ auth, response }: HttpContext) {
     try {
-      const userConnected = await AuthService.getAuthenticatedUser(auth)
+      const userConnected = await AuthService.getAuthenticatedUser(auth, response)
       if (!userConnected) {
         return ErrorResponse.send(response, 'User not found')
       }
@@ -98,7 +95,7 @@ export default class StandingController {
       )
       const topAssistsData = await topAssists.json()
 
-      const ttl = await timeToSaveInRedis()
+      const ttl = await getTTL()
 
       // Stocker la réponse dans Redis (par exemple, pendant 24 heures)
       await redis.setex(cacheKey, ttl, JSON.stringify(topAssistsData)) // 86400 secondes = 24h

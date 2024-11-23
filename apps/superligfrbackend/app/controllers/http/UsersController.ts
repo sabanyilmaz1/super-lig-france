@@ -3,7 +3,6 @@
 import { HttpContext } from '@adonisjs/core/http'
 import User from '../../models/user.js'
 import { loginValidator, registerValidator } from '../../validators/auth.js'
-import auth from '@adonisjs/auth/services/main'
 
 export default class UsersController {
   public async register({ request, response }: HttpContext) {
