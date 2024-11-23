@@ -1,6 +1,6 @@
 import { HttpContext } from '@adonisjs/core/http'
 import User from '../models/user.js'
-import { ErrorResponse } from '../utils/error-response.js'
+import { ErrorResponse } from '../utils/error_response.js'
 
 export class AuthService {
   /**

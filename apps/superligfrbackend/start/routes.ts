@@ -9,11 +9,11 @@
 
 import router from '@adonisjs/core/services/router'
 import User from '../app/models/user.js'
-import UsersController from '../app/controllers/http/UsersController.js'
-import TeamController from '../app/controllers/http/TeamController.js'
+import UsersController from '../app/controllers/http/users_controller.js'
+import TeamController from '../app/controllers/http/team_controller.js'
 import { middleware } from './kernel.js'
-import FixtureController from '../app/controllers/http/FixtureController.js'
-import StandingController from '../app/controllers/http/StandingController.js'
+import FixtureController from '../app/controllers/http/fixture_controller.js'
+import StandingController from '../app/controllers/http/standing_controller.js'
 
 //Health check
 router.get('health', ({ response }) => response.noContent())

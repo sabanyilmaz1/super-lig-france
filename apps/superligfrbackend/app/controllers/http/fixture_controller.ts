@@ -1,10 +1,10 @@
 import { HttpContext } from '@adonisjs/core/http'
-import { apiFoot } from '../../services/fetch-football-api.js'
+import { apiFoot } from '../../services/fetch_football_api.js'
 
 import { AuthService } from '../../services/auth.js'
-import { ErrorResponse } from '../../utils/error-response.js'
-import { ResponseHelper } from '../../utils/response-helper.js'
-import { CacheService } from '../../services/catch-redis.js'
+import { ErrorResponse } from '../../utils/error_response.js'
+import { ResponseHelper } from '../../utils/response_helper.js'
+import { CacheService } from '../../services/catch_redis.js'
 
 import { ResponseApiFoot } from '@monorepo/shared/types/api-foot.js'
 
