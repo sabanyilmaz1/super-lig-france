@@ -14,6 +14,7 @@ import TeamController from '../app/football_data_api/controllers/show_team_contr
 import { middleware } from './kernel.js'
 import FixtureController from '../app/football_data_api/controllers/show_fixture_controller.js'
 import StandingController from '../app/football_data_api/controllers/show_standings_controller.js'
+import ArticleController from '../app/articles/controllers/article_controller.js'
 
 //Health check
 router.get('health', ({ response }) => response.noContent())
@@ -47,3 +48,13 @@ router.get('/lastFixture', [FixtureController, 'last']).use(middleware.auth())
 router.get('/standing', [StandingController, 'showStanding']).use(middleware.auth())
 router.get('/topscorers', [StandingController, 'showTopScorers']).use(middleware.auth())
 router.get('/topassists', [StandingController, 'showTopAssists']).use(middleware.auth())
+
+router
+  .group(() => {
+    router.get('/articles', [ArticleController, 'index']) // Liste tous les articles
+    router.get('/articles/:id', [ArticleController, 'show']) // Affiche un article spécifique
+    router.post('/articles', [ArticleController, 'store']) // Crée un nouvel article
+    router.put('/articles/:id', [ArticleController, 'update']) // Met à jour un article existant
+    router.delete('/articles/:id', [ArticleController, 'destroy']) // Supprime un article
+  })
+  .use(middleware.auth())
