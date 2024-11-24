@@ -1,7 +1,8 @@
 
 # Super Lig France
 
-**Super Lig France** est une application web complète permettant aux utilisateurs de suivre les matchs, classements, et statistiques des équipes et joueurs de la Super Lig. Le projet est divisé en deux parties :
+**Super Lig France** est une application web complète permettant aux utilisateurs de suivre les matchs, classements, 
+et statistiques des équipes et joueurs de la Super Lig. Le projet est divisé en deux parties :
 - **Backend** : API construite avec AdonisJS.
 - **Frontend** : Interface utilisateur développée avec RemixJS.
 
