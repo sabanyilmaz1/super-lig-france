@@ -10,10 +10,10 @@
 import router from '@adonisjs/core/services/router'
 import User from '../app/auth/model/user.js'
 import UsersController from '../app/auth/controllers/users_controller.js'
-import TeamController from '../app/football_data_api/controllers/team_controller.js'
+import TeamController from '../app/football_data_api/controllers/show_team_controller.js'
 import { middleware } from './kernel.js'
-import FixtureController from '../app/football_data_api/controllers/fixture_controller.js'
-import StandingController from '../app/football_data_api/controllers/standing_controller.js'
+import FixtureController from '../app/football_data_api/controllers/show_fixture_controller.js'
+import StandingController from '../app/football_data_api/controllers/show_standings_controller.js'
 
 //Health check
 router.get('health', ({ response }) => response.noContent())
@@ -41,7 +41,7 @@ router.get('/users', async () => {
 router.get('/team/:teamId', [TeamController, 'showTeam']).use(middleware.auth())
 
 //Fixture
-router.get('/lastFixture', [FixtureController, 'showLastFixture']).use(middleware.auth())
+router.get('/lastFixture', [FixtureController, 'last']).use(middleware.auth())
 
 //Standing
 router.get('/standing', [StandingController, 'showStanding']).use(middleware.auth())
