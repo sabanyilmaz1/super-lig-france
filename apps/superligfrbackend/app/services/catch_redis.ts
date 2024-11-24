@@ -1,5 +1,5 @@
 import redis from '@adonisjs/redis/services/main'
-import { getTTL } from '../utils/match_windows.js'
+import { getTTL } from '../match_window/services/match_windows.js'
 
 export class CacheService {
   public static async get(key: string): Promise<any | null> {

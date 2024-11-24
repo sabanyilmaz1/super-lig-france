@@ -1,8 +1,8 @@
 import { HttpContext } from '@adonisjs/core/http'
-import User from '../../models/user.js'
-import { apiFoot } from '../../services/fetch_football_api.js'
+import User from '../../auth/model/user.js'
+import { apiFoot } from '../services/fetch_football_api.js'
 import redis from '@adonisjs/redis/services/main'
-import { getTTL } from '../../utils/match_windows.js'
+import { getTTL } from '../../match_window/services/match_windows.js'
 
 export default class TeamController {
   public async showTeam({ params, auth, response }: HttpContext) {

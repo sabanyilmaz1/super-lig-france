@@ -1,12 +1,12 @@
 import { HttpContext } from '@adonisjs/core/http'
 
-import { apiFoot } from '../../services/fetch_football_api.js'
+import { apiFoot } from '../services/fetch_football_api.js'
 import redis from '@adonisjs/redis/services/main'
 import { AuthService } from '../../services/auth.js'
 import { ErrorResponse } from '../../utils/error_response.js'
 import { CacheService } from '../../services/catch_redis.js'
 import { ResponseHelper } from '../../utils/response_helper.js'
-import { getTTL } from '../../utils/match_windows.js'
+import { getTTL } from '../../match_window/services/match_windows.js'
 
 export default class StandingController {
   public async showStanding({ auth, response }: HttpContext) {

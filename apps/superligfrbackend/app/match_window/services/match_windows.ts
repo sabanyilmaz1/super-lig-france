@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import MatchWindow from '../models/match_window.js'
+import MatchWindow from '../model/match_window.js'
 
 export async function isInMatchWindow(): Promise<boolean> {
   const now = DateTime.now()
