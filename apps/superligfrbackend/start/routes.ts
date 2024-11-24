@@ -51,10 +51,11 @@ router.get('/topassists', [StandingController, 'showTopAssists']).use(middleware
 
 router
   .group(() => {
-    router.get('/articles', [ArticleController, 'index']) // Liste tous les articles
-    router.get('/articles/:id', [ArticleController, 'show']) // Affiche un article spécifique
-    router.post('/articles', [ArticleController, 'store']) // Crée un nouvel article
-    router.put('/articles/:id', [ArticleController, 'update']) // Met à jour un article existant
-    router.delete('/articles/:id', [ArticleController, 'destroy']) // Supprime un article
+    router.get('/articles', [ArticleController, 'index'])
+    router.get('/articles/last-four', [ArticleController, 'showLastFourArticles'])
+    router.get('/articles/:id', [ArticleController, 'show'])
+    router.post('/articles', [ArticleController, 'store'])
+    router.put('/articles/:id', [ArticleController, 'update'])
+    router.delete('/articles/:id', [ArticleController, 'destroy'])
   })
   .use(middleware.auth())

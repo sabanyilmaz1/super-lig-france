@@ -15,6 +15,13 @@ export default class ArticleController {
     return response.ok(articles)
   }
 
+  public async showLastFourArticles({ response, auth }: HttpContext) {
+    const userConnected = await AuthService.getAuthenticatedUser(auth, response)
+    if (!userConnected) return
+    const articles = await Article.query().orderBy('created_at', 'desc').limit(4)
+    return response.ok(articles)
+  }
+
   /**
    * Affiche un article spécifique
    */

@@ -10,13 +10,11 @@ export type ResponseApiFoot<T> = {
 type Parameters = {
   league: string;
   season: string;
-  current: string;
-}
-
+  current?: string;
+  round?: string;
+};
 
 export type Paging = {
   current: number;
   total: number;
 };
-
-
