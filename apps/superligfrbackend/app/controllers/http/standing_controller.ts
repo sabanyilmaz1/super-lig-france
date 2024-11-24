@@ -2,7 +2,7 @@ import { HttpContext } from '@adonisjs/core/http'
 
 import { apiFoot } from '../../services/fetch_football_api.js'
 import redis from '@adonisjs/redis/services/main'
-import { AuthService } from '../../services/auth.js'
+import { AuthService } from '../../services/auth_connected.js'
 import { ErrorResponse } from '../../utils/error_response.js'
 import { CacheService } from '../../services/catch_redis.js'
 import { ResponseHelper } from '../../utils/response_helper.js'
