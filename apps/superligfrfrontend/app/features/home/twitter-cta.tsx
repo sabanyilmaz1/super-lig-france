@@ -7,7 +7,6 @@ export const TwitterCta = () => {
     <Card className="bg-[#0000]/5 border-[#000]/20">
       <CardContent className="pt-2">
         <div className="flex flex-col items-center text-center space-y-2">
-          {/* <Twitter className="h-8 w-8 text-[#1DA1F2]" /> */}
           <img src={XLogo} className="h-8 w-8 text-[#1DA1F2]" alt="" />
           <div className="">
             <h3 className="font-bold text-sm">Restez connecté !</h3>
@@ -17,7 +16,7 @@ export const TwitterCta = () => {
             </p>
           </div>
           <Button
-            className="bg-white border-2 border-[#000]/20 text-black"
+            className="bg-white border-2 border-[#000]/20 hover:bg-transparent text-black"
             onClick={() =>
               window.open("https://twitter.com/votre_compte", "_blank")
             }
