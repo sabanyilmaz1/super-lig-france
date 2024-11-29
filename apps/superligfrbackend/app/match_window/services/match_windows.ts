@@ -14,15 +14,22 @@ export async function isInMatchWindow(): Promise<boolean> {
 
 export async function getNextMatchWindow(): Promise<DateTime | null> {
   const now = DateTime.now()
-
   const nextWindow = await MatchWindow.query()
     .where('start_time', '>', now.toSQL())
     .orderBy('start_time', 'asc')
     .first()
 
-  return nextWindow ? DateTime.fromSQL(nextWindow.start_time.toString()) : null
-}
+  if (!nextWindow) {
+    return null
+  }
 
+  const startTime =
+    nextWindow.start_time instanceof DateTime
+      ? nextWindow.start_time
+      : DateTime.fromJSDate(nextWindow.start_time)
+
+  return startTime
+}
 export async function getTTL(): Promise<number> {
   const now = DateTime.now()
 
