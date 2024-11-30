@@ -1,4 +1,4 @@
-export async function apiFoot<T>(
+export async function apiFoot(
   method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
   endpoint: string,
   apiKey: string,

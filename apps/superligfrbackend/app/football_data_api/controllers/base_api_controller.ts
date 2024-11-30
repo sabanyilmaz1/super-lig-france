@@ -128,7 +128,7 @@ export abstract class BaseApiController {
     endpoint: string,
     apiKey: string
   ): Promise<T> {
-    const response = await apiFoot<T>(method, endpoint, apiKey)
+    const response = await apiFoot(method, endpoint, apiKey)
     // Conversion explicite de la réponse en type T
     const data = (await response.json()) as T
     return data
