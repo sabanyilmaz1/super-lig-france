@@ -1,5 +1,6 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { BaseApiController } from './base_api_controller.js'
+import { FOOTBALL_API_CONSTANTS } from '../constants/football-api-constant.js'
 
 export default class FixtureController extends BaseApiController {
   public async last(ctx: HttpContext) {
@@ -10,7 +11,7 @@ export default class FixtureController extends BaseApiController {
       const lastRoundInt = parseInt(lastRoundData?.response[0].split('-')[1])
       return this.fetchFromApi<any>(
         'GET',
-        `fixtures?season=2024&league=203&round=Regular Season - ${lastRoundInt}`,
+        `fixtures?season=${FOOTBALL_API_CONSTANTS.SEASON_ID}&league=${FOOTBALL_API_CONSTANTS.LEAGUE_ID}&round=Regular Season - ${lastRoundInt}`,
         ctx.auth.user!.api_football_key
       )
     })

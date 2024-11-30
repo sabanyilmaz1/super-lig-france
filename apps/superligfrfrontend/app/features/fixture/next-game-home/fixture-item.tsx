@@ -1,5 +1,6 @@
-import { ScoreOrHour } from "~/features/home/next-game/score-or-hour";
+import { ScoreOrHour } from "~/features/fixture/next-game-home/score-or-hour";
 import { Fixture } from "~/model/fixture";
+import { FixtureItemLive } from "../components/fixture-item-live";
 
 export const FixtureItem = ({ fixture }: { fixture: Fixture }) => {
   return (
@@ -28,16 +29,7 @@ export const FixtureItem = ({ fixture }: { fixture: Fixture }) => {
           {fixture.teams.away.name.slice(0, 3)}
         </p>
       </div>
-      {(fixture.fixture.status.short === "1H" ||
-        fixture.fixture.status.short === "2H" ||
-        fixture.fixture.status.short === "HT") && (
-        <span className="text-xs font-bold">
-          🔴 LIVE{" "}
-          {fixture.fixture.status.short == "HT"
-            ? "MT"
-            : `${fixture.fixture.status.elapsed}${"'"}`}
-        </span>
-      )}
+      <FixtureItemLive fixture={fixture} />
     </div>
   );
 };

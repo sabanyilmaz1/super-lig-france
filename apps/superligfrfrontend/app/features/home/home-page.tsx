@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { BlogHomeView } from "./blog.view";
 import { BestPlayersHomeView } from "./best-players/best-players.view";
 import { BestTeamsHomeView } from "./best-teams.view";
-import { NextGamesHomeView } from "./next-game/next-games.view";
+import { NextGamesHomeView } from "../fixture/next-game-home/next-games.view";
 import { TableHomeView } from "./table/table.view";
 import { TwitterCta } from "./twitter-cta";
 

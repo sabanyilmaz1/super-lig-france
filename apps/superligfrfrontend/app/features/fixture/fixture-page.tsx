@@ -5,11 +5,17 @@ import { getFrenchDate, getHoursFromTimestamp } from "~/lib/utils";
 import { FixtureHeader } from "./components/fixture-header";
 import { FixtureDate } from "./components/fixture-date";
 import { FixtureItemLive } from "./components/fixture-item-live";
+import { FixtureVenue } from "./components/fixture-venue";
 
 import { motion } from "framer-motion";
 import { Button } from "~/components/ui/button";
-import { Eye } from "lucide-react";
-import { ScoreOrHour } from "../home/next-game/score-or-hour";
+import { ChartNoAxesColumn, Eye } from "lucide-react";
+import { ScoreOrHour } from "./next-game-home/score-or-hour";
+import {
+  FixtureItemNameLogoAway,
+  FixtureItemNameLogoHome,
+} from "./components/fixture-item-name-logo";
+import MatchPreview from "./match-preview/match-preview-modal";
 
 type FixturePageProps = {
   data: {
@@ -52,6 +58,8 @@ export const FixturePage = ({ data }: FixturePageProps) => {
     Object.keys(sortedFixturesByDate)[0]
   );
 
+  console.log(sortedFixturesByDate);
+
   return (
     <div className=" min-h-screen">
       {/* header */}
@@ -70,43 +78,27 @@ export const FixturePage = ({ data }: FixturePageProps) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:bg-gray-50 transition-colors"
+              className="flex flex-col md:flex-row items-center justify-between rounded-lg border border-gray-200 p-3 md:p-4 hover:bg-gray-50 transition-colors"
             >
               <div className="flex items-center gap-4">
-                <span className="font-medium w-44 flex justify-end">
-                  {fixture.teams.home.name}
-                </span>
-                <img
-                  src={fixture.teams.home.logo}
-                  className=" h-12 w-12"
-                  alt=""
-                />
+                <FixtureItemNameLogoHome fixture={fixture} />
                 <div>
                   <ScoreOrHour fixture={fixture} />
                   <FixtureItemLive fixture={fixture} />
                 </div>
-                <img
-                  src={fixture.teams.away.logo}
-                  className=" h-12 w-12"
-                  alt=""
-                />
-                <span className="font-medium w-40">
-                  {fixture.teams.away.name}
-                </span>
+                <FixtureItemNameLogoAway fixture={fixture} />
               </div>
-              <div className="flex items-center gap-4">
-                <div className="text-right">
-                  <span className="block text-sm text-gray-500">
-                    {fixture.fixture.venue.name}, {fixture.fixture.venue.city}
-                  </span>
-                  <span className="block text-sm font-medium text-[#8B1538]">
-                    {getHoursFromTimestamp(fixture.fixture.timestamp)}
-                  </span>
-                </div>
-                <Button variant="ghost" size="sm" className="text-[#8B1538]">
-                  <Eye className="mr-2 h-4 w-4" />
-                  Aperçu rapide
-                </Button>
+
+              <div className="flex flex-col mt-2 md:flex-row items-center gap-4">
+                <FixtureVenue fixture={fixture} />
+                {fixture.fixture.status.short === "NS" ? (
+                  <MatchPreview fixture={fixture} />
+                ) : (
+                  <Button variant="ghost" size="sm" className="text-[#8B1538]">
+                    <ChartNoAxesColumn className="mr-2 h-4 w-4" />
+                    Voir les détails
+                  </Button>
+                )}
               </div>
             </motion.div>
           ))}

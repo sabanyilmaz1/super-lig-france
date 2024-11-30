@@ -1,0 +1,4 @@
+export const FOOTBALL_API_CONSTANTS = {
+  LEAGUE_ID: 203,
+  SEASON_ID: 2024,
+}
