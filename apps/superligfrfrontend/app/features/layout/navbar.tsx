@@ -22,7 +22,7 @@ const navbarItems = [
   {
     id: 2,
     name: "CALENDRIER",
-    link: "/calendrier",
+    link: "/fixture",
   },
   {
     id: 3,
