@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ResponseApiFoot } from "@monorepo/shared/types/api-foot";
 import { Fixture } from "~/model/fixture";
-import { getFrenchDate } from "~/lib/utils";
+import { getFrenchDate, getHoursFromTimestamp } from "~/lib/utils";
 import { FixtureHeader } from "./components/fixture-header";
 import { FixtureDate } from "./components/fixture-date";
+import { FixtureItemLive } from "./components/fixture-item-live";
 
 import { motion } from "framer-motion";
 import { Button } from "~/components/ui/button";
@@ -39,18 +40,17 @@ export const FixturePage = ({ data }: FixturePageProps) => {
     ([dateA], [dateB]) => new Date(dateA).getTime() - new Date(dateB).getTime()
   );
 
-  const sortedFixturesByDate = sortedEntries.reduce((acc, [date, fixtures]) => {
-    acc[date] = fixtures;
-    return acc;
-  }, {} as Record<string, Fixture[]>);
+  const sortedFixturesByDate = sortedEntries.reduce(
+    (acc, [date, fixtures]) => {
+      acc[date] = fixtures;
+      return acc;
+    },
+    {} as Record<string, Fixture[]>
+  );
 
   const [selectedDate, setSelectedDate] = useState(
     Object.keys(sortedFixturesByDate)[0]
   );
-
-  console.log(sortedFixturesByDate);
-
-  console.log("selectedDate", selectedDate);
 
   return (
     <div className=" min-h-screen">
@@ -64,7 +64,7 @@ export const FixturePage = ({ data }: FixturePageProps) => {
           setSelectedDate={setSelectedDate}
         />
         {/* Content */}
-        <div>
+        <div className="flex flex-col gap-4">
           {sortedFixturesByDate[selectedDate].map((fixture) => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -81,7 +81,10 @@ export const FixturePage = ({ data }: FixturePageProps) => {
                   className=" h-12 w-12"
                   alt=""
                 />
-                <ScoreOrHour fixture={fixture} />
+                <div>
+                  <ScoreOrHour fixture={fixture} />
+                  <FixtureItemLive fixture={fixture} />
+                </div>
                 <img
                   src={fixture.teams.away.logo}
                   className=" h-12 w-12"
@@ -94,10 +97,10 @@ export const FixturePage = ({ data }: FixturePageProps) => {
               <div className="flex items-center gap-4">
                 <div className="text-right">
                   <span className="block text-sm text-gray-500">
-                    {"Parc des Princes"}
+                    {fixture.fixture.venue.name}, {fixture.fixture.venue.city}
                   </span>
                   <span className="block text-sm font-medium text-[#8B1538]">
-                    {"21:00"}
+                    {getHoursFromTimestamp(fixture.fixture.timestamp)}
                   </span>
                 </div>
                 <Button variant="ghost" size="sm" className="text-[#8B1538]">

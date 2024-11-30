@@ -1,5 +1,5 @@
+import { ScoreOrHour } from "~/features/home/next-game/score-or-hour";
 import { Fixture } from "~/model/fixture";
-import { ScoreOrHour } from "./score-or-hour";
 
 export const FixtureItem = ({ fixture }: { fixture: Fixture }) => {
   return (
