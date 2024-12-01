@@ -27,7 +27,9 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
     "isbot": "^4.1.0",
+    "js-cookie": "^3.0.5",
     "lucide-react": "^0.445.0",
+    "prettier": "^3.3.3",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-router": "6.14.1",
@@ -39,6 +41,7 @@
   "devDependencies": {
     "@react-router/remix-config-routes-adapter": "^0.0.0-nightly-bf7ecb711-20240911",
     "@remix-run/dev": "^2.14.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",

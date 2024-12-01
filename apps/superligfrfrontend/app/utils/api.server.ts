@@ -8,7 +8,6 @@ export async function fetchWithAuth(
 ) {
   const session = await getSession(request.headers.get("Cookie"));
   const token = session.get("token");
-
   return fetch(url, {
     ...options,
     headers: {

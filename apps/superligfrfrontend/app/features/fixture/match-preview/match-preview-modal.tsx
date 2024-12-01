@@ -1,23 +1,18 @@
 import { Button } from "~/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "~/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { ScrollArea } from "~/components/ui/scroll-area";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "~/components/ui/table";
+
 import { Eye } from "lucide-react";
 import { Fixture } from "~/model/fixture";
+import { MatchPreviewHeader } from "./match-preview-header";
+import { MatchPreviewTablist } from "./match-preview-tablist";
+import { MatchPreviewLineup } from "./match-preview-lineup";
+import { MatchPreviewHistory } from "./match-preview-history";
+import { useMatchPreview } from "./use-match-preview";
+import { MatchPreviewStats } from "./match-preview-stats";
+
+import { ApiResponse } from "@monorepo/shared/types/api";
+import { MatchPreview } from "@monorepo/shared/types/fixture";
 
 interface TeamStats {
   possession: number;
@@ -40,12 +35,6 @@ interface MatchPreviewProps {
     stats: TeamStats;
     lineup: string[];
   };
-  lastMatches: Array<{
-    date: string;
-    homeTeam: string;
-    awayTeam: string;
-    score: string;
-  }>;
 }
 
 const matchData: MatchPreviewProps = {
@@ -97,179 +86,65 @@ const matchData: MatchPreviewProps = {
       "Dzeko",
     ],
   },
-  lastMatches: [
-    {
-      date: "2023-05-15",
-      homeTeam: "Galatasaray",
-      awayTeam: "Fenerbahçe",
-      score: "2-1",
-    },
-    {
-      date: "2022-12-18",
-      homeTeam: "Fenerbahçe",
-      awayTeam: "Galatasaray",
-      score: "0-0",
-    },
-    {
-      date: "2022-04-10",
-      homeTeam: "Galatasaray",
-      awayTeam: "Fenerbahçe",
-      score: "2-3",
-    },
-    {
-      date: "2021-11-21",
-      homeTeam: "Fenerbahçe",
-      awayTeam: "Galatasaray",
-      score: "1-2",
-    },
-    {
-      date: "2021-02-06",
-      homeTeam: "Fenerbahçe",
-      awayTeam: "Galatasaray",
-      score: "0-1",
-    },
-  ],
 };
 
-export default function MatchPreview({ fixture }: { fixture: Fixture }) {
-  const { homeTeam, awayTeam, lastMatches } = matchData;
+const h2hMatches = [
+  { date: "2023-05-21", home: "Fenerbahce", away: "Gaziantep", score: "3-2" },
+  { date: "2022-12-10", home: "Gaziantep", away: "Fenerbahce", score: "0-1" },
+  { date: "2022-04-16", home: "Fenerbahce", away: "Gaziantep", score: "2-0" },
+  { date: "2021-12-19", home: "Gaziantep", away: "Fenerbahce", score: "1-1" },
+  { date: "2021-05-08", home: "Fenerbahce", away: "Gaziantep", score: "3-1" },
+];
 
+export default function MatchPreview({ fixture }: { fixture: Fixture }) {
+  const { homeTeam, awayTeam } = matchData;
   const fixtureId = fixture.fixture.id;
   const homeTeamId = fixture.teams.home.id;
   const awayTeamId = fixture.teams.away.id;
 
-  console.log("Match ID: ", fixtureId);
+  const { isLoading, data, fetchPreview } = useMatchPreview();
+
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  //const dataMatchPreview = data as ApiResponse<MatchPreview>;
+
+  // if (data) {
+  //   console.log(
+  //     data.data.headToHead.filter(
+  //       (match) => match.league.name !== "Friendlies Clubs"
+  //     )
+  //   );
+  // }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
+        <Button
+          onClick={() => fetchPreview(fixtureId, homeTeamId, awayTeamId)}
+          variant="outline"
+          size="sm"
+          className="gap-2"
+        >
           <Eye className="h-4 w-4" />
           Aperçu rapide
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-3xl">
-        <DialogHeader>
-          <DialogTitle className="flex items-center justify-center gap-4 text-xl">
-            <div className="flex items-center gap-2">
-              <img
-                src={homeTeam.logo}
-                alt={homeTeam.name}
-                className="h-8 w-8"
-              />
-              <span>{homeTeam.name}</span>
-            </div>
-            <span>vs</span>
-            <div className="flex items-center gap-2">
-              <img
-                src={awayTeam.logo}
-                alt={awayTeam.name}
-                className="h-8 w-8"
-              />
-              <span>{awayTeam.name}</span>
-            </div>
-          </DialogTitle>
-        </DialogHeader>
-
-        <Tabs defaultValue="lineup" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="lineup">Composition</TabsTrigger>
-            <TabsTrigger value="history">Historique</TabsTrigger>
-            <TabsTrigger value="stats">Statistiques</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="lineup">
-            <div className="grid grid-cols-2 gap-4 p-4">
-              <div>
-                <h3 className="mb-2 font-semibold">{homeTeam.name}</h3>
-                <ul className="space-y-1">
-                  {homeTeam.lineup.map((player, index) => (
-                    <li key={index} className="text-sm">
-                      {player}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="mb-2 font-semibold">{awayTeam.name}</h3>
-                <ul className="space-y-1">
-                  {awayTeam.lineup.map((player, index) => (
-                    <li key={index} className="text-sm">
-                      {player}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="history">
-            <ScrollArea className="h-[300px] w-full">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Match</TableHead>
-                    <TableHead className="text-right">Score</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {lastMatches.map((match, index) => (
-                    <TableRow key={index}>
-                      <TableCell>{match.date}</TableCell>
-                      <TableCell>
-                        {match.homeTeam} - {match.awayTeam}
-                      </TableCell>
-                      <TableCell className="text-right">
-                        {match.score}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </ScrollArea>
-          </TabsContent>
-
-          <TabsContent value="stats">
-            <div className="space-y-4 p-4">
-              <div className="grid grid-cols-3 items-center gap-4">
-                <div className="text-right">{homeTeam.stats.possession}%</div>
-                <div className="text-center text-sm text-muted-foreground">
-                  Possession
-                </div>
-                <div>{awayTeam.stats.possession}%</div>
-              </div>
-              <div className="grid grid-cols-3 items-center gap-4">
-                <div className="text-right">{homeTeam.stats.shots}</div>
-                <div className="text-center text-sm text-muted-foreground">
-                  Tirs
-                </div>
-                <div>{awayTeam.stats.shots}</div>
-              </div>
-              <div className="grid grid-cols-3 items-center gap-4">
-                <div className="text-right">{homeTeam.stats.shotsOnTarget}</div>
-                <div className="text-center text-sm text-muted-foreground">
-                  Tirs cadrés
-                </div>
-                <div>{awayTeam.stats.shotsOnTarget}</div>
-              </div>
-              <div className="grid grid-cols-3 items-center gap-4">
-                <div className="text-right">{homeTeam.stats.corners}</div>
-                <div className="text-center text-sm text-muted-foreground">
-                  Corners
-                </div>
-                <div>{awayTeam.stats.corners}</div>
-              </div>
-              <div className="grid grid-cols-3 items-center gap-4">
-                <div className="text-right">{homeTeam.stats.fouls}</div>
-                <div className="text-center text-sm text-muted-foreground">
-                  Fautes
-                </div>
-                <div>{awayTeam.stats.fouls}</div>
-              </div>
-            </div>
-          </TabsContent>
-        </Tabs>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            <MatchPreviewHeader fixture={fixture} />
+            <Tabs defaultValue="lineup" className="w-full">
+              <MatchPreviewTablist />
+              <MatchPreviewLineup homeTeam={homeTeam} awayTeam={awayTeam} />
+              <MatchPreviewHistory h2hMatches={h2hMatches} />
+              <MatchPreviewStats homeTeam={homeTeam} awayTeam={awayTeam} />
+            </Tabs>
+          </>
+        )}
       </DialogContent>
     </Dialog>
   );

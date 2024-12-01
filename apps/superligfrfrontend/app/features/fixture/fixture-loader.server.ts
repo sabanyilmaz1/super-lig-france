@@ -1,7 +1,7 @@
-import { ActionFunction } from "@remix-run/node";
+import { LoaderFunction } from "@remix-run/node";
 import { fetchWithAuth } from "~/utils/api.server";
 
-export let loaderFixture: ActionFunction = async ({ request }) => {
+export let loaderFixture: LoaderFunction = async ({ request }) => {
   const [lastFixtureResponse] = await Promise.all([
     fetchWithAuth(request, "http://localhost:3333/lastFixture"),
   ]);

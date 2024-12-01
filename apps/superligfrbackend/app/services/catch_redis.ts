@@ -8,7 +8,12 @@ export class CacheService {
   }
 
   public static async set(key: string, data: any): Promise<void> {
-    const ttl = await getTTL()
+    let ttl = await getTTL()
+
+    if (key.includes('fixture:') && key !== 'fixture:last') {
+      ttl = 300
+    }
+
     await redis.setex(key, ttl, JSON.stringify(data))
   }
 }

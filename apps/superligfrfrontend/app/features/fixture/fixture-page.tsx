@@ -58,8 +58,6 @@ export const FixturePage = ({ data }: FixturePageProps) => {
     Object.keys(sortedFixturesByDate)[0]
   );
 
-  console.log(sortedFixturesByDate);
-
   return (
     <div className=" min-h-screen">
       {/* header */}
