@@ -89,14 +89,15 @@ export const FixturePage = ({ data }: FixturePageProps) => {
 
               <div className="flex flex-col mt-2 md:flex-row items-center gap-4">
                 <FixtureVenue fixture={fixture} />
-                {fixture.fixture.status.short === "NS" ? (
+                {/* {fixture.fixture.status.short === "NS" ? (
                   <MatchPreview fixture={fixture} />
                 ) : (
                   <Button variant="ghost" size="sm" className="text-[#8B1538]">
                     <ChartNoAxesColumn className="mr-2 h-4 w-4" />
                     Voir les détails
                   </Button>
-                )}
+                )} */}
+                <MatchPreview fixture={fixture} />
               </div>
             </motion.div>
           ))}

@@ -104,20 +104,6 @@ export default function MatchPreview({ fixture }: { fixture: Fixture }) {
 
   const { isLoading, data, fetchPreview } = useMatchPreview();
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  //const dataMatchPreview = data as ApiResponse<MatchPreview>;
-
-  // if (data) {
-  //   console.log(
-  //     data.data.headToHead.filter(
-  //       (match) => match.league.name !== "Friendlies Clubs"
-  //     )
-  //   );
-  // }
-
   return (
     <Dialog>
       <DialogTrigger asChild>
