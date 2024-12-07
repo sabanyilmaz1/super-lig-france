@@ -1,0 +1,46 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    environment:
+      - .env
+    ports:
+      - "3333:3333"
+    command: >
+      sh -c "
+      until nc -z postgres 5432; do
+        echo 'Waiting for PostgreSQL...';
+        sleep 2;
+      done;
+      node ace migration:run --force && node bin/server.js"
+    depends_on:
+      - postgres
+      - redis
+
+  redis:
+    image: redis:7
+    container_name: redis
+    environment:
+      - REDIS_PASSWORD=
+    command: ["redis-server", "--requirepass", ""]
+    ports:
+      - "6380:6380"
+    volumes:
+      - redis_data:/data
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: saban
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: superligfr
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
+  redis_data:
