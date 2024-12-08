@@ -19,6 +19,23 @@ services:
       - postgres
       - redis
 
+  # frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    environment:
+      - .env.production
+    ports:
+      - "3000:3000"
+    command: >
+      sh -c "
+      echo 'Starting Remix frontend...';
+      pnpm start"
+    depends_on:
+      - backend
+
   redis:
     image: redis:7
     container_name: redis

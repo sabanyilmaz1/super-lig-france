@@ -1,5 +1,7 @@
 import { fetchWithAuth } from "~/utils/api.server";
 
+const BASE_URL = process.env.BASE_URL;
+
 export const action = async ({ request }: { request: Request }) => {
   const formData = await request.formData();
   const matchId = formData.get("fixtureId");
@@ -10,7 +12,7 @@ export const action = async ({ request }: { request: Request }) => {
     return Response.json({ error: "Missing parameters" }, { status: 400 });
   }
 
-  const url = `http://localhost:3333/match_preview/${matchId}?homeTeamId=${homeTeamId}&awayTeamId=${awayTeamId}`;
+  const url = `${BASE_URL}/match_preview/${matchId}?homeTeamId=${homeTeamId}&awayTeamId=${awayTeamId}`;
   const response = await fetchWithAuth(request, url);
 
   if (!response.ok) {

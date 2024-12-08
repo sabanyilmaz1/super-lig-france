@@ -24,7 +24,7 @@ export const registerValidator = vine.compile(
     api_football_key: vine
       .string()
       .minLength(3)
-      .maxLength(20)
+      .maxLength(40)
       .unique(async (db, value) => {
         const match = await db.from('users').select('id').where('api_football_key', value).first()
         return !match

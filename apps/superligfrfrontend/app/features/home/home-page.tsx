@@ -32,6 +32,9 @@ export const HomePage = ({ data }: HomePageProps) => {
     articlesData,
   } = data;
 
+  console.log("HomePage -> lastFixtureData", data);
+  console.log("HomePage -> articlesData", articlesData);
+
   return (
     <>
       {/* Mobile */}

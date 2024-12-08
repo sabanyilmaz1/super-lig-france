@@ -1,9 +1,11 @@
 import { LoaderFunction } from "@remix-run/node";
 import { fetchWithAuth } from "~/utils/api.server";
 
+const BASE_URL = process.env.BASE_URL;
+
 export let loaderFixture: LoaderFunction = async ({ request }) => {
   const [lastFixtureResponse] = await Promise.all([
-    fetchWithAuth(request, "http://localhost:3333/lastFixture"),
+    fetchWithAuth(request, `${BASE_URL}/lastFixture`),
   ]);
   if (lastFixtureResponse.ok) {
     const lastFixtureData = await lastFixtureResponse.json();

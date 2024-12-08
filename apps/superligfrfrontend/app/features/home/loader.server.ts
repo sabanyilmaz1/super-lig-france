@@ -1,6 +1,8 @@
 import { ActionFunction } from "@remix-run/node";
 import { fetchWithAuth } from "~/utils/api.server";
 
+const BASE_URL = process.env.BASE_URL;
+
 export let loaderHome: ActionFunction = async ({ request }) => {
   const [
     lastFixtureResponse,
@@ -9,11 +11,11 @@ export let loaderHome: ActionFunction = async ({ request }) => {
     topassistsResponse,
     articlesResponse,
   ] = await Promise.all([
-    fetchWithAuth(request, "http://localhost:3333/lastFixture"),
-    fetchWithAuth(request, "http://localhost:3333/standing"),
-    fetchWithAuth(request, "http://localhost:3333/topscorers"),
-    fetchWithAuth(request, "http://localhost:3333/topassists"),
-    fetchWithAuth(request, "http://localhost:3333/articles/last-four"),
+    fetchWithAuth(request, `${BASE_URL}/lastFixture`),
+    fetchWithAuth(request, `${BASE_URL}/standing`),
+    fetchWithAuth(request, `${BASE_URL}/topscorers`),
+    fetchWithAuth(request, `${BASE_URL}/topassists`),
+    fetchWithAuth(request, `${BASE_URL}/articles/last-four`),
   ]);
 
   if (

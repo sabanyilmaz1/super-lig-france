@@ -1,12 +1,16 @@
 import { ActionFunction, json, redirect } from "@remix-run/node";
 import { commitSession, getSession } from "~/utils/session.server";
 
+const BASE_URL = process.env.BASE_URL;
+
 export let loginAction: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
 
-  const response = await fetch("http://localhost:3333/login", {
+  console.log("BASE_URL", BASE_URL);
+
+  const response = await fetch(`${BASE_URL}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),

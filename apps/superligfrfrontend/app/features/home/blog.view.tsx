@@ -12,6 +12,14 @@ type BlogHomeViewProps = {
 };
 
 export const BlogHomeView = ({ articles }: BlogHomeViewProps) => {
+  if (!articles) {
+    return null;
+  }
+
+  if (articles.length === 0) {
+    return null;
+  }
+
   return (
     <Card className="border-2 border-redsuperlig bg-gradient-to-r from-red-700 to-red-500 shadow-lg min-h-[400px]">
       <CardHeader></CardHeader>
