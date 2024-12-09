@@ -42,7 +42,7 @@ jobs:
           tags: ${{ env.BACKEND_IMAGE }}
           target: backend
 
-      # Build et push frontend
+      # Build et push frontend.
       - name: Build and push frontend
         uses: docker/build-push-action@v5
         with:
