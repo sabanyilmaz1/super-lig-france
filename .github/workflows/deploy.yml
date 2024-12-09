@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
 env:
   BACKEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-backend:latest
   FRONTEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-frontend:latest
@@ -18,6 +19,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Debug Secrets (Optionnel)
+      - name: Debug Secrets
+        run: |
+          echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}"
+          echo "BACKEND_IMAGE: ${{ env.BACKEND_IMAGE }}"
+          echo "FRONTEND_IMAGE: ${{ env.FRONTEND_IMAGE }}"
+
       # Login Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -31,7 +39,6 @@ jobs:
         with:
           context: .
           push: true
-          #tags: your_dockerhubusername/superligfr-backend:latest
           tags: ${{ env.BACKEND_IMAGE }}
           target: backend
 
@@ -41,21 +48,31 @@ jobs:
         with:
           context: .
           push: true
-          #tags: your_d ockerhub_username /superligfr-frontend:latest
           tags: ${{ env.FRONTEND_IMAGE }}
           target: frontend
 
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
+    environment: Prod
 
     steps:
+      # Test Connexion SSH (Débogage)
+      - name: Test SSH Connection
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > test_key
+          chmod 600 test_key
+          ssh -i test_key -o StrictHostKeyChecking=no root@${{ secrets.VPS_IP }} "echo 'SSH connection successful'"
+
+      # Déploiement avec Debug Activé
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.VPS_IP }}
-          username: ${{ secrets.USERNAME }}
+          username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          debug: true # Active les logs détaillés
           script: |
+            echo "Connecté au VPS !"
             cd ~/super-lig-france
             docker stack deploy -c docker-compose.yml superligfr
