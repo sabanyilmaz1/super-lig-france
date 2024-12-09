@@ -28,7 +28,9 @@ services:
       dockerfile: Dockerfile
       target: frontend
     environment:
-      - .env.production
+      NODE_ENV: production
+      SESSION_SECRET: ${SESSION_SECRET}
+      BASE_URL: ${BASE_URL}
     ports:
       - "3000:3000"
     command: >
