@@ -14,7 +14,7 @@ jobs:
     environment: Prod
 
     steps:
-      # Clone le repository .
+      # Clone le repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
