@@ -31,7 +31,7 @@ jobs:
         with:
           context: .
           push: true
-          #tags: your_dockerhub _username/superligfr-backend:latest
+          #tags: your_dockerhubusername/superligfr-backend:latest
           tags: ${{ env.BACKEND_IMAGE }}
           target: backend
 
