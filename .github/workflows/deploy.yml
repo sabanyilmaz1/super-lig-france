@@ -71,8 +71,8 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          debug: true # Active les logs détaillés
+          debug: true # Active les logs détaillés.
           script: |
             echo "Connecté au VPS !"
-            cd ~/super-lig-france
+            cd ~/stacks
             docker stack deploy -c docker-compose.yml superligfr
