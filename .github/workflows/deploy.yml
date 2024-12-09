@@ -71,7 +71,7 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          debug: true # Active les logs détaillée.
+          debug: true # Active les logs dét aillée.
           script: |
             echo "Connecté au VPS !"
             cd ~/stacks
