@@ -75,4 +75,4 @@ jobs:
           script: |
             echo "Connecté au VPS !"
             cd ~/stacks
-            docker stack deploy -c docker-compose.yml superligfr
+            docker stack deploy -c ~/stacks/docker-compose.yml superligfr
