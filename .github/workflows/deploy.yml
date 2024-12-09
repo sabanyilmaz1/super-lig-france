@@ -1,0 +1,57 @@
+name: Build and Deploy Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Clone le repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Login Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      # Build et push backend
+      - name: Build and push backend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          #tags: your_dockerhub_username/superligfr-backend:latest
+          tags: ${{ env.BACKEND_IMAGE }}
+          target: backend
+
+      # Build et push frontend
+      - name: Build and push frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          #tags: your_dockerhub_username/superligfr-frontend:latest
+          tags: ${{ env.FRONTEND_IMAGE }}
+          target: frontend
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/super-lig-france
+            docker stack deploy -c docker-compose.yml superligfr
