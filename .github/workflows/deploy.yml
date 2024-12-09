@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+env:
+  BACKEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-backend:latest
+  FRONTEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-frontend:latest
 
 jobs:
   build-and-push:
@@ -14,14 +17,6 @@ jobs:
       # Clone le repository .
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Debug secrets
-        run: |
-          echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}"
-          echo "DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}"
-          echo "VPS_IP: ${{ secrets.VPS_IP }}"
-          echo "USERNAME: ${{ secrets.USERNAME }}"
-          echo "SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}"
 
       # Login Docker Hub
       - name: Log in to Docker Hub
