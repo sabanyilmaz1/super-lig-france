@@ -16,7 +16,6 @@ FROM base AS backend
 COPY --from=build /prod/backend /prod/backend
 WORKDIR /usr/src/app
 COPY --from=build /usr/src/app/apps/superligfrbackend/build /prod/backend/build
-COPY --from=build /usr/src/app/apps/superligfrbackend/.env.production /prod/backend/build/.env
 WORKDIR /prod/backend/build
 ENV NODE_ENV=production
 EXPOSE 3333
