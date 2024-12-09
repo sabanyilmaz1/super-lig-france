@@ -57,7 +57,7 @@ jobs:
     environment: Prod
 
     steps:
-      # Test Connexion SSH (Débogage)
+      # Test Connexion SSH
       - name: Test SSH Connection
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > test_key
