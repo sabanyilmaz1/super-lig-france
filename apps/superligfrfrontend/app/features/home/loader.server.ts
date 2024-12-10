@@ -11,11 +11,11 @@ export let loaderHome: ActionFunction = async ({ request }) => {
     topassistsResponse,
     articlesResponse,
   ] = await Promise.all([
-    fetchWithAuth(request, `${BASE_URL}/lastFixture`),
-    fetchWithAuth(request, `${BASE_URL}/standing`),
-    fetchWithAuth(request, `${BASE_URL}/topscorers`),
-    fetchWithAuth(request, `${BASE_URL}/topassists`),
-    fetchWithAuth(request, `${BASE_URL}/articles/last-four`),
+    fetchWithAuth(request, `${BASE_URL}lastFixture`),
+    fetchWithAuth(request, `${BASE_URL}standing`),
+    fetchWithAuth(request, `${BASE_URL}topscorers`),
+    fetchWithAuth(request, `${BASE_URL}topassists`),
+    fetchWithAuth(request, `${BASE_URL}articles/last-four`),
   ]);
 
   if (
