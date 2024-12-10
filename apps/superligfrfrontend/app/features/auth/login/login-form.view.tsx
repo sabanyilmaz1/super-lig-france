@@ -1,9 +1,25 @@
-import { Form} from "@remix-run/react";
+import { Form } from "@remix-run/react";
+import { useEffect } from "react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 
 export default function LoginForm() {
+  useEffect(() => {
+    // Test sans passer par les actions Remix
+    fetch("http://147.79.102.85:3333/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: "syilmazpro1@gmail.com",
+        password: "qfknbg7u",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("Response:", data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
   return (
     <div>
       <div className="grid gap-2 text-center">
