@@ -74,5 +74,6 @@ jobs:
           debug: true # Active les logs détaillée.
           script: |
             echo "Connecté au VPS !"
+            export $(grep -v '^#' ~/stacks/.env | xargs)
             cd ~/stacks
             docker stack deploy -c ~/stacks/docker-compose.yml superligfr

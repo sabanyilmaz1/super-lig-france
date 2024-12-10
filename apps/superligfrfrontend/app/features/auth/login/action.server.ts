@@ -12,9 +12,9 @@ export let loginAction: ActionFunction = async ({ request }) => {
   console.log("password", password);
 
   console.log("BASE_URL", BASE_URL);
-  console.log("BASE_URL/login", `${BASE_URL}/login`);
+  console.log("BASE_URL/login", `${BASE_URL}login`);
 
-  const response = await fetch(`${BASE_URL}/login`, {
+  const response = await fetch(`${BASE_URL}login`, {
     method: "POST",
     headers: {},
     body: JSON.stringify({ email, password }),
