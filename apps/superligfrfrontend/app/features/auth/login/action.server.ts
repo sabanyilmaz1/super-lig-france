@@ -24,6 +24,7 @@ export let loginAction: ActionFunction = async ({ request }) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log("data", data);
     const token = data.token;
 
     // Store the token in the session
