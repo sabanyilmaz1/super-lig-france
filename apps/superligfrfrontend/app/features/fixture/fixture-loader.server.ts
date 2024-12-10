@@ -5,7 +5,7 @@ const BASE_URL = process.env.BASE_URL;
 
 export let loaderFixture: LoaderFunction = async ({ request }) => {
   const [lastFixtureResponse] = await Promise.all([
-    fetchWithAuth(request, `${BASE_URL}/lastFixture`),
+    fetchWithAuth(request, `${BASE_URL}lastFixture`),
   ]);
   if (lastFixtureResponse.ok) {
     const lastFixtureData = await lastFixtureResponse.json();

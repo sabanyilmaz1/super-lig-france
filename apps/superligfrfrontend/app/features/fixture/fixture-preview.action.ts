@@ -18,7 +18,7 @@ export const fixturePreviewAction: ActionFunction = async ({ request }) => {
   // Effectuer le fetch avec `fetchWithAuth`
   const matchPreviewResponse = await fetchWithAuth(
     request,
-    `${BASE_URL}/match_preview/${fixtureId}?homeTeamId=${homeTeamId}&awayTeamId=${awayTeamId}`
+    `${BASE_URL}match_preview/${fixtureId}?homeTeamId=${homeTeamId}&awayTeamId=${awayTeamId}`
   );
 
   if (!matchPreviewResponse.ok) {

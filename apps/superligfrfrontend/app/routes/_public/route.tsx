@@ -9,7 +9,7 @@ const BASE_URL = process.env.BASE_URL;
 
 export let loader: LoaderFunction = async ({ request }) => {
   await requireUserSession(request);
-  const response = await fetchWithAuth(request, `${BASE_URL}/me`, {
+  const response = await fetchWithAuth(request, `${BASE_URL}me`, {
     method: "GET",
   });
   const data = await response.json();

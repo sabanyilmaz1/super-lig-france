@@ -8,7 +8,7 @@ export let loginAction: ActionFunction = async ({ request }) => {
   const email = formData.get("email");
   const password = formData.get("password");
 
-  const response = await fetch(`http://147.79.102.85:3333/login`, {
+  const response = await fetch(`${BASE_URL}login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
