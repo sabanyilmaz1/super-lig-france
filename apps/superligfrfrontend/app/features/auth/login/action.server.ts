@@ -14,9 +14,9 @@ export let loginAction: ActionFunction = async ({ request }) => {
   console.log("BASE_URL", BASE_URL);
   console.log("BASE_URL/login", `${BASE_URL}login`);
 
-  const response = await fetch(`${BASE_URL}login`, {
+  const response = await fetch(`http://147.79.102.85:3333/login`, {
     method: "POST",
-    headers: {},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
 
