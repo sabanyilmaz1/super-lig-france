@@ -12,7 +12,8 @@ export const { getSession, commitSession, destroySession } =
     cookie: {
       name: "__session",
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      // secure: process.env.NODE_ENV === "production",
+      secure: false,
       secrets: [sessionSecret],
       sameSite: "lax",
       path: "/",
