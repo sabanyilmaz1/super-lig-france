@@ -33,6 +33,9 @@ export let loginAction: ActionFunction = async ({ request }) => {
     session.set("token", token);
     console.log("token", token);
     console.log("session after set", session.data);
+    const sessionSecret = process.env.SESSION_SECRET;
+    console.log("sessionSecret", sessionSecret);
+    console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
     console.log("await commitSession(session)", await commitSession(session));
 
