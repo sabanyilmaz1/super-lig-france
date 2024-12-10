@@ -29,6 +29,7 @@ export let loginAction: ActionFunction = async ({ request }) => {
 
     // Store the token in the session
     let session = await getSession(request.headers.get("Cookie"));
+    console.log("session", session);
     session.set("token", token);
 
     return redirect("/home", {

@@ -2,6 +2,7 @@ import { createCookieSessionStorage } from "@remix-run/node";
 
 // This secret should be secure and stored in environment variables
 const sessionSecret = process.env.SESSION_SECRET;
+console.log("sessionSecret", sessionSecret);
 
 if (!sessionSecret) {
   throw new Error("SESSION_SECRET environment variable is required");
