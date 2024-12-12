@@ -27,6 +27,9 @@ export let loginAction: ActionFunction = async ({ request }) => {
       },
     });
   } else {
-    return json({ error: "Invalid credentials" }, { status: 401 });
+    return Response.json(
+      { error: "Mot de passe ou email incorrect" },
+      { status: 401 }
+    );
   }
 };

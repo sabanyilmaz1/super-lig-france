@@ -4,13 +4,13 @@ import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { ErrorMessage } from "~/features/layout/error-message";
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const actionData = useActionData<{ error?: string }>();
 
   return (
     <div>
       <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-bold text-redsuperlig">Connexion</h1>
+        <h1 className="text-3xl font-bold text-redsuperlig">Inscription</h1>
       </div>
       <Form method="post" className="grid gap-4">
         <div className="grid gap-2">
@@ -30,7 +30,7 @@ export default function LoginForm() {
           <Input id="password" type="password" name="password" required />
         </div>
         <Button type="submit" className="w-full font-bold">
-          Connexion
+          Inscription
         </Button>
 
         {actionData && (
@@ -40,11 +40,6 @@ export default function LoginForm() {
           />
         )}
       </Form>
-      <div className="mt-4 text-center text-sm text-redsuperlig">
-        <Link to="/register" className="underline">
-          Pas encore de compte ? Inscrivez-vous
-        </Link>
-      </div>
     </div>
   );
 }
