@@ -78,7 +78,15 @@ export default function RegisterForm() {
               required
             />
             <Button variant="secondary" className="p-2">
-              <SquareArrowOutUpRightIcon className="w-6 h-6" />
+              <SquareArrowOutUpRightIcon
+                onClick={() => {
+                  window.open(
+                    "https://dashboard.api-football.com/register",
+                    "_blank"
+                  );
+                }}
+                className="w-6 h-6"
+              />
             </Button>
           </div>
         </div>
