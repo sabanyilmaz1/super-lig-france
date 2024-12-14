@@ -31,34 +31,6 @@ export let loaderHome: ActionFunction = async ({ request }) => {
     const topassistsData = await topassistsResponse.json();
     const articlesData = await articlesResponse.json();
 
-    if (
-      standingData.data.errors.token ||
-      lastFixtureData.data.errors.token ||
-      topscorersData.data.errors.token ||
-      topassistsData.data.errors.token
-    ) {
-      console.log(
-        "standingData.data.errors.token",
-        standingData.data.errors.token
-      );
-      console.log(
-        "lastFixtureData.data.errors.token",
-        lastFixtureData.data.errors.token
-      );
-      console.log(
-        "topscorersData.data.errors.token",
-        topscorersData.data.errors.token
-      );
-      console.log(
-        "topassistsData.data.errors.token",
-        topassistsData.data.errors.token
-      );
-      return Response.json(
-        { error: "La clé API Foot est invalide" },
-        { status: 401 }
-      );
-    }
-
     return Response.json({
       lastFixtureData: lastFixtureData.data,
       standingData: standingData.data,

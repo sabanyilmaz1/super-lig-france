@@ -19,7 +19,7 @@ export const ErrorApiKey = () => {
             clé dans les paramètres de votre profil.
           </p>
         </div>
-        <Link to="/profile" className="block">
+        <Link to="/profil" className="block">
           <Button
             size="lg"
             className="w-full bg-[#8B0000] hover:bg-[#5E0000] text-white"

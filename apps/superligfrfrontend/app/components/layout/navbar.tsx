@@ -118,7 +118,7 @@ const ProfilMenu = ({ username }: { username: string }) => {
       <DropdownMenuContent align="end">
         {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
         <DropdownMenuItem>
-          <Link to="/profile">Profile</Link>
+          <Link to="/profil">Profil</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuSeparator />
