@@ -29,7 +29,8 @@ export abstract class BaseApiController {
       if (!apiKey) return
 
       const cachedData = await this.getCachedData(cacheKey)
-      if (cachedData) {
+      const jsonCachedData = JSON.parse(cachedData)
+      if (cachedData && !jsonCachedData.errors.token) {
         return ResponseHelper.sendCachedData(response, cachedData)
       }
 
@@ -62,7 +63,8 @@ export abstract class BaseApiController {
 
       // Vérifier dans le cache Redis
       const cachedData = await this.getCachedData(cacheKey)
-      if (cachedData) {
+      const jsonCachedData = JSON.parse(cachedData)
+      if (cachedData && !jsonCachedData.errors.token) {
         return ResponseHelper.sendCachedData(response, cachedData)
       }
 

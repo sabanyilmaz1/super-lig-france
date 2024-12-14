@@ -1,4 +1,3 @@
-import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { BlogHomeView } from "./blog.view";
 import { BestPlayersHomeView } from "./best-players/best-players.view";
@@ -16,14 +15,11 @@ type HomePageProps = {
     topscorersData: ResponseApiFoot<any>;
     topassistsData: ResponseApiFoot<any>;
     articlesData: any;
+    error?: string;
   };
 };
 
 export const HomePage = ({ data }: HomePageProps) => {
-  if (!data) {
-    return null;
-  }
-
   const {
     lastFixtureData,
     standingData,
@@ -31,9 +27,6 @@ export const HomePage = ({ data }: HomePageProps) => {
     topassistsData,
     articlesData,
   } = data;
-
-  console.log("HomePage -> lastFixtureData", data);
-  console.log("HomePage -> articlesData", articlesData);
 
   return (
     <>

@@ -1,8 +1,8 @@
 import { Form, Link, useActionData } from "@remix-run/react";
+import { ErrorMessage } from "~/components/layout/error-message";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { ErrorMessage } from "~/features/layout/error-message";
 
 export default function LoginForm() {
   const actionData = useActionData<{ error?: string }>();

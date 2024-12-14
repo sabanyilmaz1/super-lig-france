@@ -16,6 +16,7 @@ import FixtureController from '../app/football_data_api/controllers/show_fixture
 import StandingController from '../app/football_data_api/controllers/show_standings_controller.js'
 import ArticleController from '../app/articles/controllers/article_controller.js'
 import MatchController from '../app/football_data_api/controllers/match_controller.js'
+import CheckApiValidity from '../app/football_data_api/controllers/check_api_validity.js'
 
 //Health check
 router.get('health', ({ response }) => response.noContent())
@@ -38,7 +39,7 @@ router.get('/users', async () => {
     users,
   }
 })
-
+router.get('/check-api-key/:apiKey', [CheckApiValidity, 'checkApiValidity']).use(middleware.auth())
 //team
 router.get('/team/:teamId', [TeamController, 'showTeam']).use(middleware.auth())
 

@@ -22,7 +22,7 @@ export function ErrorMessage({ title, description }: ErrorMessageProps) {
           <AlertCircle className="h-6 w-6 mr-2" />
           <h2 className="text-sm font-semibold">{title}</h2>
         </div>
-        <p className="mt-2">{description}</p>
+        <p className="mt-2 text-xs">{description}</p>
       </div>
     </motion.div>
   );
