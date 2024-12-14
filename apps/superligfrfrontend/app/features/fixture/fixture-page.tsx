@@ -62,14 +62,9 @@ export const FixturePage = ({
     }
   );
 
-  console.log(sortedFixturesWithFormattedDates);
-
   const [selectedDate, setSelectedDate] = useState(
     sortedFixturesWithFormattedDates[0]?.date || ""
   );
-
-  console.log(selectedDate);
-
   return (
     <div className="min-h-screen">
       <FixtureHeader />

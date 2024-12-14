@@ -104,6 +104,11 @@ export default function MatchPreview({ fixture }: { fixture: Fixture }) {
 
   const { isLoading, data, fetchPreview } = useMatchPreview();
 
+  const matchPreviewData = data as ApiResponse<MatchPreview>;
+  const { headToHead, injuries, predictions, lineups } =
+    matchPreviewData?.data || {};
+
+  console.log(headToHead);
   return (
     <Dialog>
       <DialogTrigger asChild>

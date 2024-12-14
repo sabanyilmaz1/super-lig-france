@@ -15,8 +15,6 @@ export const FixtureDate = ({
   selectedDate,
   setSelectedDate,
 }: FixtureDateProps) => {
-  console.log(sortedFixturesByDate);
-
   return (
     <div className=" flex gap-4 overflow-x-auto pb-4">
       {sortedFixturesByDate.map((item) => {
