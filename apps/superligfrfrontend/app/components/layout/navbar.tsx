@@ -1,5 +1,5 @@
 import { Link, NavLink } from "@remix-run/react";
-import { MenuIcon, MountainIcon, User2Icon } from "lucide-react";
+import { MenuIcon, User2Icon } from "lucide-react";
 
 import logo from "~/assets/logo/logo.png";
 import { Button } from "~/components/ui/button";
@@ -122,7 +122,9 @@ const ProfilMenu = ({ username }: { username: string }) => {
         </DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Logout</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/logout">Se déconnecter</Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
