@@ -1,7 +1,9 @@
-import { LoaderFunction, json } from "@remix-run/node";
+import { LoaderFunction } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
-import { ClubsBanner } from "~/features/layout/clubs-banner";
-import { Navbar } from "~/features/layout/navbar";
+import { Toaster } from "react-hot-toast";
+import { ClubsBanner } from "~/components/layout/clubs-banner";
+import { ErrorApiKey } from "~/components/layout/error-api-key";
+import { Navbar } from "~/components/layout/navbar";
 import { fetchWithAuth } from "~/utils/api.server";
 import { requireUserSession } from "~/utils/auth.server";
 
@@ -13,8 +15,26 @@ export let loader: LoaderFunction = async ({ request }) => {
     method: "GET",
   });
   const data = await response.json();
+
   if (data) {
-    return json({ user: data.user });
+    const apiKey = data.user.apiFootballKey;
+    const responseApiKey = await fetchWithAuth(
+      request,
+      `${BASE_URL}check-api-key/${apiKey}`,
+      {
+        method: "GET",
+      }
+    );
+
+    const dataApiKey = await responseApiKey.json();
+    if (dataApiKey.token) {
+      return Response.json({
+        user: data.user,
+        error: "La clé API Foot est invalide",
+      });
+    } else {
+      return Response.json({ user: data.user, error: null });
+    }
   }
   return null;
 };
@@ -28,9 +48,14 @@ export default function PrivateLayout() {
 
   return (
     <div>
+      <Toaster />
       <ClubsBanner />
       <Navbar user={dataUser.user} />
-      <Outlet />
+      {dataUser.error === "La clé API Foot est invalide" ? (
+        <ErrorApiKey />
+      ) : (
+        <Outlet />
+      )}
     </div>
   );
 }

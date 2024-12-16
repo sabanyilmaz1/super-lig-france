@@ -8,7 +8,11 @@ export default class UsersController {
   public async register({ request, response }: HttpContext) {
     const data = await request.validateUsing(registerValidator)
     const user = await User.create(data)
-    return response.created(user)
+    const tokenInformation = await User.accessTokens.create(user)
+    return response.created({
+      ...user,
+      token: tokenInformation.value!.release(),
+    })
   }
 
   public async login({ request, response }: HttpContext) {

@@ -54,11 +54,11 @@ export default function Index() {
         >
           <LogoCarousel />
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4">
-            Toutes les infos, analyses, et performances du championnat turc
+            Vivez la passion de la Super Lig
           </h1>
           <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-blue-100 mb-8">
-            Accède à des analyses, des notes de joueurs. Rejoins la plus grande
-            communauté de fans et experts du football turc.
+            Plongez au cœur du football turc avec des analyses approfondies, des
+            statistiques en direct et une communauté passionnée.
           </p>
 
           {/* Nouvelle section de fonctionnalités principales */}
@@ -71,8 +71,8 @@ export default function Index() {
           <div className="flex justify-center space-x-4 mb-8">
             <ConnexionButton isLoggedIn={loaderData.isLoggedIn} />
 
-            <Button className="bg-black text-white hover:bg-blue-600">
-              Inscription
+            <Button className="bg-black text-white hover:bg-blue-600" asChild>
+              <Link to="/register">Inscription</Link>
             </Button>
           </div>
           <p className="text-sm text-blue-200 mb-8">
