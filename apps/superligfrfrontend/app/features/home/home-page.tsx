@@ -28,6 +28,15 @@ export const HomePage = ({ data }: HomePageProps) => {
     articlesData,
   } = data;
 
+  console.log(
+    "data dans HomePage",
+    lastFixtureData,
+    standingData,
+    topscorersData,
+    topassistsData,
+    articlesData
+  );
+
   return (
     <>
       {/* Mobile */}
