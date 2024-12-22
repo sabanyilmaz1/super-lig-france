@@ -1,51 +1,65 @@
+import { Fixture } from "@monorepo/shared/types/fixture";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { TabsContent } from "~/components/ui/tabs";
 
+interface MatchPreviewHistoryProps {
+  headToHead: Fixture[];
+}
+
 export const MatchPreviewHistory = ({
-  h2hMatches,
-}: {
-  h2hMatches: Array<{
-    date: string;
-    home: string;
-    away: string;
-    score: string;
-  }>;
-}) => {
+  headToHead,
+}: MatchPreviewHistoryProps) => {
   return (
     <TabsContent value="history">
       <Card>
         <CardHeader></CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {h2hMatches.map((match, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-4 border rounded-lg"
-              >
-                <div className="flex items-center space-x-2">
-                  <img
-                    src="/placeholder.svg?height=24&width=24"
-                    alt={`${match.home} logo`}
-                    className="w-6 h-6"
-                  />
-                  <span className="font-medium">{match.home}</span>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg font-bold">{match.score}</div>
-                  <div className="text-sm text-muted-foreground">
-                    {match.date}
+            {headToHead ? (
+              <>
+                {headToHead.map((fixture) => (
+                  <div
+                    key={fixture.fixture.id}
+                    className="flex items-center justify-between p-4 border rounded-lg"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <img
+                        src={fixture.teams.home.logo}
+                        alt={`${fixture.teams.home.name} logo`}
+                        className="w-6 h-6"
+                      />
+                      <span className="font-medium">
+                        {fixture.teams.home.name}
+                      </span>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold">
+                        {fixture.goals.home} - {fixture.goals.away}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {new Intl.DateTimeFormat("fr-FR", {
+                          day: "2-digit",
+                          month: "2-digit",
+                          year: "numeric",
+                        }).format(new Date(fixture.fixture.date))}
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="font-medium">
+                        {fixture.teams.away.name}
+                      </span>
+                      <img
+                        src={fixture.teams.away.logo}
+                        alt={`${fixture.teams.away.name} logo`}
+                        className="w-6 h-6"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="font-medium">{match.away}</span>
-                  <img
-                    src="/placeholder.svg?height=24&width=24"
-                    alt={`${match.away} logo`}
-                    className="w-6 h-6"
-                  />
-                </div>
-              </div>
-            ))}
+                ))}
+              </>
+            ) : (
+              <>Aucun match</>
+            )}
           </div>
         </CardContent>
       </Card>

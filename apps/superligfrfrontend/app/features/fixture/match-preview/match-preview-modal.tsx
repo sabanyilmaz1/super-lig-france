@@ -1,6 +1,6 @@
 import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import { Tabs } from "~/components/ui/tabs";
 
 import { Eye } from "lucide-react";
 import { Fixture } from "~/model/fixture";
@@ -13,6 +13,7 @@ import { MatchPreviewStats } from "./match-preview-stats";
 
 import { ApiResponse } from "@monorepo/shared/types/api";
 import { MatchPreview } from "@monorepo/shared/types/fixture";
+import { MatchPreviewInjuries } from "./match-preview-injuries";
 
 interface TeamStats {
   possession: number;
@@ -108,7 +109,10 @@ export default function MatchPreview({ fixture }: { fixture: Fixture }) {
   const { headToHead, injuries, predictions, lineups } =
     matchPreviewData?.data || {};
 
-  console.log(headToHead);
+  if (lineups) {
+    console.log(lineups);
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -122,16 +126,17 @@ export default function MatchPreview({ fixture }: { fixture: Fixture }) {
           Aperçu rapide
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="md:max-w-3xl">
         {isLoading ? (
           <div>Loading...</div>
         ) : (
           <>
             <MatchPreviewHeader fixture={fixture} />
-            <Tabs defaultValue="lineup" className="w-full">
+            <Tabs defaultValue="lineup" className=" md:w-full">
               <MatchPreviewTablist />
-              <MatchPreviewLineup homeTeam={homeTeam} awayTeam={awayTeam} />
-              <MatchPreviewHistory h2hMatches={h2hMatches} />
+              <MatchPreviewInjuries injuries={injuries} />
+              <MatchPreviewLineup lineups={lineups} />
+              <MatchPreviewHistory headToHead={headToHead} />
               <MatchPreviewStats homeTeam={homeTeam} awayTeam={awayTeam} />
             </Tabs>
           </>

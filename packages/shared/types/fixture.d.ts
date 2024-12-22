@@ -4,7 +4,7 @@ export type lastRound = ResponseApiFoot<any>;
 
 export type MatchPreview = {
   headToHead: Fixture[];
-  injuries: Injuries[];
+  injuries: Injury[];
   predictions: Predictions[];
   lineups: any;
 };
@@ -18,7 +18,7 @@ export interface LastFixtureData {
   response: Fixture[];
 }
 
-interface Injuries {
+export interface Injury {
   player: {
     id: number;
     name: string;

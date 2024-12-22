@@ -15,7 +15,7 @@ export default class MatchController extends BaseApiController {
       },
       { method: 'GET', endpoint: `/injuries?fixture=${params.fixtureId}` },
       { method: 'GET', endpoint: `/predictions?fixture=${params.fixtureId}` },
-      { method: 'GET', endpoint: `/lineups?fixture=${params.fixtureId}` },
+      { method: 'GET', endpoint: `/fixtures/lineups?fixture=${params.fixtureId}` },
     ]
 
     return this.handleMultipleRequestsWithCache<any>(ctx, cacheKey, apiRequests, (responses) => {
