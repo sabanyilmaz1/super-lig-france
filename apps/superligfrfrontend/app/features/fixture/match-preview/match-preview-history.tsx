@@ -28,7 +28,7 @@ export const MatchPreviewHistory = ({
                         alt={`${fixture.teams.home.name} logo`}
                         className="w-6 h-6"
                       />
-                      <span className="font-medium">
+                      <span className=" text-xs md:text-base font-medium w-20">
                         {fixture.teams.home.name}
                       </span>
                     </div>
@@ -45,7 +45,7 @@ export const MatchPreviewHistory = ({
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <span className="font-medium">
+                      <span className="text-xs md:text-sm font-medium w-20">
                         {fixture.teams.away.name}
                       </span>
                       <img

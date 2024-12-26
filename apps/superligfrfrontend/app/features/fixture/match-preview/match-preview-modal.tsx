@@ -89,14 +89,6 @@ const matchData: MatchPreviewProps = {
   },
 };
 
-const h2hMatches = [
-  { date: "2023-05-21", home: "Fenerbahce", away: "Gaziantep", score: "3-2" },
-  { date: "2022-12-10", home: "Gaziantep", away: "Fenerbahce", score: "0-1" },
-  { date: "2022-04-16", home: "Fenerbahce", away: "Gaziantep", score: "2-0" },
-  { date: "2021-12-19", home: "Gaziantep", away: "Fenerbahce", score: "1-1" },
-  { date: "2021-05-08", home: "Fenerbahce", away: "Gaziantep", score: "3-1" },
-];
-
 export default function MatchPreview({ fixture }: { fixture: Fixture }) {
   const { homeTeam, awayTeam } = matchData;
   const fixtureId = fixture.fixture.id;
@@ -110,7 +102,19 @@ export default function MatchPreview({ fixture }: { fixture: Fixture }) {
     matchPreviewData?.data || {};
 
   if (lineups) {
-    console.log(lineups);
+    console.log("lineups", lineups);
+  }
+
+  if (predictions) {
+    console.log("predictions", predictions);
+  }
+
+  if (headToHead) {
+    console.log("headToHead", headToHead);
+  }
+
+  if (injuries) {
+    console.log("injuries", injuries);
   }
 
   return (
@@ -126,18 +130,18 @@ export default function MatchPreview({ fixture }: { fixture: Fixture }) {
           Aperçu rapide
         </Button>
       </DialogTrigger>
-      <DialogContent className="md:max-w-3xl">
+      <DialogContent className="md:max-w-4xl min-h-[600px] md:min-h-[600px] flex flex-col">
         {isLoading ? (
           <div>Loading...</div>
         ) : (
           <>
             <MatchPreviewHeader fixture={fixture} />
-            <Tabs defaultValue="lineup" className=" md:w-full">
+            <Tabs defaultValue="stats" className=" md:w-full">
               <MatchPreviewTablist />
               <MatchPreviewInjuries injuries={injuries} />
               <MatchPreviewLineup lineups={lineups} />
               <MatchPreviewHistory headToHead={headToHead} />
-              <MatchPreviewStats homeTeam={homeTeam} awayTeam={awayTeam} />
+              <MatchPreviewStats predictions={predictions} />
             </Tabs>
           </>
         )}

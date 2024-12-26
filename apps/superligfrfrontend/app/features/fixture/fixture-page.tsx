@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { ResponseApiFoot } from "@monorepo/shared/types/api-foot";
 import { Fixture } from "~/model/fixture";
-import { FixtureHeader } from "./components/fixture-header";
+
 import { FixtureDate } from "./components/fixture-date";
 import { FixtureItemLive } from "./components/fixture-item-live";
 import { FixtureVenue } from "./components/fixture-venue";
 import { motion } from "framer-motion";
 
-import { ChartNoAxesColumn } from "lucide-react";
 import { ScoreOrHour } from "./next-game-home/score-or-hour";
 import {
   FixtureItemNameLogoAway,
   FixtureItemNameLogoHome,
 } from "./components/fixture-item-name-logo";
 import MatchPreview from "./match-preview/match-preview-modal";
+import { HeaderPage } from "~/components/layout/header-page";
 
 export const FixturePage = ({
   data,
@@ -24,7 +24,6 @@ export const FixturePage = ({
     return null;
   }
 
-  const round = data.lastFixtureData.parameters.round || "1";
   const fixtures = data.lastFixtureData.response;
 
   // Regrouper les matchs par date
@@ -67,7 +66,10 @@ export const FixturePage = ({
   );
   return (
     <div className="min-h-screen">
-      <FixtureHeader />
+      <HeaderPage
+        title="Calendrier"
+        subtitle="Suivez tous les matchs de la saison 2024-2025"
+      />
       <div className="pt-4 px-4 container md:pb-8 md:p-0 md:flex flex-col md:justify-between md:gap-4 mx-auto md:pt-12">
         <FixtureDate
           sortedFixturesByDate={sortedFixturesWithFormattedDates}
@@ -94,7 +96,6 @@ export const FixturePage = ({
                   </div>
                   <FixtureItemNameLogoAway fixture={fixture} />
                 </div>
-
                 <div className="flex flex-col mt-2 md:flex-row items-center gap-4">
                   <FixtureVenue fixture={fixture} />
                   <MatchPreview fixture={fixture} />

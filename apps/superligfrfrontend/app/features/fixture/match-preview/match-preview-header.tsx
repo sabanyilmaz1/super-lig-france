@@ -5,7 +5,7 @@ import { Fixture } from "~/model/fixture";
 export const MatchPreviewHeader = ({ fixture }: { fixture: Fixture }) => {
   return (
     <DialogHeader>
-      <DialogTitle className="flex items-center justify-center gap-4 text-xl">
+      <DialogTitle className="flex items-center justify-center gap-4 text-sm md:text-xl">
         <div className="flex items-center gap-2">
           <img
             src={fixture.teams.home.logo}

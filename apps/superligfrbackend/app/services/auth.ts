@@ -3,12 +3,6 @@ import User from '../auth/model/user.js'
 import { ErrorResponse } from '../utils/error_response.js'
 
 export class AuthService {
-  /**
-   * Récupère l'utilisateur authentifié ou lève une erreur s'il n'est pas trouvé.
-   * @param auth Le contexte d'authentification AdonisJS.
-   * @returns L'utilisateur authentifié.
-   * @throws Une erreur si l'utilisateur n'est pas authentifié.
-   */
   public static async getAuthenticatedUser(
     auth: HttpContext['auth'],
     response: HttpContext['response']

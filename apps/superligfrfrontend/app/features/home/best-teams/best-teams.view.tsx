@@ -45,7 +45,7 @@ export const BestTeamsHomeView = ({ standingData }: BestTeamsHomeViewProps) => {
             className="bg-gradient-to-r from-gray-700 to-black"
           />
           <div className="space-y-2 pt-2">
-            {sortAttack.slice(1, 4).map((item, index) => (
+            {sortAttack.slice(1, 5).map((item, index) => (
               <BestOthersCard
                 key={item.team.id}
                 image_principal={item.team.logo}
@@ -82,7 +82,7 @@ export const BestTeamsHomeView = ({ standingData }: BestTeamsHomeViewProps) => {
             className="bg-gradient-to-r from-red-500 to-red-700"
           />
           <div className="space-y-2 pt-2">
-            {sortDefense.slice(1, 4).map((item, index) => (
+            {sortDefense.slice(1, 5).map((item, index) => (
               <BestOthersCard
                 key={item.team.id}
                 image_principal={item.team.logo}
