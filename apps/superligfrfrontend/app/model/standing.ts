@@ -13,7 +13,7 @@ type Record = {
   goals: Goals;
 };
 
-type StandingEntry = {
+export type StandingEntry = {
   rank: number;
   team: Team;
   points: number;

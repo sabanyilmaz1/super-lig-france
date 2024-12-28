@@ -31,8 +31,8 @@ export const TableHomeView = ({ table }: TableHomeViewProps) => {
             <TableRow>
               <TableHead className="w-11">Pos</TableHead>
               <TableHead className="w-[186px]">Club</TableHead>
-              <TableHead className=" w-5">PI</TableHead>
-              <TableHead className=" w-10">GD</TableHead>
+              <TableHead className=" w-5">J</TableHead>
+              <TableHead className=" w-10">Diff</TableHead>
               <TableHead className=" w-10">Pts</TableHead>
             </TableRow>
           </TableHeader>
