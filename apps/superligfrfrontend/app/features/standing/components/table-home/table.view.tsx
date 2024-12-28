@@ -2,7 +2,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -10,6 +9,7 @@ import {
 } from "~/components/ui/table";
 import { truncateText } from "~/lib/utils";
 import { Standing } from "~/model/standing";
+import logo from "~/assets/logo/logo.png";
 
 interface TableHomeViewProps {
   table: Standing;
@@ -21,8 +21,14 @@ export const TableHomeView = ({ table }: TableHomeViewProps) => {
   return (
     <Card className="min-h-96 border-2 border-redsuperlig shadow-lg">
       <CardHeader className="bg-gradient-to-r from-red-500 to-red-700 rounded-t-md text-white flex items-center justify-center text-center">
-        <CardTitle className="flex justify-center items-center gap-2 w-full ">
+        <CardTitle className="flex justify-between items-center gap-2 w-full ">
+          <img
+            src={logo}
+            className=" size-10 md:size-12"
+            alt="logo super ligue france"
+          />
           <p>Süper Lig</p>
+          <div></div>
         </CardTitle>
       </CardHeader>
       <CardContent className="p-0">

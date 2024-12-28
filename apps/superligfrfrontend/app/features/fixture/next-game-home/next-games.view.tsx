@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import superLigLogo from "~/assets/logo/super-lig-log.png";
+import logo from "~/assets/logo/logo.png";
 import { Fixture } from "~/model/fixture";
 import { FixtureItem } from "./fixture-item";
 
@@ -54,7 +54,11 @@ export const NextGamesHomeView = ({
     <Card className="min-h-96 border-2 border-redsuperlig shadow-lg">
       <CardHeader className="bg-gradient-to-r from-red-500 to-red-700 rounded-t-md text-white flex items-center justify-center text-center">
         <CardTitle className="flex justify-between items-center gap-2 w-full ">
-          <img src={superLigLogo} className=" size-8" alt="" />
+          <img
+            src={logo}
+            className=" size-10 md:size-12"
+            alt="logo super ligue france"
+          />
           <p>Journée {roundNumber}</p>
           <div></div>
         </CardTitle>

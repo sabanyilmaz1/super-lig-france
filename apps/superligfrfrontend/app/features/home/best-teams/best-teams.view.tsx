@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import superLigLogo from "~/assets/logo/super-lig-log.png";
+import logo from "~/assets/logo/logo.png";
 import { Standing } from "~/model/standing";
 import { BestCard } from "~/components/layout/best-card";
 import { teams } from "~/data/teams";
@@ -25,7 +25,11 @@ export const BestTeamsHomeView = ({ standingData }: BestTeamsHomeViewProps) => {
     <Card className="min-h-96 border-2 border-redsuperlig shadow-lg">
       <CardHeader className="bg-gradient-to-r from-red-500 to-red-700 rounded-t-md text-white flex items-center justify-center text-center">
         <CardTitle className="flex items-center gap-8 w-full ">
-          <img src={superLigLogo} className=" size-8" alt="" />
+          <img
+            src={logo}
+            className=" size-10 md:size-12"
+            alt="logo super ligue france"
+          />
           <p>Statistiques Équipes</p>
         </CardTitle>
       </CardHeader>
