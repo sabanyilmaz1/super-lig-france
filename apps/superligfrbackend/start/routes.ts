@@ -17,6 +17,7 @@ import ArticleController from '../app/articles/controllers/article_controller.js
 import MatchController from '../app/football_data_api/controllers/match_controller.js'
 import CheckApiValidity from '../app/football_data_api/controllers/check_api_validity.js'
 import { middleware } from './kernel.js'
+import ResultsController from '../app/football_data_api/controllers/show_results_controller.js'
 
 // Health Check Route
 router.get('health', ({ response }) => response.noContent())
@@ -58,6 +59,12 @@ router
 
     // Match Preview
     router.get('/match_preview/:fixtureId', [MatchController, 'showMatchPreview'])
+
+    //Results
+    router.get('/lastRound', [ResultsController, 'showLastRound'])
+    router.get('/allRounds', [ResultsController, 'showAllRounds'])
+    router.get('/lastResults', [ResultsController, 'showLastResult'])
+    router.get('/results', [ResultsController, 'showResultByRound'])
   })
   .use(middleware.auth())
 
