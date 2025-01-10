@@ -1,4 +1,5 @@
 import { Fixture } from "@monorepo/shared/types/fixture";
+import { NoInformation } from "~/components/layout/no-information";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { TabsContent } from "~/components/ui/tabs";
 
@@ -9,13 +10,24 @@ interface MatchPreviewHistoryProps {
 export const MatchPreviewHistory = ({
   headToHead,
 }: MatchPreviewHistoryProps) => {
+  if (!headToHead || headToHead.length === 0) {
+    return (
+      <div className="mt-2">
+        <NoInformation
+          title="Aucun match"
+          description="Les deux équipes ne se sont pas encore rencontrées"
+        />
+      </div>
+    );
+  }
+
   return (
     <TabsContent value="history">
       <Card>
         <CardHeader></CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {headToHead ? (
+            {headToHead && headToHead.length > 0 && (
               <>
                 {headToHead.map((fixture) => (
                   <div
@@ -57,8 +69,6 @@ export const MatchPreviewHistory = ({
                   </div>
                 ))}
               </>
-            ) : (
-              <>Aucun match</>
             )}
           </div>
         </CardContent>

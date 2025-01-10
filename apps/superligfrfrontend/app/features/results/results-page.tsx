@@ -4,21 +4,8 @@ import { ResultsListView } from "./components/results-list-view";
 import { useResultByRound } from "./hooks/use-result-by-round";
 
 export const ResultPage = () => {
-  const {
-    isLoading,
-    results,
-    fetchData,
-    selectedMatchday,
-    setSelectedMatchday,
-  } = useResultByRound();
-
-  //   console.log("data.allRoundsData", data.allRoundsData.response);
-  //console.log("data.lastRoundData", data.lastRoundData.response);
-  //   console.log("daa.lastResultsData", data.lastResultsData.response);
-
-  // if (!data || !data.response) {
-  //   return null;
-  // }
+  const { isLoading, results, selectedMatchday, setSelectedMatchday } =
+    useResultByRound();
 
   if (isLoading) {
     return <div>Chargement...</div>;
