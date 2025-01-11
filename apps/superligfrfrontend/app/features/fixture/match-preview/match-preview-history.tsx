@@ -12,12 +12,12 @@ export const MatchPreviewHistory = ({
 }: MatchPreviewHistoryProps) => {
   if (!headToHead || headToHead.length === 0) {
     return (
-      <div className="mt-2">
+      <TabsContent value="history">
         <NoInformation
           title="Aucun match"
           description="Les deux équipes ne se sont pas encore rencontrées"
         />
-      </div>
+      </TabsContent>
     );
   }
 

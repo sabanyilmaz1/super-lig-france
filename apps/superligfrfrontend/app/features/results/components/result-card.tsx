@@ -1,4 +1,6 @@
 import { Fixture } from "@monorepo/shared/types/fixture";
+import { redirect } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { FixtureItemLive } from "~/features/fixture/components/fixture-item-live";
 import {
@@ -13,7 +15,7 @@ interface ResultCardProps {
 
 export const ResultCard = ({ result }: ResultCardProps) => {
   return (
-    <button>
+    <Link to={`/results/${result.fixture.id}`}>
       <motion.div
         key={result.fixture.id}
         initial={{ opacity: 0, y: 20 }}
@@ -33,6 +35,6 @@ export const ResultCard = ({ result }: ResultCardProps) => {
           <FixtureVenue fixture={result} />
         </div>
       </motion.div>
-    </button>
+    </Link>
   );
 };
