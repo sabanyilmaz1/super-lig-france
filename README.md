@@ -1,3 +1,7 @@
+Pour la démo : 
+test@gmail.com
+azerty123
+
 # Super Lig France
 
 **Super Lig France** est une application web complète permettant aux utilisateurs de suivre les matchs, classements, 
