@@ -1,6 +1,6 @@
 // app/utils/auth.server.ts
 import { getSession } from "~/utils/session.server";
-import { redirect } from "@remix-run/node";
+import { redirect } from "react-router";
 
 export async function requireUserSession(request: Request) {
   let session = await getSession(request.headers.get("Cookie"));

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "@remix-run/react";
+import { Link, NavLink } from "react-router";
 import { MenuIcon, User2Icon } from "lucide-react";
 
 import logo from "~/assets/logo/logo.png";

@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import article1 from "~/assets/articles/article1.jpg";
 import article2 from "~/assets/articles/article2.jpg";

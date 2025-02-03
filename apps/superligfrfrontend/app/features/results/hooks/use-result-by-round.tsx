@@ -1,4 +1,4 @@
-import { useFetcher, useLoaderData } from "@remix-run/react";
+import { useFetcher, useLoaderData } from "react-router";
 import { useCallback, useEffect, useState } from "react";
 import { loader } from "~/routes/_public/standing/route";
 

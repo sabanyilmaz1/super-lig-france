@@ -1,4 +1,4 @@
-import { ActionFunction, json, redirect } from "@remix-run/node";
+import { ActionFunction, json, redirect } from "react-router";
 import { commitSession, getSession } from "~/utils/session.server";
 
 const BASE_URL = process.env.BASE_URL;

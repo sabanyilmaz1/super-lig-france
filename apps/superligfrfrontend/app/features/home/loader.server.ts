@@ -1,4 +1,4 @@
-import { ActionFunction } from "@remix-run/node";
+import { ActionFunction } from "react-router";
 import { fetchWithAuth } from "~/utils/api.server";
 
 const BASE_URL = process.env.BASE_URL;

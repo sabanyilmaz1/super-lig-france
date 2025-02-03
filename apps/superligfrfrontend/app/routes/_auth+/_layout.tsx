@@ -1,4 +1,4 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet } from "react-router";
 import logo from "~/assets/logo/logo.png";
 import Cover from "~/features/auth/cover";
 

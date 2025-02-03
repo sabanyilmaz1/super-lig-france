@@ -1,5 +1,5 @@
-import { LoaderFunction } from "@remix-run/node";
-import { Outlet, useLoaderData } from "@remix-run/react";
+import { LoaderFunction } from "react-router";
+import { Outlet, useLoaderData } from "react-router";
 import { Toaster } from "react-hot-toast";
 import { ClubsBanner } from "~/components/layout/clubs-banner";
 import { ErrorApiKey } from "~/components/layout/error-api-key";

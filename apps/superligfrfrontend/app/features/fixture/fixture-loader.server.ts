@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/node";
+import { LoaderFunction } from "react-router";
 import { fetchWithAuth } from "~/utils/api.server";
 
 const BASE_URL = process.env.BASE_URL;

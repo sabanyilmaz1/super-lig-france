@@ -1,4 +1,4 @@
-import { createCookieSessionStorage } from "@remix-run/node";
+import { createCookieSessionStorage } from "react-router";
 
 // This secret should be secure and stored in environment variables
 const sessionSecret = process.env.SESSION_SECRET;

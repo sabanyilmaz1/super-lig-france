@@ -1,6 +1,6 @@
 import { HeaderPage } from "~/components/layout/header-page";
 import { StandingTable } from "./components/standing-table";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "react-router";
 import { loader } from "~/routes/_public/standing/route";
 
 export const StandingPage = () => {

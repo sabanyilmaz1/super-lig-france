@@ -1,9 +1,9 @@
-import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "react-router";
 import { Button } from "~/components/ui/button";
 import { motion } from "framer-motion";
 
 import superLigLogo from "~/assets/logo/super-lig-log.png";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "react-router";
 
 import { Activity, Star, BarChart3 } from "lucide-react";
 import { LogoCarousel } from "./logo-carrousel";

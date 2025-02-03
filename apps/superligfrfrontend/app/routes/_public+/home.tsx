@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "react-router";
 import { HomePage } from "~/features/home/home-page";
 import { loaderHome } from "~/features/home/loader.server";
 

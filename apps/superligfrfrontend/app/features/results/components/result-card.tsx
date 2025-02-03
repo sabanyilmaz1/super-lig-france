@@ -1,6 +1,6 @@
 import { Fixture } from "@monorepo/shared/types/fixture";
-import { redirect } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { redirect } from "react-router";
+import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { FixtureItemLive } from "~/features/fixture/components/fixture-item-live";
 import {

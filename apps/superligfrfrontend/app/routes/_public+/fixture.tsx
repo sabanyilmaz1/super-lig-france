@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "react-router";
 import { loaderFixture } from "~/features/fixture/fixture-loader.server";
 import { FixturePage } from "~/features/fixture/fixture-page";
 

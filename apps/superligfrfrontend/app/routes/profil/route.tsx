@@ -1,5 +1,5 @@
-import { LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { LoaderFunction } from "react-router";
+import { useLoaderData } from "react-router";
 import { ClubsBanner } from "~/components/layout/clubs-banner";
 import { Navbar } from "~/components/layout/navbar";
 import { Button } from "~/components/ui/button";
