@@ -1,12 +1,10 @@
-import { getSession } from "../session";
+export async function fetchWithAuth(url: string, options: RequestInit = {}) {
+  const token = localStorage.getItem("token");
 
-export async function fetchWithAuth(
-  request: Request,
-  url: string,
-  options: RequestInit = {}
-) {
-  const session = await getSession(request.headers.get("Cookie"));
-  const token = session.get("token");
+  if (!token) {
+    throw new Error("No authentication token found");
+  }
+
   return fetch(url, {
     ...options,
     headers: {

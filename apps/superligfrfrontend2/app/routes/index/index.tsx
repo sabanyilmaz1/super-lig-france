@@ -1,11 +1,11 @@
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import { motion } from "motion/react";
-import { getSession } from "~/core/session";
 import type { Route } from "./+types";
 import { Caroussel } from "./_caroussel";
 import { Feature } from "./_feature";
 import { Button } from "~/components/ui/button";
 import { Activity, Star, BarChart3 } from "lucide-react";
+import { useRequireAuth } from "~/core/auth/check-user-session";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,18 +14,8 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export const loader = async ({
-  request,
-}: {
-  request: Request;
-}): Promise<{ isLoggedIn: boolean }> => {
-  const session = await getSession(request.headers.get("Cookie"));
-  const isLoggedIn = session.has("token");
-  return { isLoggedIn };
-};
-
 export default function Home() {
-  const loaderData = useLoaderData<typeof loader>()!;
+  const { isAuthenticated } = useRequireAuth();
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-[#E20613] to-[#1C1C1C] overflow-hidden">
       {/* Contenu principal */}
@@ -58,7 +48,7 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center mb-8 space-x-4">
-            <Link to={loaderData.isLoggedIn ? "/home" : "/login"}>
+            <Link to={isAuthenticated ? "/home" : "/login"}>
               <Button
                 variant="outline"
                 className="text-black bg-white hover:bg-blue-50"

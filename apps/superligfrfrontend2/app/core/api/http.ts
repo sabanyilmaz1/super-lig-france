@@ -2,11 +2,6 @@ import { fetchWithAuth } from "./fetch-auth";
 
 interface RequestOptions extends RequestInit {
   params?: Record<string, string>;
-  request: Request;
-}
-
-interface RequestOptionsWithoutAuth extends RequestInit {
-  params?: Record<string, string>;
 }
 
 export class Http {
@@ -16,7 +11,7 @@ export class Http {
     endpoint: string,
     options: RequestOptions
   ): Promise<T> {
-    const { params, request, ...requestOptions } = options;
+    const { params, ...requestOptions } = options;
 
     let url = `${Http.baseUrl}${endpoint}`;
     if (params) {
@@ -24,7 +19,7 @@ export class Http {
       url += `?${searchParams.toString()}`;
     }
 
-    const response = await fetchWithAuth(request, url, {
+    const response = await fetchWithAuth(url, {
       ...requestOptions,
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +36,7 @@ export class Http {
 
   private async requestWithoutAuth<T>(
     endpoint: string,
-    options: RequestOptionsWithoutAuth = {}
+    options: RequestOptions = {}
   ): Promise<T> {
     const { params, ...requestOptions } = options;
 
@@ -66,7 +61,10 @@ export class Http {
     return response.json();
   }
 
-  public async get<T>(endpoint: string, options: RequestOptions): Promise<T> {
+  public async get<T>(
+    endpoint: string,
+    options: RequestOptions = {}
+  ): Promise<T> {
     return this.request<T>(endpoint, {
       ...options,
       method: "GET",
@@ -75,8 +73,8 @@ export class Http {
 
   public async post<T>(
     endpoint: string,
-    options: RequestOptions,
-    data?: unknown
+    data?: unknown,
+    options: RequestOptions = {}
   ): Promise<T> {
     return this.request<T>(endpoint, {
       ...options,
@@ -87,8 +85,8 @@ export class Http {
 
   public async put<T>(
     endpoint: string,
-    options: RequestOptions,
-    data?: unknown
+    data?: unknown,
+    options: RequestOptions = {}
   ): Promise<T> {
     return this.request<T>(endpoint, {
       ...options,
@@ -100,7 +98,7 @@ export class Http {
   public async postWithoutAuth<T>(
     endpoint: string,
     data?: unknown,
-    options: RequestOptionsWithoutAuth = {}
+    options: RequestOptions = {}
   ): Promise<T> {
     return this.requestWithoutAuth<T>(endpoint, {
       ...options,

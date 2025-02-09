@@ -1,23 +1,6 @@
-import { useEffect } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "~/components/ui/tabs";
-import { Http } from "~/core/api/http";
 
 export default function Home() {
-  useEffect(() => {
-    fetch("http://localhost:3333/me", {
-      credentials: "include",
-      headers: {
-        Origin: "http://localhost:3333",
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest", // Important pour AdonisJS
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
   return (
     <div>
       {/* Mobile */}

@@ -9,11 +9,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-import { destroySession, getSession } from "~/core/session";
 
 const handleLogout = async (navigate: NavigateFunction) => {
-  const session = await getSession();
-  await destroySession(session);
+  localStorage.removeItem("token");
   navigate("/login");
 };
 
