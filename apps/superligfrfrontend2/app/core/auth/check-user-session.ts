@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { useQuery } from "@tanstack/react-query";
-import { Http } from "../api/http";
+import { useFetchQuery } from "../api/use-fetch-query";
+import { getValidToken } from "../api/fetch-auth";
 
 interface User {
   id: string;
@@ -9,22 +9,14 @@ interface User {
   name: string;
 }
 
-const http = new Http();
-
 export function useRequireAuth() {
   const navigate = useNavigate();
-  const { data: user, isLoading } = useQuery<User>({
-    queryKey: ["auth", "me"],
-    queryFn: () => http.get("/me"),
-    retry: false,
-    enabled:
-      !!localStorage.getItem("token") ||
-      !!!window.localStorage.getItem("token"),
+  const { data: user, isLoading } = useFetchQuery<User>("/me", ["auth", "me"], {
+    enabled: !!getValidToken(),
   });
 
   useEffect(() => {
-    const token =
-      localStorage.getItem("token") || window.localStorage.getItem("token");
+    const token = getValidToken();
     if (!token) {
       navigate("/login");
     }

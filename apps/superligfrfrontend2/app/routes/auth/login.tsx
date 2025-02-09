@@ -4,8 +4,10 @@ import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { cn } from "~/lib/utils";
 import { useNavigate } from "react-router";
-import { Http } from "~/core/api/http";
 import { useState } from "react";
+import { UserAuthService } from "~/features/user/user-auth.service";
+
+const authService = new UserAuthService();
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,15 +19,13 @@ export default function Login() {
     setLoading(true);
     setError(null);
     try {
-      const formData = new FormData(e.target as HTMLFormElement);
-      const email = formData.get("email");
-      const password = formData.get("password");
-      const http = new Http();
-      const data = await http.postWithoutAuth<{ token: string }>("/login", {
-        email,
-        password,
+      const { email, password } = Object.fromEntries(
+        new FormData(e.target as HTMLFormElement)
+      );
+      await authService.login({ email, password } as {
+        email: string;
+        password: string;
       });
-      localStorage.setItem("token", data.token);
       navigate("/home");
     } catch (error) {
       console.error(error);

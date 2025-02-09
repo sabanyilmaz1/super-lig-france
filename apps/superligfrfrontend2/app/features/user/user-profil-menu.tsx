@@ -11,7 +11,7 @@ import {
 } from "~/components/ui/dropdown-menu";
 
 const handleLogout = async (navigate: NavigateFunction) => {
-  localStorage.removeItem("token");
+  localStorage.removeItem("tokenData");
   navigate("/login");
 };
 
