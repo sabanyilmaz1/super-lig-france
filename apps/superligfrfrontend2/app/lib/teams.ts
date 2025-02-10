@@ -11,6 +11,7 @@ type Team = {
   type: string;
   placeholder: boolean;
   last_played_at: string;
+  website: string;
 };
 
 export const teams: Team[] = [
@@ -27,6 +28,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-09 10:30:00",
+    website: "https://www.kasimpasa.com.tr",
   },
   {
     id: 2811,
@@ -41,6 +43,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-07 17:00:00",
+    website: "https://www.samsunspor.org.tr",
   },
   {
     id: 4192,
@@ -55,6 +58,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-06 17:45:00",
+    website: "https://www.gaziantepfk.org",
   },
   {
     id: 1041,
@@ -69,6 +73,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-09 10:30:00",
+    website: "https://www.caykurrizespor.org.tr",
   },
   {
     id: 81,
@@ -83,6 +88,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-09 16:00:00",
+    website: "https://www.antalyaspor.com.tr",
   },
   {
     id: 347,
@@ -97,6 +103,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-09 13:00:00",
+    website: "https://www.alanyaspor.org.tr",
   },
   {
     id: 3224,
@@ -111,6 +118,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-04 15:00:00",
+    website: "https://www.eyupspor.org.tr",
   },
   {
     id: 3897,
@@ -125,6 +133,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-06 17:45:00",
+    website: "https://www.goztepe.org.tr",
   },
   {
     id: 88,
@@ -139,6 +148,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-09 13:00:00",
+    website: "https://www.fenerbahce.org",
   },
   {
     id: 13924,
@@ -153,6 +163,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-05 12:30:00",
+    website: "https://www.bodrumspor.com.tr",
   },
   {
     id: 34,
@@ -167,6 +178,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-06 13:00:00",
+    website: "https://www.galatasaray.org",
   },
   {
     id: 365,
@@ -181,6 +193,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-08 16:00:00",
+    website: "https://www.sivasspor.org.tr",
   },
   {
     id: 688,
@@ -195,6 +208,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-05 10:00:00",
+    website: "https://www.trabzonspor.org.tr",
   },
   {
     id: 1039,
@@ -209,6 +223,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-02 10:30:00",
+    website: "https://www.adanademirspor.org.tr",
   },
   {
     id: 554,
@@ -223,6 +238,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-08 16:00:00",
+    website: "https://www.bjk.com.tr",
   },
   {
     id: 13833,
@@ -237,6 +253,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-07 17:00:00",
+    website: "https://www.hatayspor.org.tr",
   },
   {
     id: 643,
@@ -250,7 +267,8 @@ export const teams: Team[] = [
     founded: 1966,
     type: "domestic",
     placeholder: false,
-    last_played_at: "2025-02-08 13:00:00",
+    last_played_at: "2025-02-08 16:00:00",
+    website: "https://www.kayserispor.org.tr",
   },
   {
     id: 3702,
@@ -265,6 +283,7 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-09 16:00:00",
+    website: "https://www.ibasaksehir.com.tr",
   },
   {
     id: 2632,
@@ -279,5 +298,6 @@ export const teams: Team[] = [
     type: "domestic",
     placeholder: false,
     last_played_at: "2025-02-08 13:00:00",
+    website: "https://www.konyaspor.org.tr",
   },
 ];

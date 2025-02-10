@@ -10,7 +10,10 @@ export const Banner = () => {
           <ExternalLinkIcon className="inline-block w-4 h-4" />
         </div>
         {teams.map((team) => (
-          <button key={team.id}>
+          <button
+            key={team.id}
+            onClick={() => window.open(team.website, "_blank")}
+          >
             <img
               src={team.image_path}
               alt={team.name}
