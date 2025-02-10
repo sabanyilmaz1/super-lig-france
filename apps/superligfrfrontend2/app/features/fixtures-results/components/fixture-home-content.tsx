@@ -31,7 +31,7 @@ export const FixtureHomeContent = () => {
                 {fixtures.map((fixture) => (
                   <div
                     key={fixture.id}
-                    className="flex items-center justify-center gap-3 px-3 py-4 border-b"
+                    className="flex items-center justify-center gap-2 p-3 border-b"
                   >
                     <FixtureDisplayParticipants
                       participants={fixture.participants}
