@@ -10,10 +10,10 @@ export const Banner = () => {
           <ExternalLinkIcon className="inline-block w-4 h-4" />
         </div>
         {teams.map((team) => (
-          <button key={team.team.id}>
+          <button key={team.id}>
             <img
-              src={team.team.logo}
-              alt={team.team.name}
+              src={team.image_path}
+              alt={team.name}
               className="w-8 h-8 transition-transform ease-in-out hover:scale-125"
             />
           </button>

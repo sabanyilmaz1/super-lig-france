@@ -12,17 +12,18 @@ export abstract class BaseApiController {
   protected async handleApiRequest<T>(
     ctx: HttpContext,
     endpoint: string,
+    params: string,
     processApiResponse?: (data: T) => any
   ): Promise<any> {
     try {
       // Appel à l'API externe
-      const apiResponse = await fetchFootballSportmonkApi(endpoint)
+      const apiResponse = await fetchFootballSportmonkApi(endpoint, params)
       const data = (await apiResponse.json()) as DataResponse
       // Si une fonction de post-traitement est fournie, l'appliquer
       if (processApiResponse) {
         return processApiResponse(data as T)
       }
-      return data.data
+      return data.data ?? []
     } catch (error) {
       console.error('Error in API request:', error)
       return ctx.response.status(500).json({

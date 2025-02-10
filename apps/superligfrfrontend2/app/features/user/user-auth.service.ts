@@ -1,5 +1,6 @@
 import { Http } from "~/core/api/http";
 import { storeAuthToken } from "~/core/api/fetch-auth";
+import { User } from "./user.domain";
 
 interface LoginResponse {
   token: string;
@@ -18,5 +19,9 @@ export class UserAuthService extends Http {
     );
     storeAuthToken(response.token);
     return response;
+  }
+
+  async getMe(): Promise<User> {
+    return this.get<User>("/me");
   }
 }

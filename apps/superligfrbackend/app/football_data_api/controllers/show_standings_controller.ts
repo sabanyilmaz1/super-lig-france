@@ -5,13 +5,12 @@ import { FOOTBALL_SPORTMONK_API_CONSTANTS } from '../constants/api_constant.js'
 export default class StandingController extends BaseApiController {
   public async showStanding(ctx: HttpContext) {
     const apiEndpoint = `/standings/live/leagues/${FOOTBALL_SPORTMONK_API_CONSTANTS.LEAGUE_ID}`
-    return this.handleApiRequest(ctx, apiEndpoint)
+    return this.handleApiRequest(ctx, apiEndpoint, 'include=participant;details.type')
   }
 
   // public async showTopScorers(ctx: HttpContext) {
   //   const cacheKey = 'topScorers'
   //   const apiEndpoint = `/players/topscorers?season=${FOOTBALL_API_CONSTANTS.SEASON_ID}&league=${FOOTBALL_API_CONSTANTS.LEAGUE_ID}`
-
   //   return this.handleRequestWithCache(ctx, cacheKey, apiEndpoint)
   // }
 

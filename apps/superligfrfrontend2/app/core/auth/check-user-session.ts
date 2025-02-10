@@ -2,18 +2,20 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useFetchQuery } from "../api/use-fetch-query";
 import { getValidToken } from "../api/fetch-auth";
+import { UserAuthService } from "~/features/user/user-auth.service";
+import { User } from "~/features/user/user.domain";
 
-interface User {
-  id: string;
-  email: string;
-  name: string;
-}
+const userAuthService = new UserAuthService();
 
 export function useRequireAuth() {
   const navigate = useNavigate();
-  const { data: user, isLoading } = useFetchQuery<User>("/me", ["auth", "me"], {
-    enabled: !!getValidToken(),
-  });
+  const { data: user, isLoading } = useFetchQuery<User>(
+    ["auth", "me"],
+    () => userAuthService.getMe(),
+    {
+      enabled: !!getValidToken(),
+    }
+  );
 
   useEffect(() => {
     const token = getValidToken();

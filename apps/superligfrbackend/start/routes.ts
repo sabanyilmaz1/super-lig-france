@@ -9,15 +9,17 @@
 
 import router from '@adonisjs/core/services/router'
 import User from '../app/auth/model/user.js'
-import UsersController from '../app/auth/controllers/users_controller.js'
-import TeamController from '../app/football_data_api/controllers/show_team_controller.js'
-import FixtureController from '../app/football_data_api/controllers/show_fixture_controller.js'
-import StandingController from '../app/football_data_api/controllers/show_standings_controller.js'
-import ArticleController from '../app/articles/controllers/article_controller.js'
-import MatchController from '../app/football_data_api/controllers/match_controller.js'
-import CheckApiValidity from '../app/football_data_api/controllers/check_api_validity.js'
+
 import { middleware } from './kernel.js'
-import ResultsController from '../app/football_data_api/controllers/show_results_controller.js'
+
+const UsersController = () => import('../app/auth/controllers/users_controller.js')
+const ResultsController = () =>
+  import('../app/football_data_api/controllers/show_results_controller.js')
+const StandingController = () =>
+  import('../app/football_data_api/controllers/show_standings_controller.js')
+const MatchController = () => import('../app/football_data_api/controllers/match_controller.js')
+const FixtureController = () =>
+  import('../app/football_data_api/controllers/show_fixture_controller.js')
 
 // Health Check Route
 router.get('health', ({ response }) => response.noContent())
@@ -40,43 +42,40 @@ router.get('/users', async () => {
   return { users }
 })
 
-// API VALIDITY CHECK
-router.get('/check-api-key/:apiKey', [CheckApiValidity, 'checkApiValidity']).use(middleware.auth())
-
 // FOOTBALL DATA API
 router
   .group(() => {
     // Team-related routes
-    router.get('/team/:teamId', [TeamController, 'showTeam'])
+    // router.get('/team/:teamId', [TeamController, 'showTeam'])
 
     // Fixture-related routes
     router.get('/lastFixture', [FixtureController, 'last'])
 
     // Standing-related routes
     router.get('/standing', [StandingController, 'showStanding'])
-    router.get('/topscorers', [StandingController, 'showTopScorers'])
-    router.get('/topassists', [StandingController, 'showTopAssists'])
+    // router.get('/topscorers', [StandingController, 'showTopScorers'])
+    // router.get('/topassists', [StandingController, 'showTopAssists'])
 
     // Match Preview
-    router.get('/match_preview/:fixtureId', [MatchController, 'showMatchPreview'])
+    // router.get('/match_preview/:fixtureId', [MatchController, 'showMatchPreview'])
 
     //Results
-    router.get('/lastRound', [ResultsController, 'showLastRound'])
-    router.get('/allRounds', [ResultsController, 'showAllRounds'])
-    router.get('/lastResults', [ResultsController, 'showLastResult'])
-    router.get('/results', [ResultsController, 'showResultByRound'])
+    // router.get('/lastRound', [ResultsController, 'showLastRound'])
+    // router.get('/allRounds', [ResultsController, 'showAllRounds'])
+    // router.get('/lastResults', [ResultsController, 'showLastResult'])
+    // router.get('/results', [ResultsController, 'showResultByRound'])
   })
   .use(middleware.auth())
 
 // ARTICLE ROUTES
-router
-  .group(() => {
-    router.get('/', [ArticleController, 'index'])
-    router.get('/last-four', [ArticleController, 'showLastFourArticles'])
-    router.get('/:id', [ArticleController, 'show'])
-    router.post('/', [ArticleController, 'store'])
-    router.put('/:id', [ArticleController, 'update'])
-    router.delete('/:id', [ArticleController, 'destroy'])
-  })
-  .prefix('/articles')
-  .use(middleware.auth())
+// router
+//   .group(() => {
+//     router.get('/', [ArticleController, 'index'])
+//     router.get('/last-four', [ArticleController, 'showLastFourArticles'])
+//     router.get('/:id', [ArticleController, 'show'])
+//     router.post('/', [ArticleController, 'store'])
+//     router.put('/:id', [ArticleController, 'update'])
+//     router.delete('/:id', [ArticleController, 'destroy'])
+//   })
+//   .prefix('/articles')
+//   .use(middleware.auth())
