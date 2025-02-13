@@ -8,9 +8,10 @@ import {
   TableCell,
   TableHead,
 } from "~/components/ui/table";
-import { useGetStanding } from "../use-get-standing";
-import { TypeDeveloperName } from "../standing.domain";
+
+import { TypeDeveloperName } from "../domain/standing.domain";
 import { HomeCardHeader } from "~/components/common/home-card-header";
+import { useGetStanding } from "../hooks/use-get-standing";
 
 const tabConfig = [
   {

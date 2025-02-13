@@ -2,6 +2,7 @@ import { TwitterCta } from "~/components/common/twitter-cta";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "~/components/ui/tabs";
 import { FixtureHomeContent } from "~/features/fixtures-results/components/fixture-home-content";
 import { StandingHomeContent } from "~/features/standing/components/standing-home-content";
+import { StandingPlayersHomeContent } from "~/features/standing/components/standing-players-home-content";
 
 export default function Home() {
   return (
@@ -24,7 +25,9 @@ export default function Home() {
             </div>
           </TabsContent>
           <TabsContent value="stat">
-            <div className="space-y-4 ">BEST PLAYERS BEST TEAMS</div>
+            <div className="space-y-4 ">
+              <StandingPlayersHomeContent />
+            </div>
           </TabsContent>
         </Tabs>
       </div>
@@ -35,7 +38,11 @@ export default function Home() {
           <StandingHomeContent />
           <TwitterCta />
         </div>
-        <div className="md:w-[70%] space-y-4">BLOG BEST PLAYERS BEST TEAMS</div>
+        <div className="md:w-[70%] space-y-4">
+          BLOG
+          <StandingPlayersHomeContent />
+          BEST TEAMS
+        </div>
       </div>
     </div>
   );

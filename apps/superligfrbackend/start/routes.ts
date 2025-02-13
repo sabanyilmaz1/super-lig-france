@@ -53,7 +53,7 @@ router
 
     // Standing-related routes
     router.get('/standing', [StandingController, 'showStanding'])
-    // router.get('/topscorers', [StandingController, 'showTopScorers'])
+    router.get('/topscorers', [StandingController, 'showTopScorers'])
     // router.get('/topassists', [StandingController, 'showTopAssists'])
 
     // Match Preview

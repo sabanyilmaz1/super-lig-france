@@ -22,18 +22,18 @@ export const Caroussel = () => {
           >
             {teams.map((team) => (
               <div
-                key={team.team.id}
+                key={team.id}
                 className="flex flex-col items-center justify-center flex-none w-1/4 px-2 sm:w-1/5 md:w-1/6 lg:w-1/8"
               >
                 <div className="flex items-center justify-center mb-2 bg-white rounded-full w-18 h-18 sm:w-16 sm:h-16">
                   <img
-                    src={team.team.logo}
-                    alt={team.team.name}
+                    src={team.image_path}
+                    alt={team.name}
                     className="w-12 h-12"
                   />
                 </div>
                 <span className="text-xs font-semibold text-center text-white sm:text-sm">
-                  {team.team.name}
+                  {team.name}
                 </span>
               </div>
             ))}

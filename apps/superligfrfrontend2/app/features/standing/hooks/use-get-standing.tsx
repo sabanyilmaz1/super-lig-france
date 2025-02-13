@@ -1,6 +1,6 @@
 import { useFetchQuery } from "~/core/api/use-fetch-query";
-import { StandingService } from "./standing.service";
-import type { Standing } from "./standing.domain";
+import type { Standing } from "../domain/standing.domain";
+import { StandingService } from "../standing.service";
 
 export function useGetStanding() {
   const standingService = new StandingService();

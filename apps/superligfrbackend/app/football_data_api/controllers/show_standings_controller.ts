@@ -8,15 +8,57 @@ export default class StandingController extends BaseApiController {
     return this.handleApiRequest(ctx, apiEndpoint, 'include=participant;details.type')
   }
 
-  // public async showTopScorers(ctx: HttpContext) {
-  //   const cacheKey = 'topScorers'
-  //   const apiEndpoint = `/players/topscorers?season=${FOOTBALL_API_CONSTANTS.SEASON_ID}&league=${FOOTBALL_API_CONSTANTS.LEAGUE_ID}`
-  //   return this.handleRequestWithCache(ctx, cacheKey, apiEndpoint)
-  // }
+  public async showTopScorers(ctx: HttpContext) {
+    const apiEndpoint = `/topscorers/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=participant;player&filters=seasontopscorerTypes:208'
+    )
+  }
 
-  // public async showTopAssists(ctx: HttpContext) {
-  //   const cacheKey = 'topAssists'
-  //   const apiEndpoint = `/players/topassists?season=${FOOTBALL_API_CONSTANTS.SEASON_ID}&league=${FOOTBALL_API_CONSTANTS.LEAGUE_ID}`
-  //   return this.handleRequestWithCache(ctx, cacheKey, apiEndpoint)
-  // }
+  public async showTopAssists(ctx: HttpContext) {
+    const apiEndpoint = `/topscorers/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=type;participant;player&filters=seasontopscorerTypes:209'
+    )
+  }
+
+  public async showTopRedCards(ctx: HttpContext) {
+    const apiEndpoint = `/topscorers/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=type;participant;player&filters=seasontopscorerTypes:83'
+    )
+  }
+
+  public async showTopYellowCards(ctx: HttpContext) {
+    const apiEndpoint = `/topscorers/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=type;participant;player&filters=seasontopscorerTypes:84'
+    )
+  }
+
+  public async showTopPenaltiesScored(ctx: HttpContext) {
+    const apiEndpoint = `/topscorers/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=type;participant;player&filters=seasontopscorerTypes:1600'
+    )
+  }
+
+  public async showTopPenaltiesMissed(ctx: HttpContext) {
+    const apiEndpoint = `/topscorers/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=type;participant;player&filters=seasontopscorerTypes:1601'
+    )
+  }
 }
