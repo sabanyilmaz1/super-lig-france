@@ -1,5 +1,5 @@
+import type { ParticipantWithMeta } from "~/core/domain/football-api";
 import { formatTimestampToFrenchDate } from "~/utils/date-formatter";
-import type { Participant } from "../fixture.domain";
 
 export const FixtureDisplayDate = ({
   timestamp,
@@ -17,13 +17,13 @@ export const FixtureDisplayParticipants = ({
   participants,
   isHome,
 }: {
-  participants: Participant[];
+  participants: ParticipantWithMeta[];
   isHome: boolean;
 }) => {
   return (
     <div>
       {isHome && (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-start gap-2 md:w-20">
           <p className="font-extrabold uppercase text-end">
             {participants[0].name.slice(0, 3)}
           </p>
@@ -35,7 +35,7 @@ export const FixtureDisplayParticipants = ({
         </div>
       )}
       {!isHome && (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2 md:w-20">
           <div className="flex items-center gap-2">
             <img
               src={participants[1].image_path}

@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router'
 import User from '../app/auth/model/user.js'
 
 import { middleware } from './kernel.js'
+import ArticleController from '../app/articles/controllers/article_controller.js'
 
 const UsersController = () => import('../app/auth/controllers/users_controller.js')
 const ResultsController = () =>
@@ -50,6 +51,11 @@ router
 
     // Fixture-related routes
     router.get('/lastFixture', [FixtureController, 'last'])
+    router.get('/allRounds', [FixtureController, 'allRounds'])
+    router.get('/fixturesByDateRange/:startingDate/:endingDate', [
+      FixtureController,
+      'fixturesByDateRange',
+    ])
 
     // Standing-related routes
     router.get('/standing', [StandingController, 'showStanding'])
@@ -68,14 +74,14 @@ router
   .use(middleware.auth())
 
 // ARTICLE ROUTES
-// router
-//   .group(() => {
-//     router.get('/', [ArticleController, 'index'])
-//     router.get('/last-four', [ArticleController, 'showLastFourArticles'])
-//     router.get('/:id', [ArticleController, 'show'])
-//     router.post('/', [ArticleController, 'store'])
-//     router.put('/:id', [ArticleController, 'update'])
-//     router.delete('/:id', [ArticleController, 'destroy'])
-//   })
-//   .prefix('/articles')
-//   .use(middleware.auth())
+router
+  .group(() => {
+    router.get('/', [ArticleController, 'index'])
+    router.get('/last-four', [ArticleController, 'showLastFourArticles'])
+    router.get('/:id', [ArticleController, 'show'])
+    router.post('/', [ArticleController, 'store'])
+    router.put('/:id', [ArticleController, 'update'])
+    router.delete('/:id', [ArticleController, 'destroy'])
+  })
+  .prefix('/articles')
+  .use(middleware.auth())

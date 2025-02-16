@@ -5,7 +5,7 @@ import { FOOTBALL_SPORTMONK_API_CONSTANTS } from '../constants/api_constant.js'
 export default class StandingController extends BaseApiController {
   public async showStanding(ctx: HttpContext) {
     const apiEndpoint = `/standings/live/leagues/${FOOTBALL_SPORTMONK_API_CONSTANTS.LEAGUE_ID}`
-    return this.handleApiRequest(ctx, apiEndpoint, 'include=participant;details.type')
+    return this.handleApiRequest(ctx, apiEndpoint, 'include=participant;details.type;form')
   }
 
   public async showTopScorers(ctx: HttpContext) {

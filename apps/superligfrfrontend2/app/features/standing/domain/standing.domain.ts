@@ -1,3 +1,5 @@
+import type { Participant } from "~/core/domain/football-api";
+
 export interface StandingType {
   id: number;
   name: string;
@@ -5,6 +7,15 @@ export interface StandingType {
   developer_name: string;
   model_type: string;
   stat_group: string | null;
+}
+
+export interface Form {
+  id: number;
+  standing_type: string;
+  standing_id: number;
+  fixture_id: number;
+  form: string;
+  sort_order: number;
 }
 
 export enum TypeDeveloperName {
@@ -41,21 +52,6 @@ export interface StandingDetail {
   type: StandingType;
 }
 
-export interface Participant {
-  id: number;
-  sport_id: number;
-  country_id: number;
-  venue_id: number;
-  gender: string;
-  name: string;
-  short_code: string;
-  image_path: string;
-  founded: number;
-  type: string;
-  placeholder: boolean;
-  last_played_at: string;
-}
-
 export interface Standing {
   id: number;
   sport_id: number;
@@ -71,4 +67,5 @@ export interface Standing {
   result: string;
   participant: Participant;
   details: StandingDetail[];
+  form: Form[];
 }

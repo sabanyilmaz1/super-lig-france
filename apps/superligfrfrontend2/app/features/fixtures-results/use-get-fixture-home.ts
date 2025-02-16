@@ -1,6 +1,7 @@
 import { useFetchQuery } from "~/core/api/use-fetch-query";
 import { FixtureService } from "./fixture.service";
 import type { Fixture } from "./fixture.domain";
+import type { Round } from "./fixture.domain";
 
 interface FixtureHomeReturn {
   groupedFixtures: Fixture[][];
@@ -9,11 +10,24 @@ interface FixtureHomeReturn {
 
 export function useGetFixtureHome() {
   const fixtureService = new FixtureService();
+  const roundQuery = useFetchQuery<Round[]>(
+    ["rounds"],
+    () => fixtureService.getAllRounds() as Promise<Round[]>
+  );
+
+  const roundData = roundQuery.data;
+  const currentRound = roundData?.find((round) => round.is_current === true);
+  const currentRoundName = currentRound?.name || "";
+  const startingDate = currentRound?.starting_at;
+  const endingDate = currentRound?.ending_at;
+
   return useFetchQuery<FixtureHomeReturn>(
-    ["fixtures"],
+    ["fixturesByDateRange", startingDate || "", endingDate || ""],
     async () => {
-      const fixtures = (await fixtureService.getLastFixture()) as Fixture[];
-      const round = fixtures[0]?.round.name || "";
+      const fixtures = (await fixtureService.getLastFixtures(
+        startingDate || "",
+        endingDate || ""
+      )) as Fixture[];
 
       // Group fixtures by date (ignoring time)
       const groupedFixtures = fixtures.reduce((acc: Fixture[][], fixture) => {
@@ -32,12 +46,12 @@ export function useGetFixtureHome() {
       }, []);
 
       return {
-        groupedFixtures,
-        round,
+        groupedFixtures: groupedFixtures,
+        round: currentRoundName,
       };
     },
     {
-      requireAuth: true,
+      enabled: !!startingDate && !!endingDate,
     }
   );
 }

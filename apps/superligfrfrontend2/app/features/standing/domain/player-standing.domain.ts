@@ -1,19 +1,6 @@
-export type Gender = "male" | "female";
+import type { Participant } from "~/core/domain/football-api";
 
-export interface Participant {
-  id: number;
-  sport_id: number;
-  country_id: number;
-  venue_id: number;
-  gender: Gender;
-  name: string;
-  short_code: string;
-  image_path: string;
-  founded: number;
-  type: string;
-  placeholder: boolean;
-  last_played_at: string;
-}
+export type Gender = "male" | "female";
 
 export interface Player {
   id: number;

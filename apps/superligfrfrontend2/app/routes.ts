@@ -16,5 +16,6 @@ export default [
 
   layout("routes/private/layout.tsx", [
     route("home", "routes/private/home.tsx"),
+    route("standings", "routes/private/standings.tsx"),
   ]),
 ] satisfies RouteConfig;

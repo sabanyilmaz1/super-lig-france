@@ -1,22 +1,4 @@
-export interface Participant {
-  id: number;
-  sport_id: number;
-  country_id: number;
-  venue_id: number;
-  gender: string;
-  name: string;
-  short_code: string | null;
-  image_path: string;
-  founded: number;
-  type: string;
-  placeholder: boolean;
-  last_played_at: string;
-  meta: {
-    location: "home" | "away";
-    winner: boolean | null;
-    position: number;
-  };
-}
+import type { ParticipantWithMeta } from "~/core/domain/football-api";
 
 export interface Round {
   id: number;
@@ -30,6 +12,23 @@ export interface Round {
   starting_at: string;
   ending_at: string;
   games_in_current_week: boolean;
+}
+
+export interface State {
+  id: number;
+  state: string;
+  name: string;
+  short_name: string;
+  developer_name: string;
+}
+
+export interface Score {
+  description: string;
+  fixture_id: number;
+  id: number;
+  participant_id: number;
+  score: { goals: number; participant: string };
+  type_id: number;
 }
 
 export interface Fixture {
@@ -46,6 +45,8 @@ export interface Fixture {
   name: string;
   starting_at: string;
   result_info: any | null;
+  scores: Score[] | null;
+  state: State | null;
   leg: string;
   details: any | null;
   length: number;
@@ -53,6 +54,6 @@ export interface Fixture {
   has_odds: boolean;
   has_premium_odds: boolean;
   starting_at_timestamp: number;
-  participants: Participant[];
+  participants: ParticipantWithMeta[];
   round: Round;
 }

@@ -1,8 +1,15 @@
 import { Http } from "~/core/api/http";
 
 export class FixtureService extends Http {
-  async getLastFixture() {
-    const response = await this.get("/lastFixture");
+  async getAllRounds() {
+    const response = await this.get("/allRounds");
+    return response;
+  }
+
+  async getLastFixtures(startingDate: string, endingDate: string) {
+    const response = await this.get(
+      `/fixturesByDateRange/${startingDate}/${endingDate}`
+    );
     return response;
   }
 }
