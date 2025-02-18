@@ -16,8 +16,6 @@ export const FixtureHomeContent = () => {
 
   if (!data) return <div>No data</div>;
 
-  console.log(data);
-
   const round = data.round;
   return (
     <Card className="border-2 shadow-lg min-h-96 border-redsuperlig">

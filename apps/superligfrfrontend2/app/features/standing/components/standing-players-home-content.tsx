@@ -113,9 +113,9 @@ export const TopPlayersHome = <T,>({
                     />
                   )}
                   <div>
-                    <div className="font-semibold">{item.player.firstname}</div>
+                    <div className="font-semibold">{item.player.lastname}</div>
                     <div className="text-sm text-muted-foreground">
-                      {item.player.lastname}
+                      {item.player.firstname}
                     </div>
                   </div>
                 </div>

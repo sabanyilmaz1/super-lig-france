@@ -3,11 +3,6 @@ import { BaseApiController } from './base_api_controller.js'
 import { FOOTBALL_SPORTMONK_API_CONSTANTS } from '../constants/api_constant.js'
 
 export default class FixtureController extends BaseApiController {
-  public async last(ctx: HttpContext) {
-    const apiEndpoint = `/fixtures/upcoming/markets/1`
-    return this.handleApiRequest(ctx, apiEndpoint, 'include=participants;round')
-  }
-
   public async allRounds(ctx: HttpContext) {
     const apiEndpoint = `/rounds/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
     return this.handleApiRequest(ctx, apiEndpoint, '')

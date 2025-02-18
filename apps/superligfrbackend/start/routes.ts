@@ -11,14 +11,14 @@ import router from '@adonisjs/core/services/router'
 import User from '../app/auth/model/user.js'
 
 import { middleware } from './kernel.js'
-import ArticleController from '../app/articles/controllers/article_controller.js'
+
+const ArticleController = () => import('../app/articles/controllers/article_controller.js')
 
 const UsersController = () => import('../app/auth/controllers/users_controller.js')
 const ResultsController = () =>
   import('../app/football_data_api/controllers/show_results_controller.js')
 const StandingController = () =>
   import('../app/football_data_api/controllers/show_standings_controller.js')
-const MatchController = () => import('../app/football_data_api/controllers/match_controller.js')
 const FixtureController = () =>
   import('../app/football_data_api/controllers/show_fixture_controller.js')
 
@@ -50,7 +50,6 @@ router
     // router.get('/team/:teamId', [TeamController, 'showTeam'])
 
     // Fixture-related routes
-    router.get('/lastFixture', [FixtureController, 'last'])
     router.get('/allRounds', [FixtureController, 'allRounds'])
     router.get('/fixturesByDateRange/:startingDate/:endingDate', [
       FixtureController,
@@ -66,10 +65,10 @@ router
     // router.get('/match_preview/:fixtureId', [MatchController, 'showMatchPreview'])
 
     //Results
-    // router.get('/lastRound', [ResultsController, 'showLastRound'])
-    // router.get('/allRounds', [ResultsController, 'showAllRounds'])
-    // router.get('/lastResults', [ResultsController, 'showLastResult'])
-    // router.get('/results', [ResultsController, 'showResultByRound'])
+    router.get('/resultsByDateRange/:startingDate/:endingDate', [
+      ResultsController,
+      'ResultsByDateRange',
+    ])
   })
   .use(middleware.auth())
 
