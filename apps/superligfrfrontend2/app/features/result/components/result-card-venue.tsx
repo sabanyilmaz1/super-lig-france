@@ -8,12 +8,12 @@ type ResultCardVenueProps = {
 
 export const ResultCardVenue = ({ result }: ResultCardVenueProps) => {
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2">
-        <MapPinHouseIcon />
-        <span>{result.venue.name}</span>
+    <div className="flex flex-col md:gap-2">
+      <div className="flex items-center gap-1 md:gap-2">
+        <MapPinHouseIcon className="w-4 h-4 md:w-6 md:h-6" />
+        <span className="text-xs md:text-base">{result.venue.name}</span>
       </div>
-      <div className="self-end text-sm text-redsuperlig ">
+      <div className="self-center text-xs md:text-sm md:self-end text-redsuperlig ">
         {formatTimestampToTime(result.starting_at_timestamp)}
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useGetResult } from "../use-get-result";
 import { ResultCard } from "./result-card";
 import { SelectRound } from "./select-round";
+import { FullResultSkeleton } from "./skeleton";
 
 export const FullResult = () => {
   const {
@@ -12,18 +13,14 @@ export const FullResult = () => {
   } = useGetResult();
   const { data: roundData, isFetching } = roundQuery;
 
-  if (isInitialLoading || isFetching) {
-    return <div>Loading...</div>;
-  }
-
-  if (!lastRound) {
-    return <div>No last round</div>;
+  if (isInitialLoading || isFetching || !roundData || !lastRound) {
+    return <FullResultSkeleton />;
   }
 
   return (
     <div className="mt-4">
       <div className="flex items-center justify-between">
-        <h1 className="font-extrabold md:text-3xl text-redsuperlig">
+        <h1 className="text-xl font-extrabold md:text-3xl text-redsuperlig">
           Journée {currentRound}
         </h1>
         {currentRound && (

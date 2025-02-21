@@ -36,7 +36,7 @@ export const SelectRound = ({
 
   return (
     <Select value={currentRound} onValueChange={handleChange}>
-      <SelectTrigger className="max-w-xs">
+      <SelectTrigger className="md:max-w-xs max-w-[200px]">
         <SelectValue placeholder="Sélectionner une journée" />
       </SelectTrigger>
       <SelectContent>
