@@ -8,7 +8,7 @@ import {
 } from "~/components/ui/table";
 import { useGetStanding } from "../hooks/use-get-standing";
 import type { Standing } from "../domain/standing.domain";
-import { FullStandingSkeleton } from "./full-standing-skeleton";
+import { FullStandingSkeleton } from "./skeleton";
 
 export const FullStanding = () => {
   const { data: standings, isLoading } = useGetStanding();

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { useGetBlog } from "../use-get-blog";
 import { Link } from "react-router";
-import { BlogHomeSkeleton } from "./blog-home-skeleton";
+import { BlogHomeSkeleton } from "./skeleton";
 
 export const BlogHomeContent = () => {
   const { data: articles, isLoading } = useGetBlog();

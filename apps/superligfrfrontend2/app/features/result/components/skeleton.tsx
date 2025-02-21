@@ -12,9 +12,6 @@ export const FullResultSkeleton = () => {
         {Array.from({ length: 8 }).map((_, index) => (
           <Skeleton key={index} className="w-full h-24 md:h-28" />
         ))}
-        {/* {roundData?.fixtures.map((fixture) => (
-      <ResultCard key={fixture.id} result={fixture} />
-    ))} */}
       </div>
     </div>
   );

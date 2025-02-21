@@ -6,7 +6,7 @@ import {
   FixtureDisplayParticipants,
 } from "./fixture-components";
 import { ScoreOrHour } from "./score-or-hour";
-import { FixtureHomeSkeleton } from "./fixture-home-skeleton";
+import { FixtureHomeSkeleton } from "./skeleton";
 
 export const FixtureHomeContent = () => {
   const { data, isLoading } = useGetFixtureHome();

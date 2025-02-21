@@ -12,7 +12,7 @@ import {
 import { TypeDeveloperName } from "../domain/standing.domain";
 import { HomeCardHeader } from "~/components/common/home-card-header";
 import { useGetStanding } from "../hooks/use-get-standing";
-import { StandingHomeSkeleton } from "./standing-home-skeleton";
+import { StandingHomeSkeleton } from "./skeleton";
 
 const tabConfig = [
   {
