@@ -46,3 +46,15 @@ export const formatTimestampToFrenchDate = (
 
   return `${capitalizedDayName} ${day} ${month} ${year}`;
 };
+
+export const formatTimestampToTime = (timestamp: string | number): string => {
+  const timestampInMs =
+    typeof timestamp === "string"
+      ? parseInt(timestamp) * 1000
+      : timestamp * 1000;
+  const date = new Date(timestampInMs);
+  return date.toLocaleTimeString("fr-FR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
