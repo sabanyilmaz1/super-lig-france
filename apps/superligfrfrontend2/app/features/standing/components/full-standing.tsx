@@ -8,13 +8,12 @@ import {
 } from "~/components/ui/table";
 import { useGetStanding } from "../hooks/use-get-standing";
 import type { Standing } from "../domain/standing.domain";
-
-function getNestedValue(obj: any, path: string): any {
-  return path.split(".").reduce((acc, part) => acc && acc[part], obj);
-}
+import { FullStandingSkeleton } from "./full-standing-skeleton";
 
 export const FullStanding = () => {
-  const { data: standings } = useGetStanding();
+  const { data: standings, isLoading } = useGetStanding();
+
+  if (!standings || isLoading) return <FullStandingSkeleton />;
 
   return (
     <div>
