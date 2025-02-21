@@ -20,17 +20,23 @@ export const FixtureDisplayParticipants = ({
   participants: ParticipantWithMeta[];
   isHome: boolean;
 }) => {
+  const participantAway = participants.find(
+    (participant) => participant.meta.location === "away"
+  );
+  const participantHome = participants.find(
+    (participant) => participant.meta.location === "home"
+  );
   return (
     <div>
       {isHome && (
         <div className="flex items-center justify-start gap-2 md:w-20">
           <p className="font-extrabold uppercase text-end">
-            {participants[0].name.slice(0, 3)}
+            {participantHome?.name.slice(0, 3)}
           </p>
           <img
-            src={participants[0].image_path}
+            src={participantHome?.image_path}
             className="w-8 h-8"
-            alt={participants[0].name}
+            alt={participantHome?.name}
           />
         </div>
       )}
@@ -38,13 +44,13 @@ export const FixtureDisplayParticipants = ({
         <div className="flex items-center justify-end gap-2 md:w-20">
           <div className="flex items-center gap-2">
             <img
-              src={participants[1].image_path}
+              src={participantAway?.image_path}
               className="w-8 h-8"
-              alt={participants[1].name}
+              alt={participantAway?.name}
             />
           </div>
           <p className="font-extrabold uppercase text-start">
-            {participants[1].name.slice(0, 3)}
+            {participantAway?.name.slice(0, 3)}
           </p>
         </div>
       )}

@@ -3,13 +3,12 @@ import { Card, CardContent } from "~/components/ui/card";
 import { cn } from "~/lib/utils";
 import { useGetStanding } from "../hooks/use-get-standing";
 import { TypeDeveloperName, type Standing } from "../domain/standing.domain";
+import { StandingHomeStatsSkeleton } from "./standing-home-stats-sketelon";
 
 export default function StandingTeamHomeContent() {
   const { data: standing, isLoading } = useGetStanding();
 
-  if (!standing) return null;
-
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading || !standing) return <StandingHomeStatsSkeleton />;
 
   const standingSortedByGoalsScored = [...standing];
   const standingSortedByGoalsConceded = [...standing];

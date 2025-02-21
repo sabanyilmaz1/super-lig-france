@@ -7,10 +7,17 @@ import {
 } from "../hooks/use-get-best-players";
 import type { PlayerStanding } from "../domain/player-standing.domain";
 import { cn } from "~/lib/utils";
+import { StandingHomeStatsSkeleton } from "./standing-home-stats-sketelon";
 
 export const StandingPlayersHomeContent = () => {
-  const { data: topScorers } = useGetTopScorers();
-  const { data: topAssists } = useGetTopAssists();
+  const { data: topScorers, isLoading: isLoadingTopScorers } =
+    useGetTopScorers();
+  const { data: topAssists, isLoading: isLoadingTopAssists } =
+    useGetTopAssists();
+
+  if (isLoadingTopScorers || isLoadingTopAssists || !topScorers || !topAssists)
+    return <StandingHomeStatsSkeleton />;
+
   return (
     <Card className="border-2 shadow-lg border-redsuperlig">
       <HomeCardHeader title="Statistiques Joueurs" />

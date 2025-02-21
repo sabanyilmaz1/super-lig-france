@@ -1,16 +1,13 @@
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { useGetBlog } from "../use-get-blog";
 import { Link } from "react-router";
+import { BlogHomeSkeleton } from "./blog-home-skeleton";
 
 export const BlogHomeContent = () => {
-  const { data: articles } = useGetBlog();
+  const { data: articles, isLoading } = useGetBlog();
 
-  if (!articles) {
-    return null;
-  }
-
-  if (articles.length === 0) {
-    return null;
+  if (isLoading || !articles || articles.length === 0) {
+    return <BlogHomeSkeleton />;
   }
 
   return (
@@ -27,13 +24,13 @@ export const BlogHomeContent = () => {
                   className="object-cover transition-transform duration-300 hover:scale-110"
                 />
               </div>
-              <div className="px-6 space-y-4">
-                <h2 className="text-xl font-bold ">
+              <div className="space-y-4 md:px-6">
+                <h2 className="text-lg font-bold md:text-xl ">
                   <Link to={"#"}>{articles[0].title}</Link>
                 </h2>
                 <div className="text-sm italic">Publié le 13 octobre 2024</div>
                 <article
-                  className="line-clamp-3"
+                  className="text-sm line-clamp-4 md:line-clamp-3 md:text-base"
                   dangerouslySetInnerHTML={{ __html: articles[0].content }}
                 />
                 <Link to={"#"} className="inline-block hover:underline">
@@ -61,10 +58,10 @@ export const BlogHomeContent = () => {
                               index === 1
                                 ? "/blog/article2.jpg"
                                 : index === 2
-                                  ? "/blog/article3.jpg"
-                                  : "/blog/article4.jpg"
+                                ? "/blog/article3.jpg"
+                                : "/blog/article4.jpg"
                             }
-                            className="object-cover transition-transform duration-300 rounded-md hover:scale-110"
+                            className="object-cover transition-transform duration-300 rounded-md hover:scale-110 md:w-full md:h-auto w-[140px] h-[80px] "
                           />
                         </div>
                         <h3 className="text-xs font-semibold ">

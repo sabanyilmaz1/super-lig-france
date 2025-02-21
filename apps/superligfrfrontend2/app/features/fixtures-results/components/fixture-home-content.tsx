@@ -1,20 +1,17 @@
-import React from "react";
 import { HomeCardHeader } from "~/components/common/home-card-header";
 import { Card, CardContent } from "~/components/ui/card";
 import { useGetFixtureHome } from "../use-get-fixture-home";
-import { formatTimestampToFrenchDate } from "~/utils/date-formatter";
 import {
   FixtureDisplayDate,
   FixtureDisplayParticipants,
 } from "./fixture-components";
 import { ScoreOrHour } from "./score-or-hour";
+import { FixtureHomeSkeleton } from "./fixture-home-skeleton";
 
 export const FixtureHomeContent = () => {
   const { data, isLoading } = useGetFixtureHome();
 
-  if (isLoading) return <div>Loading...</div>;
-
-  if (!data) return <div>No data</div>;
+  if (isLoading || !data) return <FixtureHomeSkeleton />;
 
   const round = data.round;
   return (

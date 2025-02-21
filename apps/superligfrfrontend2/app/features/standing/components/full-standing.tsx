@@ -15,7 +15,7 @@ function getNestedValue(obj: any, path: string): any {
 
 export const FullStanding = () => {
   const { data: standings } = useGetStanding();
-  console.log(standings);
+
   return (
     <div>
       <Table className="max-w-7xl">
@@ -58,7 +58,11 @@ export const FullStanding = () => {
                 return (
                   <TableCell key={column.key} className={`${column.width}  `}>
                     <div
-                      className={`${column.key === "team.name" ? "flex items-center gap-2" : ""}`}
+                      className={`${
+                        column.key === "team.name"
+                          ? "flex items-center gap-2"
+                          : ""
+                      }`}
                     >
                       {column.key === "team.name" &&
                         item.participant.image_path && (
@@ -117,8 +121,8 @@ const TableCellForm = ({
               item.form === "W"
                 ? "bg-green-500"
                 : item.form === "D"
-                  ? "bg-yellow-500"
-                  : "bg-red-500"
+                ? "bg-yellow-500"
+                : "bg-red-500"
             } w-6 h-6 rounded-full flex items-center justify-center text-white font-bold`}
           >
             {item.form === "W" ? "V" : item.form === "D" ? "N" : "D"}

@@ -12,6 +12,7 @@ import {
 import { TypeDeveloperName } from "../domain/standing.domain";
 import { HomeCardHeader } from "~/components/common/home-card-header";
 import { useGetStanding } from "../hooks/use-get-standing";
+import { StandingHomeSkeleton } from "./standing-home-skeleton";
 
 const tabConfig = [
   {
@@ -61,7 +62,7 @@ const tabConfig = [
 export const StandingHomeContent = () => {
   const { data: standing, isLoading } = useGetStanding();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading || !standing) return <StandingHomeSkeleton />;
 
   return (
     <Card className="border-2 shadow-lg min-h-96 border-redsuperlig">
