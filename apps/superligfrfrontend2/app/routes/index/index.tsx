@@ -5,17 +5,10 @@ import { Caroussel } from "./_caroussel";
 import { Feature } from "./_feature";
 import { Button } from "~/components/ui/button";
 import { Activity, Star, BarChart3 } from "lucide-react";
-import { useRequireAuth } from "~/core/auth/check-user-session";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import { useIsAuthenticated } from "~/core/auth/check-user-session";
 
 export default function Home() {
-  const { isAuthenticated } = useRequireAuth();
+  const { isAuthenticated } = useIsAuthenticated();
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-[#E20613] to-[#1C1C1C] overflow-hidden">
       {/* Contenu principal */}

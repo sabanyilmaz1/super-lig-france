@@ -21,6 +21,8 @@ export class UserAuthService extends Http {
     return response;
   }
 
+  async register() {}
+
   async getMe(): Promise<User> {
     return this.get<User>("/me");
   }

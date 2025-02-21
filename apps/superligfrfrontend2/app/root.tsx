@@ -24,6 +24,29 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Super Lig France" },
+    { name: "description", content: "Bienvenue sur Super Lig France" },
+    {
+      name: "keywords",
+      content: "Super Lig, football, France, scores, joueurs, statistiques",
+    },
+    { name: "author", content: "Super Lig France" },
+    { name: "viewport", content: "width=device-width, initial-scale=1.0" },
+    { name: "robots", content: "index, follow" },
+    { name: "og:title", content: "Super Lig France" },
+    { name: "og:description", content: "Bienvenue sur Super Lig France" },
+    { name: "og:image", content: "/logo.png" },
+    { name: "og:site_name", content: "Super Lig France" },
+    { name: "og:type", content: "website" },
+    { name: "og:locale", content: "fr" },
+    { rel: "icon", type: "image/png", href: "/logo.png" },
+    { rel: "apple-touch-icon", href: "/logo.png" },
+    { rel: "manifest", href: "/logo.png" },
+  ];
+}
+
 const queryClient = new QueryClient();
 
 export function Layout({ children }: { children: React.ReactNode }) {
