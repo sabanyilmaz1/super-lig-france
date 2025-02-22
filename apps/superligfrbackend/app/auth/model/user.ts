@@ -15,9 +15,6 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare id: number
 
   @column()
-  declare api_football_key: string
-
-  @column()
   declare team_favorite_api_id: number
 
   @column()
