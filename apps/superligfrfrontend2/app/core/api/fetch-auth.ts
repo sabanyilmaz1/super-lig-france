@@ -23,7 +23,7 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
 export const storeAuthToken = (token: string) => {
   const tokenData: TokenData = {
     token,
-    expiresAt: new Date().getTime() + 2 * 60 * 60 * 1000, // 2 hours
+    expiresAt: new Date().getTime() + 168 * 60 * 60 * 1000, // 168 hours
   };
   localStorage.setItem("token", JSON.stringify(tokenData));
 };
