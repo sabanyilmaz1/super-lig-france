@@ -3,9 +3,8 @@ import type { Fixture } from "../fixture.domain";
 import { LIVE_STATE, LIVE_STATE_NAME } from "~/lib/live";
 
 export const ScoreOrHour = ({ fixture }: { fixture: Fixture }) => {
-  // const isLive = fixture.state?.developer_name !== "FT" ;
   const isLive = LIVE_STATE.includes(fixture.state?.developer_name ?? "");
-  const matchNotStarted = fixture.scores && fixture.scores.length === 0;
+  const matchNotStarted = fixture.state?.developer_name === "NS";
 
   return (
     <div>

@@ -13,8 +13,6 @@ export const FixtureHomeContent = () => {
 
   if (isLoading || !data) return <FixtureHomeSkeleton />;
 
-  console.log(data.groupedFixtures);
-
   const round = data.round;
   return (
     <Card className="border-2 shadow-lg min-h-96 border-redsuperlig">

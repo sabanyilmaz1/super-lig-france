@@ -1,9 +1,10 @@
+import type { Fixture } from "~/features/fixtures-results/fixture.domain";
 import type { ResultFixture } from "../result.domain";
 
 export const ResultItemNameLogoHome = ({
   result,
 }: {
-  result: ResultFixture;
+  result: ResultFixture | Fixture;
 }) => {
   return (
     <>
@@ -22,7 +23,7 @@ export const ResultItemNameLogoHome = ({
 export const ResultItemNameLogoAway = ({
   result,
 }: {
-  result: ResultFixture;
+  result: ResultFixture | Fixture;
 }) => {
   return (
     <>
