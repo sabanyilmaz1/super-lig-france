@@ -10,6 +10,7 @@ COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run -r build
 RUN pnpm --filter superligfrbackend --prod deploy /prod/backend
+RUN pnpm --filter superligfrfrontend2 --prod build
 
 FROM base AS backend
 COPY --from=build /prod/backend /prod/backend
@@ -20,3 +21,8 @@ ENV NODE_ENV=production
 EXPOSE 3333
 CMD ["sh", "-c", "node ace migration:run --force && node bin/server.js"]
 
+FROM nginx:alpine AS frontend
+COPY --from=build /usr/src/app/apps/superligfrfrontend2/build/client /usr/share/nginx/html
+COPY ./apps/superligfrfrontend2/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
