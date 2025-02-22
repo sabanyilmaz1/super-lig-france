@@ -38,7 +38,7 @@ jobs:
       - name: Build and push frontend
         uses: docker/build-push-action@v5
         with:
-          context: ./frontend
+          context: ./apps/superligfrfrontend2
           push: true
           tags: ${{ env.FRONTEND_IMAGE }}
 
