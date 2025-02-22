@@ -17,9 +17,7 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_DATABASE: ${DB_DATABASE}
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      API_FOOTBALL_KEY: ${API_FOOTBALL_KEY}
     ports:
       - "3333:3333"
     command: >
@@ -32,37 +30,6 @@ services:
     depends_on:
       - postgres
       - redis
-
-  # frontend
-  frontend:
-    image: ${FRONTEND_IMAGE}
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: frontend
-    environment:
-      NODE_ENV: production
-      SESSION_SECRET: ${SESSION_SECRET}
-      BASE_URL: ${BASE_URL}
-    ports:
-      - "3000:3000"
-    command: >
-      sh -c "
-      echo 'Starting Remix frontend...';
-      pnpm start"
-    depends_on:
-      - backend
-
-  redis:
-    image: redis:7
-    container_name: redis
-    environment:
-      - REDIS_PASSWORD=
-    command: ["redis-server", "--requirepass", ""]
-    ports:
-      - "6380:6380"
-    volumes:
-      - redis_data:/data
 
   postgres:
     image: postgres:15
@@ -77,4 +44,3 @@ services:
       - postgres_data:/var/lib/postgresql/data
 volumes:
   postgres_data:
-  redis_data:

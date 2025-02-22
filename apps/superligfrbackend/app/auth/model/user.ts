@@ -15,9 +15,6 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare id: number
 
   @column()
-  declare api_football_key: string
-
-  @column()
   declare team_favorite_api_id: number
 
   @column()
@@ -38,7 +35,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare updatedAt: DateTime | null
 
   static accessTokens = DbAccessTokensProvider.forModel(User, {
-    expiresIn: '2 hours',
+    expiresIn: '168 hours',
     prefix: 'oat_',
     table: 'auth_access_tokens',
     type: 'auth_token',

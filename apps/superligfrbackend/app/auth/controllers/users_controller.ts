@@ -37,9 +37,7 @@ export default class UsersController {
 
   public async me({ auth }: HttpContext) {
     await auth.check()
-    return {
-      user: auth.user,
-    }
+    return auth.user
   }
 
   public async deleteUser({ request, response }: HttpContext) {

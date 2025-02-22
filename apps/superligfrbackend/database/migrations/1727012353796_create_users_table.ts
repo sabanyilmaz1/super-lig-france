@@ -7,7 +7,6 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').notNullable()
       table.integer('team_favorite_api_id')
-      table.string('api_football_key')
       table.string('username').nullable()
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()
