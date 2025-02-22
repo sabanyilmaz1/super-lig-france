@@ -17,9 +17,6 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_DATABASE: ${DB_DATABASE}
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
     ports:
       - "3333:3333"
     command: >
@@ -31,7 +28,6 @@ services:
       node ace migration:run --force && node bin/server.js"
     depends_on:
       - postgres
-      - redis
 
   # frontend
   frontend:
@@ -53,17 +49,6 @@ services:
     depends_on:
       - backend
 
-  redis:
-    image: redis:7
-    container_name: redis
-    environment:
-      - REDIS_PASSWORD=
-    command: ["redis-server", "--requirepass", ""]
-    ports:
-      - "6380:6380"
-    volumes:
-      - redis_data:/data
-
   postgres:
     image: postgres:15
     container_name: postgres
@@ -77,4 +62,3 @@ services:
       - postgres_data:/var/lib/postgresql/data
 volumes:
   postgres_data:
-  redis_data:
