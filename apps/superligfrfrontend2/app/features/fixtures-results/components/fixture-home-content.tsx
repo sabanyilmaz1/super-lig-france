@@ -13,6 +13,8 @@ export const FixtureHomeContent = () => {
 
   if (isLoading || !data) return <FixtureHomeSkeleton />;
 
+  console.log(data.groupedFixtures);
+
   const round = data.round;
   return (
     <Card className="border-2 shadow-lg min-h-96 border-redsuperlig">
@@ -28,7 +30,7 @@ export const FixtureHomeContent = () => {
                 {fixtures.map((fixture) => (
                   <div
                     key={fixture.id}
-                    className="flex items-center justify-center gap-4 p-3 border-b"
+                    className="flex items-start justify-center gap-4 p-3 border-b"
                   >
                     <FixtureDisplayParticipants
                       participants={fixture.participants}

@@ -11,7 +11,7 @@ export default function Home() {
     <div>
       {/* Mobile */}
       <div className="p-3 md:hidden">
-        <Tabs defaultValue="recent" className="w-full">
+        <Tabs defaultValue="results" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="recent">Récent</TabsTrigger>
             <TabsTrigger value="results">Matchs</TabsTrigger>
