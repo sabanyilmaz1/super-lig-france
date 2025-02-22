@@ -6,8 +6,12 @@ import { BlogHomeSkeleton } from "./skeleton";
 export const BlogHomeContent = () => {
   const { data: articles, isLoading } = useGetBlog();
 
-  if (isLoading || !articles || articles.length === 0) {
+  if (isLoading) {
     return <BlogHomeSkeleton />;
+  }
+
+  if (!articles || articles.length === 0) {
+    return <div></div>;
   }
 
   return (

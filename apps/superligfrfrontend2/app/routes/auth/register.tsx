@@ -31,8 +31,13 @@ export default function Register() {
       const formData = Object.fromEntries(
         new FormData(e.target as HTMLFormElement)
       );
-      await authService.register();
-      navigate("/login");
+      await authService.register({
+        email: formData.email as string,
+        password: formData.password as string,
+        username: formData.username as string,
+        team_favorite_api_id: parseInt(formData.team_favorite_api_id as string),
+      });
+      navigate("/home");
     } catch (error) {
       setError(
         "Une erreur est survenue lors de l'inscription. Veuillez réessayer."
@@ -103,7 +108,7 @@ export default function Register() {
         <Label className="text-redsuperlig" htmlFor="favoriteClub">
           Équipe favorite
         </Label>
-        <Select>
+        <Select name="team_favorite_api_id">
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Sélectionnez une équipe" />
           </SelectTrigger>

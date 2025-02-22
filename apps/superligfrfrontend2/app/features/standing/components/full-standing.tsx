@@ -17,7 +17,7 @@ export const FullStanding = () => {
 
   return (
     <div>
-      <Table className="max-w-7xl">
+      <Table className="mx-auto max-w-7xl">
         <TableHeader className="text-sm ">
           <TableRow>
             {table.map((item, index) => (
