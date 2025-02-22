@@ -7,11 +7,9 @@ RUN corepack enable
 FROM base AS build
 WORKDIR /usr/src/app
 COPY . .
-RUN pnpm store prune
-RUN --mount=type=cache,target=/root/.pnpm-store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run -r build
 RUN pnpm --filter superligfrbackend --prod deploy /prod/backend
-
 
 FROM base AS backend
 COPY --from=build /prod/backend /prod/backend
