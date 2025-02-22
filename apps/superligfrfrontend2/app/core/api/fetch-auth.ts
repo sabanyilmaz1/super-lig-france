@@ -5,6 +5,7 @@ interface TokenData {
 
 
 
+
 export async function fetchWithAuth(url: string, options: RequestInit = {}) {
   const token = getValidToken();
 
