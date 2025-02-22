@@ -1,0 +1,46 @@
+services:
+  backend:
+    image: ${BACKEND_IMAGE}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    environment:
+      TZ: ${TZ}
+      PORT: 3333
+      HOST: 0.0.0.0
+      LOG_LEVEL: info
+      APP_KEY: ${APP_KEY}
+      NODE_ENV: production
+      DB_HOST: ${DB_HOST}
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+      API_FOOTBALL_KEY: ${API_FOOTBALL_KEY}
+    ports:
+      - "3333:3333"
+    command: >
+      sh -c "
+      until nc -z postgres 5432; do
+        echo 'Waiting for PostgreSQL...';
+        sleep 2;
+      done;
+      node ace migration:run --force && node bin/server.js"
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
