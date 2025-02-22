@@ -8,6 +8,7 @@ on:
 
 env:
   BACKEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-backend:latest
+  FRONTEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-frontend:latest
 
 jobs:
   build-and-push:
@@ -15,17 +16,9 @@ jobs:
     environment: Prod
 
     steps:
-      # Clone le repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Debug Secrets (Optionnel)
-      - name: Debug Secrets
-        run: |
-          echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}"
-          echo "BACKEND_IMAGE: ${{ env.BACKEND_IMAGE }}"
-
-      # Login Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -41,22 +34,29 @@ jobs:
           tags: ${{ env.BACKEND_IMAGE }}
           target: backend
 
+      # Build et push frontend
+      - name: Build and push frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: true
+          tags: ${{ env.FRONTEND_IMAGE }}
+
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
     environment: Prod
 
     steps:
-      # Déploiement avec Debug Activé
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.VPS_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          debug: true # Active les logs détaillée.
+          debug: true
           script: |
-            echo "Connecté au VPS !"
+            echo "Déploiement sur le VPS..."
             export $(grep -v '^#' ~/stacks/.env | xargs)
             cd ~/stacks
-            docker stack deploy -c ~/stacks/docker-compose.yml superligfr
+            docker stack deploy -c docker-compose.yml superligfr
