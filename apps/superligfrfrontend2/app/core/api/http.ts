@@ -1,11 +1,15 @@
 import { fetchWithAuth } from "./fetch-auth";
 
+const MODE_ENV = import.meta.env.MODE;
+
+const BASE_URL = MODE_ENV === "development" ? "http://localhost:3333" : "http://147.79.102.85:3333/";
+
 interface RequestOptions extends RequestInit {
   params?: Record<string, string>;
 }
 
 export class Http {
-  private static readonly baseUrl: string = import.meta.env.VITE_BASE_URL;
+  private static readonly baseUrl: string = BASE_URL;
 
   private async request<T>(
     endpoint: string,

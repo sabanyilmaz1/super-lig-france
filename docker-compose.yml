@@ -38,10 +38,9 @@ services:
       target: frontend
     environment:
       NODE_ENV: production
-      SESSION_SECRET: ${SESSION_SECRET}
-      BASE_URL: ${BASE_URL}
+      VITE_BASE_URL: ${VITE_BASE_URL}
     ports:
-      - "3000:3000"
+      - "5173:5173"
     command: >
       sh -c "
       echo 'Starting Remix frontend...';
