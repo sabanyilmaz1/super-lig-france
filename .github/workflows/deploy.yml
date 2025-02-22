@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
+      - refactor/frontend
 
 env:
   BACKEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-backend:latest
-  FRONTEND_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/superligfr-frontend:latest
 
 jobs:
   build-and-push:
@@ -24,7 +24,6 @@ jobs:
         run: |
           echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}"
           echo "BACKEND_IMAGE: ${{ env.BACKEND_IMAGE }}"
-          echo "FRONTEND_IMAGE: ${{ env.FRONTEND_IMAGE }}"
 
       # Login Docker Hub
       - name: Log in to Docker Hub
@@ -41,15 +40,6 @@ jobs:
           push: true
           tags: ${{ env.BACKEND_IMAGE }}
           target: backend
-
-      # Build et push frontend.
-      - name: Build and push frontend
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: ${{ env.FRONTEND_IMAGE }}
-          target: frontend
 
   deploy:
     needs: build-and-push
