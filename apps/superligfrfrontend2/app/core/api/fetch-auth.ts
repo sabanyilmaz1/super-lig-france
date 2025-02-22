@@ -3,9 +3,7 @@ interface TokenData {
   expiresAt: number;
 }
 
-interface LoginResponse {
-  token: string;
-}
+
 
 export async function fetchWithAuth(url: string, options: RequestInit = {}) {
   const token = getValidToken();
