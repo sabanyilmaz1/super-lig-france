@@ -19,7 +19,6 @@ export abstract class BaseApiController {
       // Appel à l'API externe
       const apiResponse = await fetchFootballSportmonkApi(endpoint, params)
       const data = (await apiResponse.json()) as DataResponse
-      // Si une fonction de post-traitement est fournie, l'appliquer
       if (processApiResponse) {
         return processApiResponse(data as T)
       }
