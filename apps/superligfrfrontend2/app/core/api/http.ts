@@ -2,7 +2,7 @@ import { fetchWithAuth } from "./fetch-auth";
 
 const MODE_ENV = import.meta.env.MODE;
 
-const BASE_URL = MODE_ENV === "development" ? "http://localhost:3333" : "https://147.79.102.85:3333/";
+const BASE_URL = MODE_ENV === "development" ? "http://localhost:3333" : "https://147.79.102.85:3333";
 
 interface RequestOptions extends RequestInit {
   params?: Record<string, string>;
