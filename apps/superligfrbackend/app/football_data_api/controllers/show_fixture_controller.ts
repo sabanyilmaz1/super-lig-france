@@ -18,7 +18,7 @@ export default class FixtureController extends BaseApiController {
     return this.handleApiRequest(
       ctx,
       apiEndpoint,
-      'include=formations;lineups.detailedposition;sidelined.sideline.player;metadata;sidelined.sideline.team'
+      'include=formations;lineups.player;sidelined.sideline.player;metadata;sidelined.sideline.team;participants'
     )
   }
 }

@@ -23,7 +23,8 @@ import {
 import { useGetFixturePreview } from "../use-get-fixture-preview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import type { FixturePreview as FixturePreviewType } from "../fixture.domain";
-import { FixturePreviewInjuries } from "./preview-injuries";
+import { FixturePreviewInjuries } from "./preview/preview-injuries";
+import { FixturePreviewLineups } from "./preview/preview-lineups";
 
 interface FixturePreviewProps {
   fixtureId: number;
@@ -59,7 +60,9 @@ export const FixturePreview = ({ fixtureId }: FixturePreviewProps) => {
           <FixturePreviewContent data={fixturePreview} />
           <DrawerFooter className="pt-2">
             <DrawerClose asChild>
-              <Button variant="outline">Fermer</Button>
+              <Button className="text-white bg-redsuperlig" variant="outline">
+                Fermer
+              </Button>
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
@@ -100,7 +103,7 @@ const FixturePreviewContent = ({
   return (
     <div>
       <Tabs defaultValue="stats" className="w-full min-h-[500px]">
-        <TabsList>
+        <TabsList className="ml-2 text-white md:ml-0 bg-redsuperlig">
           <TabsTrigger
             className="text-xs font-semibold md:text-sm"
             value="stats"
@@ -128,6 +131,9 @@ const FixturePreviewContent = ({
         </TabsList>
         <TabsContent className="px-2 py-2 md:px-0" value="injuries">
           <FixturePreviewInjuries data={data} />
+        </TabsContent>
+        <TabsContent className="px-2 py-2 md:px-0" value="lineup">
+          <FixturePreviewLineups data={data} />
         </TabsContent>
       </Tabs>
     </div>

@@ -83,6 +83,7 @@ export interface FixturePreview {
   lineups: Lineup[] | null;
   sidelined: Sidelined[] | null;
   formations: Formation[] | null;
+  participants: ParticipantWithMeta[] | null;
 }
 
 export interface DetailedPosition {
@@ -106,7 +107,28 @@ export interface Lineup {
   formation_position: number | null;
   player_name: string;
   jersey_number: number;
-  detailedposition: DetailedPosition | null;
+  player: Player | null;
+}
+
+export interface Player {
+  city_id: number;
+  common_name: string;
+  country_id: number;
+  date_of_birth: string;
+  detailed_position_id: number;
+  display_name: string;
+  firstname: string;
+  gender: string;
+  height: number;
+  id: number;
+  image_path: string;
+  lastname: string;
+  name: string;
+  nationality_id: number;
+  position_id: number;
+  sport_id: number;
+  type_id: number;
+  weight: number;
 }
 
 export interface Sidelined {
