@@ -15,11 +15,15 @@ export const FixturePreviewInjuries = ({
   }
 
   const sidelinedHome = data.sidelined.filter(
-    (item) => item.participant_id === data.formations?.[0]?.participant_id
+    (item) =>
+      item.participant_id ===
+      data.formations?.find((f) => f.location === "home")?.participant_id
   );
 
   const sidelinedAway = data.sidelined.filter(
-    (item) => item.participant_id === data.formations?.[1]?.participant_id
+    (item) =>
+      item.participant_id ===
+      data.formations?.find((f) => f.location === "away")?.participant_id
   );
 
   return (
