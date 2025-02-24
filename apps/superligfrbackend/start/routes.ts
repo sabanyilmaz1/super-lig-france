@@ -55,14 +55,12 @@ router
       FixtureController,
       'fixturesByDateRange',
     ])
+    router.get('/fixtureById/:fixtureId', [FixtureController, 'fixtureById'])
 
     // Standing-related routes
     router.get('/standing', [StandingController, 'showStanding'])
     router.get('/topscorers', [StandingController, 'showTopScorers'])
     router.get('/topassists', [StandingController, 'showTopAssists'])
-
-    // Match Preview
-    // router.get('/match_preview/:fixtureId', [MatchController, 'showMatchPreview'])
 
     //Results
     router.get('/resultsByDateRange/:startingDate/:endingDate', [

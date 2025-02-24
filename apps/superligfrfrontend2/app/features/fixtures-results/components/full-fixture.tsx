@@ -23,8 +23,6 @@ export const FullFixture = () => {
     setSelectedDay(dates[0]);
   }
 
-  console.log(data.groupedFixtures);
-
   return (
     <div>
       {/* Choix du jour */}
@@ -57,7 +55,7 @@ export const FullFixture = () => {
                 <ResultItemNameLogoAway result={fixture} />
               </div>
               <div className="flex flex-col items-center gap-4 mt-2 md:flex-row">
-                <FixturePreview />
+                <FixturePreview fixtureId={fixture.id} />
               </div>
             </motion.div>
           ))}

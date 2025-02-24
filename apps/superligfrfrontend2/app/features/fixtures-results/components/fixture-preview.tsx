@@ -20,13 +20,25 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "~/components/ui/drawer";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
-import { cn } from "~/lib/utils";
+import { useGetFixturePreview } from "../use-get-fixture-preview";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import type { FixturePreview as FixturePreviewType } from "../fixture.domain";
+import { FixturePreviewInjuries } from "./preview-injuries";
 
-export const FixturePreview = () => {
+interface FixturePreviewProps {
+  fixtureId: number;
+}
+
+export const FixturePreview = ({ fixtureId }: FixturePreviewProps) => {
   const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
+  const {
+    data: fixturePreview,
+    isLoading,
+    isFetching,
+  } = useGetFixturePreview(fixtureId, open);
+
+  if (isLoading || isFetching) return <div>Loading...</div>;
 
   if (isMobile) {
     return (
@@ -44,6 +56,7 @@ export const FixturePreview = () => {
               Informations détaillées sur le match
             </DrawerDescription>
           </DrawerHeader>
+          <FixturePreviewContent data={fixturePreview} />
           <DrawerFooter className="pt-2">
             <DrawerClose asChild>
               <Button variant="outline">Fermer</Button>
@@ -62,30 +75,61 @@ export const FixturePreview = () => {
           Aperçu rapide
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-xl">
         <DialogHeader>
           <DialogTitle>Détails du match</DialogTitle>
           <DialogDescription>
             Informations détaillées sur le match
           </DialogDescription>
         </DialogHeader>
+        <FixturePreviewContent data={fixturePreview} />
       </DialogContent>
     </Dialog>
   );
 };
 
-function ProfileForm({ className }: React.ComponentProps<"form">) {
+const FixturePreviewContent = ({
+  data,
+}: {
+  data: FixturePreviewType | undefined;
+}) => {
+  if (!data) return null;
+
+  console.log(data);
+
   return (
-    <form className={cn("grid items-start gap-4", className)}>
-      <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input type="email" id="email" defaultValue="shadcn@example.com" />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="username">Username</Label>
-        <Input id="username" defaultValue="@shadcn" />
-      </div>
-      <Button type="submit">Save changes</Button>
-    </form>
+    <div>
+      <Tabs defaultValue="stats" className="w-full min-h-[500px]">
+        <TabsList>
+          <TabsTrigger
+            className="text-xs font-semibold md:text-sm"
+            value="stats"
+          >
+            Face à face
+          </TabsTrigger>
+          <TabsTrigger
+            className="text-xs font-semibold md:text-sm"
+            value="injuries"
+          >
+            Absences
+          </TabsTrigger>
+          <TabsTrigger
+            className="text-xs font-semibold md:text-sm"
+            value="lineup"
+          >
+            Composition
+          </TabsTrigger>
+          <TabsTrigger
+            className="text-xs font-semibold md:text-sm"
+            value="history"
+          >
+            Historique
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent className="py-2" value="injuries">
+          <FixturePreviewInjuries data={data} />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
-}
+};

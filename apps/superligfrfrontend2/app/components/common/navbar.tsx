@@ -9,32 +9,38 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
 import { ProfilMenu, ProfilMenuMobile } from "~/features/user/user-profil-menu";
+import { cn } from "~/lib/utils";
 
 const navbarItems = [
   {
     id: 1,
     name: "BLOG",
     link: "/blog",
+    active: false,
   },
   {
     id: 2,
     name: "CALENDRIER",
     link: "/fixture",
+    active: true,
   },
   {
     id: 3,
     name: "CLASSEMENT",
     link: "/standings",
+    active: true,
   },
   {
     id: 4,
     name: "RÉSULTATS",
     link: "/results",
+    active: true,
   },
   {
     id: 5,
     name: "STATISTIQUES",
     link: "/statistiques",
+    active: false,
   },
 ];
 
@@ -52,7 +58,9 @@ export const Navbar = ({ user }: { user: any }) => {
         <nav className="items-center hidden gap-10 text-sm font-medium md:flex">
           {navbarItems.map((item) => (
             <NavLink
-              className="relative text-xl font-bold group"
+              className={({ isActive }) =>
+                cn("relative text-xl font-bold group")
+              }
               key={item.id}
               to={item.link}
             >

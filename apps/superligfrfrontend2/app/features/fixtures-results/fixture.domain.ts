@@ -57,3 +57,127 @@ export interface Fixture {
   participants: ParticipantWithMeta[];
   round: Round;
 }
+
+export interface FixturePreview {
+  id: number;
+  sport_id: number;
+  league_id: number;
+  season_id: number;
+  stage_id: number;
+  group_id: number | null;
+  aggregate_id: number | null;
+  round_id: number;
+  state_id: number;
+  venue_id: number;
+  name: string;
+  starting_at: string;
+  result_info: any | null;
+  state: State | null;
+  leg: string;
+  details: any | null;
+  length: number;
+  placeholder: boolean;
+  has_odds: boolean;
+  has_premium_odds: boolean;
+  starting_at_timestamp: number;
+  lineups: Lineup[] | null;
+  sidelined: Sidelined[] | null;
+  formations: Formation[] | null;
+}
+
+export interface DetailedPosition {
+  id: number;
+  name: string;
+  code: string;
+  developer_name: string;
+  model_type: "position";
+  stat_group: null;
+}
+
+export interface Lineup {
+  id: number;
+  sport_id: number;
+  fixture_id: number;
+  player_id: number;
+  team_id: number;
+  position_id: number;
+  formation_field: string | null;
+  type_id: 11 | 12;
+  formation_position: number | null;
+  player_name: string;
+  jersey_number: number;
+  detailedposition: DetailedPosition | null;
+}
+
+export interface Sidelined {
+  fixture_id: number;
+  id: number;
+  participant_id: number;
+  sideline_id: number;
+  sideline: {
+    category: "string";
+    completed: boolean;
+    end_date: string | null;
+    game_missed: number;
+    id: number;
+    player: {
+      city: string | null;
+      common_name: string;
+      country_id: number;
+      date_of_birth: string;
+      detailed_position_id: number | null;
+      display_name: string;
+      firstname: string;
+      gender: string;
+      height: number;
+      id: number;
+      image_path: string;
+      lastname: string;
+      name: string;
+      nationality_id: number;
+      position_id: number;
+      sport_id: number;
+      type_id: number;
+      weight: number;
+    };
+    player_id: number;
+    season_id: string | null;
+    start_date: string;
+    team_id: number;
+    type_id: number;
+    team: {
+      country_id: number;
+      founded: number;
+      gender: string;
+      id: number;
+      image_path: string;
+      last_played_at: string;
+      name: string;
+      placeholder: boolean;
+      short_code: string | null;
+      sport_id: number;
+      type: string;
+      venue_id: number;
+    };
+  };
+}
+
+export interface Formation {
+  fixture_id: number;
+  formation: string;
+  id: number;
+  location: "home" | "away";
+  participant_id: number;
+}
+
+export const LINEUP_TYPE = {
+  STARTER: 11,
+  SUBSTITUTE: 12,
+} as const;
+
+export const POSITION = {
+  GOALKEEPER: 24,
+  DEFENDER: 25,
+  MIDFIELDER: 26,
+  FORWARD: 27,
+} as const;

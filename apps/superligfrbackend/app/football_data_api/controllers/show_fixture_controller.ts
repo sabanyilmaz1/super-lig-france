@@ -12,4 +12,13 @@ export default class FixtureController extends BaseApiController {
     const apiEndpoint = `/fixtures/between/${ctx.params.startingDate}/${ctx.params.endingDate}`
     return this.handleApiRequest(ctx, apiEndpoint, 'include=participants;scores;state')
   }
+
+  public async fixtureById(ctx: HttpContext) {
+    const apiEndpoint = `/fixtures/${ctx.params.fixtureId}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=formations;lineups.detailedposition;sidelined.sideline.player;metadata;sidelined.sideline.team'
+    )
+  }
 }

@@ -12,4 +12,9 @@ export class FixtureService extends Http {
     );
     return response;
   }
+
+  async getFixtureById(fixtureId: number) {
+    const response = await this.get(`/fixtureById/${fixtureId}`);
+    return response;
+  }
 }
