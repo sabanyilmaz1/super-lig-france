@@ -126,7 +126,7 @@ const FixturePreviewContent = ({
             Historique
           </TabsTrigger>
         </TabsList>
-        <TabsContent className="py-2" value="injuries">
+        <TabsContent className="px-2 py-2 md:px-0" value="injuries">
           <FixturePreviewInjuries data={data} />
         </TabsContent>
       </Tabs>
