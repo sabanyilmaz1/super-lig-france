@@ -1,5 +1,22 @@
 import type { ParticipantWithMeta } from "~/core/domain/football-api";
 
+// commonName={
+//   player?.player?.common_name &&
+//   player.player.common_name.length > 12
+//     ? player?.player_name.length > 12
+//       ? player?.player_name.slice(0, 10) + "..."
+//       : player?.player_name
+//     : player?.player?.common_name || ""
+// }
+
+export const getCommonName = (player: Lineup | undefined) => {
+  return player?.player?.common_name && player.player.common_name.length > 12
+    ? player?.player_name.length > 12
+      ? player?.player_name.slice(0, 10) + "..."
+      : player?.player_name
+    : player?.player?.common_name || "";
+};
+
 export interface Round {
   id: number;
   sport_id: number;

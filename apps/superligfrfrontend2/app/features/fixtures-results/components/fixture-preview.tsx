@@ -78,7 +78,7 @@ export const FixturePreview = ({ fixtureId }: FixturePreviewProps) => {
           Aperçu rapide
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-xl">
+      <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>Aperçu du match</DialogTitle>
         </DialogHeader>

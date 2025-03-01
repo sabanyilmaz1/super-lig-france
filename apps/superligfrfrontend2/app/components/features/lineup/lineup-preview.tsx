@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
-import type {
-  Formation,
-  Lineup,
+import {
+  getCommonName,
+  type Formation,
+  type Lineup,
 } from "~/features/fixtures-results/fixture.domain";
 import { Player } from "./player";
 import LineupWrapper from "./lineup-wrapper";
@@ -40,7 +41,7 @@ export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
           Array.from({ length: row?.length || 0 }).map((_, rowIndex) => (
             <div
               key={rowIndex}
-              className={`flex items-center justify-center gap-6 ${
+              className={`flex items-center justify-center gap-10 ${
                 !isHome && "flex-row-reverse"
               }`}
             >
@@ -56,14 +57,7 @@ export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
                         isHome={isHome}
                         imagePath={player?.player?.image_path || ""}
                         jerseyNumber={player?.jersey_number || 0}
-                        commonName={
-                          player?.player?.common_name &&
-                          player.player.common_name.length > 15
-                            ? player?.player_name.length > 15
-                              ? player?.player_name.slice(0, 10) + "..."
-                              : player?.player_name
-                            : player?.player?.common_name || ""
-                        }
+                        commonName={getCommonName(player)}
                       />
                     </div>
                   );
