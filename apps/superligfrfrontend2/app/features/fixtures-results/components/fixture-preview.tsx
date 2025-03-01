@@ -98,7 +98,7 @@ const FixturePreviewContent = ({
   return (
     <div>
       <Tabs defaultValue="stats" className="w-full min-h-[500px]">
-        <TabsList className="w-full text-white md:ml-0 bg-redsuperlig md:w-auto">
+        <TabsList className="flex justify-center mx-auto text-white bg-redsuperlig w-fit md:mx-0">
           <TabsTrigger
             className="text-xs font-semibold md:text-sm"
             value="stats"
