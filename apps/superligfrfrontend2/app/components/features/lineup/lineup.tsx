@@ -12,11 +12,15 @@ interface LineupPreviewProps {
 }
 
 export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
+  console.log("formations", formations);
+
   if (data?.length === 0 || !data || !formations) return <div>No lineup</div>;
 
   const formation = formations?.find(
     (f) => f.participant_id === data[0].team_id
   );
+
+  if (formation?.formation === "") return <div>No formation</div>;
   const row = formation?.formation?.split("-");
   const goalkeeper = data.find((p) => p.formation_field === "1:1");
   const isHome = formation?.location === "home";
