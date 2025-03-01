@@ -48,7 +48,10 @@ export const FixturePreviewLineups = ({
             </div>
           </TabsContent>
           <TabsContent value="away">
-            <LineupPreview data={lineupAway} formations={data.formations} />
+            <div className="flex flex-col gap-4 md:flex-row">
+              <LineupPreview data={lineupAway} formations={data.formations} />
+              <Bench data={lineupAway} />
+            </div>
           </TabsContent>
         </Tabs>
       </div>
