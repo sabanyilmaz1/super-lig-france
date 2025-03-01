@@ -4,7 +4,7 @@ export default function LineupWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-[375px] w-full mx-auto md:m-0 md:max-w-sm">
+    <div className="w-full px-4 mx-auto md:px-0 md:m-0 md:max-w-sm">
       <div className="overflow-hidden rounded-lg shadow-xl bg-gradient-to-b from-green-600 to-green-800">
         <div className="relative w-full h-full">
           <div className="absolute inset-0 flex flex-col">
