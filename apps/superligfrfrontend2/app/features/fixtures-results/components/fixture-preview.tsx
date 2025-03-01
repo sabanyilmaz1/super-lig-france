@@ -51,8 +51,8 @@ export const FixturePreview = ({ fixtureId }: FixturePreviewProps) => {
           </Button>
         </DrawerTrigger>
         <DrawerContent>
-          <DrawerHeader className="text-left">
-            <DrawerTitle>Détails du match</DrawerTitle>
+          <DrawerHeader className="text-left max-w-[375px] w-full mx-auto px-0">
+            <DrawerTitle>Aperçu du match</DrawerTitle>
             <DrawerDescription>
               Informations détaillées sur le match
             </DrawerDescription>
