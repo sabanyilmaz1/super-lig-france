@@ -41,7 +41,7 @@ export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
           Array.from({ length: row?.length || 0 }).map((_, rowIndex) => (
             <div
               key={rowIndex}
-              className={`flex items-center justify-center gap-10 ${
+              className={`flex items-center justify-center gap-8 ${
                 !isHome && "flex-row-reverse"
               }`}
             >
