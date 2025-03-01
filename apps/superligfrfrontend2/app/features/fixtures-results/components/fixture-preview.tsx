@@ -80,10 +80,7 @@ export const FixturePreview = ({ fixtureId }: FixturePreviewProps) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>Détails du match</DialogTitle>
-          <DialogDescription>
-            Informations détaillées sur le match
-          </DialogDescription>
+          <DialogTitle>Aperçu du match</DialogTitle>
         </DialogHeader>
         <FixturePreviewContent data={fixturePreview} />
       </DialogContent>
@@ -97,8 +94,6 @@ const FixturePreviewContent = ({
   data: FixturePreviewType | undefined;
 }) => {
   if (!data) return null;
-
-  console.log(data);
 
   return (
     <div>

@@ -42,6 +42,12 @@ const navbarItems = [
     link: "/statistiques",
     active: false,
   },
+  {
+    id: 6,
+    name: "FAIS TON ONZE",
+    link: "/fais-ton-onze",
+    active: false,
+  },
 ];
 
 export const Navbar = ({ user }: { user: any }) => {
