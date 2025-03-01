@@ -6,7 +6,7 @@ import { BenchPlayer, Player } from "./player";
 
 export const Bench = ({ data }: { data: Lineup[] }) => {
   return (
-    <div>
+    <div className="px-4 md:px-0">
       <h1 className="font-semibold md:text-2xl">Remplaçants</h1>
       <div className="flex flex-col gap-2 mt-1 text-sm">
         {data
