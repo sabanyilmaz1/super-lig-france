@@ -27,8 +27,6 @@ export const FixturePreviewLineups = ({
         data.formations?.find((f) => f.location === "away")?.participant_id
     ) ?? [];
 
-  console.log(lineupHome, lineupAway);
-
   return (
     <ScrollArea className="h-[500px]">
       <div>

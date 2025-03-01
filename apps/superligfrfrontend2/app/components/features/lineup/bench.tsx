@@ -26,9 +26,9 @@ const BenchPlayerItem = ({ player }: { player: Lineup }) => {
         isHome={true}
         imagePath={player.player?.image_path || ""}
         jerseyNumber={player.jersey_number || 0}
-        commonName={getCommonName(player)}
+        commonName={player.player?.common_name || ""}
       />
-      {getCommonName(player)}
+      {player.player?.display_name}
     </div>
   );
 };
