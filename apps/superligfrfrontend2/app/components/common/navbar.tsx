@@ -1,4 +1,5 @@
 import { MenuIcon, User2Icon } from "lucide-react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router";
 
 import { Button } from "~/components/ui/button";
@@ -51,6 +52,7 @@ const navbarItems = [
 ];
 
 export const Navbar = ({ user }: { user: any }) => {
+  const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 w-full text-white border-b bg-redsuperlig">
       <div className="container flex items-center justify-between h-16 px-4 mx-auto md:px-0">
@@ -82,7 +84,7 @@ export const Navbar = ({ user }: { user: any }) => {
             <DropdownMenuContent className="w-[300px] p-4"></DropdownMenuContent>
           </DropdownMenu>
 
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
@@ -99,7 +101,11 @@ export const Navbar = ({ user }: { user: any }) => {
             >
               <div className="grid gap-4 p-4">
                 {navbarItems.map((item) => (
-                  <Link key={item.id} to={item.link}>
+                  <Link
+                    onClick={() => setOpen(false)}
+                    key={item.id}
+                    to={item.link}
+                  >
                     {item.name}
                   </Link>
                 ))}
