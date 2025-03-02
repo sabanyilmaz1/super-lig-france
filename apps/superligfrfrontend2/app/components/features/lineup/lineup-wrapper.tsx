@@ -6,14 +6,16 @@ export default function LineupWrapper({
   return (
     <div className="w-full px-4 mx-auto md:px-0 md:m-0 md:max-w-sm">
       <div className="overflow-hidden rounded-lg shadow-xl bg-gradient-to-b from-green-600 to-green-800">
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full md:h-[600px]">
           <div className="absolute inset-0 flex flex-col">
             <div className="absolute w-32 h-32 transform -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-full top-1/2 left-1/2 border-opacity-30"></div>
             <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white bg-opacity-30"></div>
             <div className="absolute top-0 w-64 h-24 transform -translate-x-1/2 border-b-2 border-l-2 border-r-2 border-white left-1/2 border-opacity-30"></div>
             <div className="absolute bottom-0 w-64 h-24 transform -translate-x-1/2 border-t-2 border-l-2 border-r-2 border-white left-1/2 border-opacity-30"></div>
           </div>
-          <div className="py-5">{children}</div>
+          <div className="flex flex-col items-center justify-center w-full gap-5 py-5 md:gap-10">
+            {children}
+          </div>
         </div>
       </div>
     </div>

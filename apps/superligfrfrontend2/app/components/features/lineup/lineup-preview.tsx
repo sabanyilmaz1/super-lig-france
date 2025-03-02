@@ -28,44 +28,39 @@ export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
 
   return (
     <LineupWrapper>
-      <div className="flex items-center justify-center w-full">
-        <Player
-          isHome={isHome}
-          imagePath={goalkeeper?.player?.image_path || ""}
-          jerseyNumber={goalkeeper?.jersey_number || 0}
-          commonName={goalkeeper?.player?.common_name || ""}
-        />
-      </div>
-      <div className="flex flex-col items-center justify-center w-full gap-5">
-        {row &&
-          Array.from({ length: row?.length || 0 }).map((_, rowIndex) => (
-            <div
-              key={rowIndex}
-              className={`flex items-center justify-center gap-8 ${
-                !isHome && "flex-row-reverse"
-              }`}
-            >
-              {Array.from({ length: parseInt(row[rowIndex]) }).map(
-                (_, colIndex) => {
-                  const player = data.find(
-                    (p) =>
-                      p.formation_field === `${rowIndex + 2}:${colIndex + 1}`
-                  );
-                  return (
-                    <div key={colIndex}>
-                      <Player
-                        isHome={isHome}
-                        imagePath={player?.player?.image_path || ""}
-                        jerseyNumber={player?.jersey_number || 0}
-                        commonName={getCommonName(player)}
-                      />
-                    </div>
-                  );
-                }
-              )}
-            </div>
-          ))}
-      </div>
+      <Player
+        isHome={isHome}
+        imagePath={goalkeeper?.player?.image_path || ""}
+        jerseyNumber={goalkeeper?.jersey_number || 0}
+        commonName={goalkeeper?.player?.common_name || ""}
+      />
+      {row &&
+        Array.from({ length: row?.length || 0 }).map((_, rowIndex) => (
+          <div
+            key={rowIndex}
+            className={`flex items-center justify-center gap-4 md:gap-5 ${
+              !isHome && "flex-row-reverse"
+            }`}
+          >
+            {Array.from({ length: parseInt(row[rowIndex]) }).map(
+              (_, colIndex) => {
+                const player = data.find(
+                  (p) => p.formation_field === `${rowIndex + 2}:${colIndex + 1}`
+                );
+                return (
+                  <div key={colIndex}>
+                    <Player
+                      isHome={isHome}
+                      imagePath={player?.player?.image_path || ""}
+                      jerseyNumber={player?.jersey_number || 0}
+                      commonName={getCommonName(player)}
+                    />
+                  </div>
+                );
+              }
+            )}
+          </div>
+        ))}
     </LineupWrapper>
   );
 };
