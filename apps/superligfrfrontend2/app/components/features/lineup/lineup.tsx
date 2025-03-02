@@ -2,29 +2,20 @@ import React, { useMemo } from "react";
 import {
   getCommonName,
   type Formation,
-  type Lineup,
+  type Lineup as LineupType,
 } from "~/features/fixtures-results/fixture.domain";
 import { Player } from "./player";
 import LineupWrapper from "./lineup-wrapper";
 import { cn } from "~/lib/utils";
 
-interface LineupPreviewProps {
-  data: Lineup[] | null;
-  formations: Formation[] | null;
+interface LineupProps {
+  data: LineupType[] | null;
+  formation: Formation | undefined | null;
 }
 
-export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
-  console.log("formations", formations);
-
-  if (data?.length === 0 || !data || !formations) return <div>No lineup</div>;
-
-  const formation = formations?.find(
-    (f) => f.participant_id === data[0].team_id
-  );
-
-  if (formation?.formation === "") return <div>No formation</div>;
+export const Lineup = ({ data, formation }: LineupProps) => {
   const row = formation?.formation?.split("-");
-  const goalkeeper = data.find((p) => p.formation_field === "1:1");
+  const goalkeeper = data?.find((p) => p.formation_field === "1:1");
   const isHome = formation?.location === "home";
 
   return (
@@ -47,7 +38,7 @@ export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
           >
             {Array.from({ length: parseInt(row[rowIndex]) }).map(
               (_, colIndex) => {
-                const player = data.find(
+                const player = data?.find(
                   (p) => p.formation_field === `${rowIndex + 2}:${colIndex + 1}`
                 );
                 return (

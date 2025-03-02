@@ -1,18 +1,24 @@
-import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import type {
   FixturePreview as FixturePreviewType,
   Sidelined,
 } from "../../fixture.domain";
 import { ScrollArea } from "~/components/ui/scroll-area";
-import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { TabsContent } from "@radix-ui/react-tabs";
+import { Heart } from "lucide-react";
+import type { ParticipantWithMeta } from "~/core/domain/football-api";
 export const FixturePreviewInjuries = ({
   data,
 }: {
   data: FixturePreviewType;
 }) => {
   if (!data.sidelined || data.sidelined.length === 0) {
-    return <div>No absence</div>;
+    return (
+      <div className="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg bg-gray-50">
+        <div className="p-3 mb-4 rounded-full bg-yellow-50">
+          <Heart size={40} className="text-yellow-600" />
+        </div>
+        <h3 className="mb-2 font-bold text-gray-800">Aucune absence</h3>
+      </div>
+    );
   }
 
   const sidelinedHome = data.sidelined.filter(
@@ -30,58 +36,58 @@ export const FixturePreviewInjuries = ({
   return (
     <ScrollArea className="h-[500px]">
       <div>
-        <Tabs defaultValue="home">
-          <TabsList className="text-white bg-redsuperlig">
-            <TabsTrigger value="home">
-              {data.participants?.find((p) => p.meta.location === "home")?.name}
-            </TabsTrigger>
-            <TabsTrigger value="away">
-              {data.participants?.find((p) => p.meta.location === "away")?.name}
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="home">
-            <div className="flex flex-col gap-2 mt-2">
-              {sidelinedHome.map((item) => (
-                <InjuryItem key={item.id} item={item} />
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="away">
-            <div className="flex flex-col gap-2 mt-2">
-              {sidelinedAway.map((item) => (
-                <InjuryItem key={item.id} item={item} />
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+        <div className="flex justify-between gap-4 px-2">
+          <InjuryItem
+            team={data.participants?.find((p) => p.meta.location === "home")}
+            sidelined={sidelinedHome}
+          />
+          <InjuryItem
+            team={data.participants?.find((p) => p.meta.location === "away")}
+            sidelined={sidelinedAway}
+          />
+        </div>
       </div>
     </ScrollArea>
   );
 };
 
-const InjuryItem = ({ item }: { item: Sidelined }) => {
+const InjuryItem = ({
+  team,
+  sidelined,
+}: {
+  team: ParticipantWithMeta | undefined;
+  sidelined: Sidelined[];
+}) => {
   return (
-    <Card className="border border-gray-300">
-      <CardContent className="p-3">
-        <div className="flex gap-3">
-          <div className="relative flex-shrink-0">
-            <img
-              src={item.sideline.player.image_path}
-              alt={item.sideline.player.name}
-              className="rounded-full w-14 h-14"
-            />
+    <div>
+      <div className="flex items-center gap-2">
+        <h1 className="font-semibold ">{team?.name}</h1>
+        <img
+          src={team?.image_path}
+          alt={team?.name}
+          className="rounded-full w-7 h-7"
+        />
+      </div>
+      <div className="flex flex-col gap-2 mt-4">
+        {sidelined.map((item) => (
+          <div className="flex items-center gap-2" key={item.id}>
+            <div className="relative w-12 h-12 p-1 bg-white rounded-full ">
+              <img
+                src={item.sideline.player.image_path}
+                alt={item.sideline.player.display_name}
+              />
+              <div className="absolute bottom-0 right-0 w-4 h-4 rounded-full">
+                {item.sideline.category === ("injury" as string) ? (
+                  <div></div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
+            <p className="text-xs">{item.sideline.player.display_name}</p>
           </div>
-          <div className="flex flex-col min-w-0">
-            <h3 className="text-sm font-medium truncate">
-              {item.sideline.player.display_name}
-            </h3>
-            <p className="text-sm text-gray-500">{item.sideline.team.name}</p>
-            <p className="text-xs font-medium text-red-500 mt-0.5 truncate">
-              {item.sideline.category}
-            </p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        ))}
+      </div>
+    </div>
   );
 };
