@@ -1,4 +1,5 @@
 import { User } from "lucide-react";
+import { cn } from "~/lib/utils";
 
 export const Player = ({
   imagePath,
@@ -14,9 +15,10 @@ export const Player = ({
   return (
     <div className="flex flex-col items-center w-fit">
       <div
-        className={`relative flex items-center justify-center font-bold text-white  rounded-full shadow-md w-9 h-9 ${
+        className={cn(
+          "relative flex items-center justify-center font-bold text-white rounded-full shadow-md w-9 h-9",
           isHome ? "bg-black" : "bg-white"
-        }`}
+        )}
       >
         {imagePath && !imagePath.includes("placeholder") ? (
           <img
@@ -28,9 +30,10 @@ export const Player = ({
           <User className="w-6 h-6 text-white" />
         )}
         <div
-          className={`absolute flex items-center justify-center w-4 h-4 text-[10px] font-bold  rounded-full -bottom-1 -right-1 ${
+          className={cn(
+            "absolute flex items-center justify-center w-4 h-4 text-[10px] font-bold rounded-full -bottom-1 -right-1",
             isHome ? "text-gray-800 bg-white" : "text-white bg-black"
-          }`}
+          )}
         >
           {jerseyNumber}
         </div>
@@ -55,9 +58,10 @@ export const BenchPlayer = ({
 }) => {
   return (
     <div
-      className={`relative flex items-center justify-center font-bold text-white rounded-full shadow-md w-8 h-8 ${
+      className={cn(
+        "relative flex items-center justify-center font-bold text-white rounded-full shadow-md w-8 h-8",
         isHome ? "bg-black" : "bg-white"
-      }`}
+      )}
     >
       {imagePath && !imagePath.includes("placeholder") ? (
         <img
@@ -69,9 +73,10 @@ export const BenchPlayer = ({
         <User className="w-4 h-4 text-white" />
       )}
       <div
-        className={`absolute flex items-center justify-center w-4 h-4 text-[8px] font-bold rounded-full -bottom-1 -right-1 ${
+        className={cn(
+          "absolute flex items-center justify-center w-4 h-4 text-[8px] font-bold rounded-full -bottom-1 -right-1",
           isHome ? "text-gray-800 bg-white" : "text-white bg-black"
-        }`}
+        )}
       >
         {jerseyNumber}
       </div>

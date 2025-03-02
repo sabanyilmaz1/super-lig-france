@@ -6,6 +6,7 @@ import {
 } from "~/features/fixtures-results/fixture.domain";
 import { Player } from "./player";
 import LineupWrapper from "./lineup-wrapper";
+import { cn } from "~/lib/utils";
 
 interface LineupPreviewProps {
   data: Lineup[] | null;
@@ -38,9 +39,11 @@ export const LineupPreview = ({ data, formations }: LineupPreviewProps) => {
         Array.from({ length: row?.length || 0 }).map((_, rowIndex) => (
           <div
             key={rowIndex}
-            className={`flex items-center justify-center gap-4 md:gap-5 ${
-              !isHome && "flex-row-reverse"
-            }`}
+            className={cn(
+              "flex items-center justify-center",
+              !isHome && "flex-row-reverse",
+              parseInt(row[rowIndex]) > 4 ? "gap-4 md:gap-5" : "gap-6"
+            )}
           >
             {Array.from({ length: parseInt(row[rowIndex]) }).map(
               (_, colIndex) => {
