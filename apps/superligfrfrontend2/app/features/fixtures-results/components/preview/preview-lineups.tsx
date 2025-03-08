@@ -70,7 +70,7 @@ export const FixturePreviewLineups = ({
         <Tabs defaultValue="home">
           <LineupPreviewTabsList data={data} />
           {lineupData.map((item) => (
-            <TabsContent value={item.location}>
+            <TabsContent key={item.location} value={item.location}>
               <div className="flex flex-col gap-4 md:flex-row">
                 <Lineup data={item.data} formation={item.formation} />
                 <Bench data={item.data} />

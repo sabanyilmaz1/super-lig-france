@@ -62,6 +62,7 @@ export const TopPlayersHome = <T,>({
       {/* TOP PLAYER */}
       {data?.slice(0, 1).map((item) => (
         <Card
+          key={item.player.id}
           className={cn(
             " overflow-hidden mt-4 bg-gradient-to-r ",
             backgroundColor

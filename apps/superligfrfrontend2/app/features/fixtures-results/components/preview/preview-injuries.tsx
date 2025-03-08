@@ -3,7 +3,7 @@ import type {
   Sidelined,
 } from "../../fixture.domain";
 import { ScrollArea } from "~/components/ui/scroll-area";
-import { Heart } from "lucide-react";
+import { Heart, X } from "lucide-react";
 import type { ParticipantWithMeta } from "~/core/domain/football-api";
 export const FixturePreviewInjuries = ({
   data,
@@ -76,7 +76,7 @@ const InjuryItem = ({
                 src={item.sideline.player.image_path}
                 alt={item.sideline.player.display_name}
               />
-              <div className="absolute bottom-0 right-0 w-4 h-4 rounded-full">
+              <div className="absolute right-0 w-4 h-4 rounded-full -bottom-2">
                 {item.sideline.category === ("injury" as string) ? (
                   <div></div>
                 ) : (
@@ -84,7 +84,16 @@ const InjuryItem = ({
                 )}
               </div>
             </div>
-            <p className="text-xs">{item.sideline.player.display_name}</p>
+            <div>
+              <p className="text-xs font-semibold md:text-sm">
+                {item.sideline.player.display_name}
+              </p>
+              <span className="px-2 py-1 mr-2 text-[10px] md:text-xs text-red-800 bg-red-100 rounded">
+                {item.sideline.category === ("injury" as string)
+                  ? "Blessure"
+                  : "Suspension"}
+              </span>
+            </div>
           </div>
         ))}
       </div>
