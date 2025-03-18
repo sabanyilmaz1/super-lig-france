@@ -1,186 +1,164 @@
-Pour la démo : 
-test@gmail.com
-azerty123
-
 # Super Lig France
 
-**Super Lig France** est une application web complète permettant aux utilisateurs de suivre les matchs, classements, 
-et statistiques des équipes et joueurs de la Super Lig. Le projet est divisé en deux parties :
-- **Backend** : API construite avec AdonisJS.
-- **Frontend** : Interface utilisateur développée avec RemixJS.
+Application web complète permettant aux utilisateurs de suivre les matchs, classements,
+et statistiques des équipes et joueurs de la Super Lig turque.
 
----
-
-## **Fonctionnalités Principales**
+## 🚀 Fonctionnalités
 
 ### Backend (AdonisJS)
-- Gestion des utilisateurs (authentification, profils).
-- Intégration avec l'API Football pour récupérer des données de matchs, classements, et statistiques.
-- Mise en cache des données avec Redis pour optimiser les performances.
-- Gestion des périodes de matchs pour limiter les appels API.
-- Support de contenu dynamique pour les articles.
 
-### Frontend (RemixJS)
-- Affichage des classements et résultats en direct.
-- Système de blog pour lire les articles récents sur la Super Lig.
-- Intégration de Twitter pour afficher les derniers tweets de comptes spécifiques.
-- Interface responsive adaptée pour mobile et desktop.
+- Authentification complète (connexion, inscription, gestion de profil)
+- Intégration avec l'API Sportmonks pour les données en temps réel
+- Gestion des périodes de matchs pour réduire les appels API
+- Système de blog avec articles et commentaires
 
----
+### Frontend (React Router)
 
-## **Structure du Projet**
+- Interface moderne et responsive avec TailwindCSS et Shadcn UI
+- Visualisation des classements, résultats et matchs à venir
+- Système de blog et commentaires
+- Notation des joueurs et des matchs
+- Expérience utilisateur fluide et performante
 
-```plaintext
-super-lig-fr/
-├── .turbo/                 # Configuration pour TurboRepo
-├── shared/                 # Typages partagés (TypeScript)
-├── superligfrbackend/      # Backend AdonisJS
-│   ├── app/                # Contient les controllers, models, middlewares, etc.
-│   ├── config/             # Configuration pour Redis, database, etc.
-│   ├── start/              # Point d'entrée de l'application
-│   └── ...                 # Autres fichiers backend
-├── superligfrfrontend/     # Frontend RemixJS
-│   ├── app/                # Routes, composants, loaders
-│   ├── public/             # Fichiers statiques
-│   └── ...                 # Autres fichiers frontend
-├── package.json            # Dépendances partagées (TurboRepo)
-├── turbo.json              # Configuration de TurboRepo
-└── README.md               # Documentation du projet
+## 📋 Architecture du Projet
+
+```
+super-lig-france/
+├── apps/
+│   ├── superligfrbackend/         # API Backend AdonisJS
+│   │   ├── app/                   # Logique métier
+│   │   │   ├── auth/              # Authentification
+│   │   │   ├── articles/          # Gestion des articles
+│   │   │   └── ...                # Autres modules
+│   │   ├── config/                # Configuration
+│   │   └── start/                 # Point d'entrée
+│   │
+│   └── superligfrfrontend2/       # Frontend React Router
+│       ├── app/                   # Application
+│       │   ├── components/        # Composants réutilisables
+│       │   ├── core/              # Fonctionnalités principales
+│       │   ├── features/          # Fonctionnalités spécifiques
+│       │   ├── lib/               # Bibliothèques
+│       │   ├── routes/            # Pages de l'application
+│       │   └── utils/             # Utilitaires
+│       └── public/                # Ressources statiques
+├── packages/                      # Packages partagés (si applicable)
+└── node_modules/                  # Dépendances
 ```
 
----
-
-## **Installation**
-
-### Prérequis
-- **Node.js** (version ≥ 18.x)
-- **pnpm** (gestionnaire de packages)
-- **Redis** (pour la mise en cache)
-- **PostgreSQL** (base de données)
-- Clé API pour [API-Football](https://www.api-football.com/).
-
-### Étapes d'installation
-
-#### 1. Cloner le dépôt
-```bash
-git clone <votre-repo>
-cd super-lig-fr
-```
-
-#### 2. Installer les dépendances
-Assurez-vous que **pnpm** est installé, puis exécutez :
-```bash
-pnpm install
-```
-
-#### 3. Configurer les variables d'environnement
-Copiez les fichiers `.env.example` dans les dossiers `superligfrbackend` et `superligfrfrontend`, puis remplissez-les :
-
-**Backend (`superligfrbackend/.env`)** :
-```plaintext
-PORT=3333
-HOST=127.0.0.1
-DB_CONNECTION=pg
-PG_HOST=localhost
-PG_PORT=5432
-PG_USER=postgres
-PG_PASSWORD=yourpassword
-PG_DB_NAME=superlig
-REDIS_CONNECTION=local
-REDIS_HOST=127.0.0.1
-REDIS_PORT=6379
-API_FOOTBALL_KEY=your-api-key
-```
-
-**Frontend (`superligfrfrontend/.env`)** :
-```plaintext
-API_URL=http://localhost:3333
-```
-
-#### 4. Lancer la base de données et Redis
-- Lancez PostgreSQL avec vos configurations.
-- Lancez Redis :
-```bash
-redis-server
-```
-
-#### 5. Exécuter les migrations de la base de données
-Dans le dossier `superligfrbackend`, exécutez :
-```bash
-cd superligfrbackend
-node ace migration:run
-```
-
-#### 6. Démarrer les serveurs
-Lancez les deux parties (backend et frontend) en parallèle :
-
-**Backend** :
-```bash
-cd superligfrbackend
-npm run dev
-```
-
-**Frontend** :
-```bash
-cd superligfrfrontend
-npm run dev
-```
-
-Accédez à l'application via [http://localhost:3000](http://localhost:3000).
-
----
-
-## **Utilisation**
-
-### Backend Endpoints
-- **`/lastFixture`** : Dernier match de la Super Lig.
-- **`/standings`** : Classement de la Super Lig.
-- **`/articles`** : Articles publiés sur le blog.
-
-### Frontend
-- Page d'accueil : Affiche les articles récents et le classement actuel.
-- Article : Lecture détaillée des articles du blog.
-- Intégration Twitter : Affiche les derniers tweets des comptes suivis.
-
----
-
-## **Contribuer**
-
-### Comment contribuer ?
-1. Fork le projet.
-2. Créez une branche pour vos modifications :
-   ```bash
-   git checkout -b ma-feature
-   ```
-3. Faites vos modifications et poussez-les :
-   ```bash
-   git add .
-   git commit -m "Ajout de ma nouvelle fonctionnalité"
-   git push origin ma-feature
-   ```
-4. Ouvrez une Pull Request.
-
----
-
-## **Technologies Utilisées**
+## 🛠️ Technologies Utilisées
 
 ### Backend
-- **AdonisJS** : Framework backend Node.js.
-- **Redis** : Pour la mise en cache.
-- **PostgreSQL** : Base de données relationnelle.
+
+- **AdonisJS**: Framework Node.js robuste et moderne
+- **PostgreSQL**: Base de données relationnelle
+- **TypeScript**: Typage statique pour une meilleure maintenabilité
 
 ### Frontend
-- **RemixJS** : Framework React moderne pour des applications full-stack.
-- **Tailwind CSS** : Pour un design rapide et élégant.
+
+- **React Router**: Pour la navigation entre les pages
+- **TailwindCSS**: Framework CSS utilitaire
+- **Shadcn UI**: Composants UI accessibles et personnalisables
+- **TypeScript**: Pour un développement plus fiable
+
+## 🔧 Installation et Configuration
+
+### Prérequis
+
+- **Node.js** (v18 ou supérieur)
+- **pnpm** (gestionnaire de packages)
+- **PostgreSQL**
+- Clé API pour [Sportmonks](https://www.sportmonks.com/)
+
+### Étapes
+
+1. **Cloner le dépôt**
+
+   ```bash
+   git clone <url-du-repo>
+   cd super-lig-france
+   ```
+
+2. **Installer les dépendances**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Configurer les variables d'environnement**
+
+   - Copier et configurer les fichiers `.env.example` dans chaque application:
+     ```bash
+     # Pour le backend
+     cp apps/superligfrbackend/.env.example apps/superligfrbackend/.env
+     # Pour le frontend
+     cp apps/superligfrfrontend2/.env.example apps/superligfrfrontend2/.env.local
+     ```
+   - Remplir les informations nécessaires (clés API, configuration BDD, etc.)
+
+4. **Lancer les migrations (backend)**
+
+   ```bash
+   cd apps/superligfrbackend
+   node ace migration:run
+   ```
+
+5. **Démarrer les applications**
+   ```bash
+   # À la racine du projet
+   pnpm dev
+   ```
+   - Backend: http://localhost:3333
+   - Frontend: http://localhost:5173
+
+## 🔍 Utilisation
+
+### Authentification
+
+- **Connexion** : `/auth/login`
+- **Inscription** : `/auth/register`
+
+### Fonctionnalités
+
+- **Accueil** : Vue d'ensemble et dernières actualités
+- **Classements** : `/standings` - Classement actuel de la Super Lig
+- **Résultats** : `/results` - Derniers matchs joués
+- **Matchs à venir** : `/fixture` - Calendrier des prochains matchs
+- **Blog** : `/blog` - Articles et actualités
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité
+   ```bash
+   git checkout -b feature/ma-fonctionnalite
+   ```
+3. Commit vos changements
+   ```bash
+   git commit -m 'Ajout de ma fonctionnalité'
+   ```
+4. Push vers la branche
+   ```bash
+   git push origin feature/ma-fonctionnalite
+   ```
+5. Ouvrir une Pull Request
+
+## 📝 Informations Supplémentaires
+
+### Démo
+
+- Email: test@gmail.com
+- Mot de passe: azerty123
+
+### Pour le Développement
+
+- Le projet utilise Docker pour faciliter le déploiement
+- Configuration Nginx incluse pour la production
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
 
 ---
 
-## **Licence**
-
-Ce projet est sous licence [MIT](LICENSE). Vous êtes libre de l'utiliser, de le modifier et de le partager.
-
----
-
-## **Auteur**
-
-Projet réalisé par **[Votre Nom]**. Pour toute question, veuillez me contacter à [votre.email@example.com](mailto:votre.email@example.com).
+Développé avec ❤️ pour les passionnés de football turc.
