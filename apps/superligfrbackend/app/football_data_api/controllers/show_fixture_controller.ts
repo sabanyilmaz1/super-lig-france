@@ -1,19 +1,24 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { BaseApiController } from './base_api_controller.js'
-import { FOOTBALL_API_CONSTANTS } from '../constants/football-api-constant.js'
+import { FOOTBALL_SPORTMONK_API_CONSTANTS } from '../constants/api_constant.js'
 
 export default class FixtureController extends BaseApiController {
-  public async last(ctx: HttpContext) {
-    const cacheKey = 'fixture:last'
-    const apiEndpoint = `fixtures/rounds?season=2024&league=203&current=true`
+  public async allRounds(ctx: HttpContext) {
+    const apiEndpoint = `/rounds/seasons/${FOOTBALL_SPORTMONK_API_CONSTANTS.SEASON_ID}`
+    return this.handleApiRequest(ctx, apiEndpoint, '')
+  }
 
-    return this.handleRequestWithCache<any>(ctx, cacheKey, apiEndpoint, 'GET', (lastRoundData) => {
-      const lastRoundInt = parseInt(lastRoundData?.response[0].split('-')[1])
-      return this.fetchFromApi<any>(
-        'GET',
-        `fixtures?season=${FOOTBALL_API_CONSTANTS.SEASON_ID}&league=${FOOTBALL_API_CONSTANTS.LEAGUE_ID}&round=Regular Season - ${lastRoundInt}`,
-        ctx.auth.user!.api_football_key
-      )
-    })
+  public async fixturesByDateRange(ctx: HttpContext) {
+    const apiEndpoint = `/fixtures/between/${ctx.params.startingDate}/${ctx.params.endingDate}`
+    return this.handleApiRequest(ctx, apiEndpoint, 'include=participants;scores;state')
+  }
+
+  public async fixtureById(ctx: HttpContext) {
+    const apiEndpoint = `/fixtures/${ctx.params.fixtureId}`
+    return this.handleApiRequest(
+      ctx,
+      apiEndpoint,
+      'include=formations;lineups.player;sidelined.sideline.player;metadata;sidelined.sideline.team;participants'
+    )
   }
 }

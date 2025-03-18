@@ -6,7 +6,8 @@
   "scripts": {
     "dev:frontend": "pnpm --filter superligfrfrontend dev",
     "dev:backend": "pnpm --filter superligfrbackend dev",
-    "dev": "concurrently -n frontend,backend -c cyan,green \"pnpm dev:frontend\" \"pnpm dev:backend\""
+    "dev:frontend2": "pnpm --filter superligfrfrontend2 dev",
+    "dev": "concurrently -n frontend,backend -c cyan,green \"pnpm dev:frontend2\" \"pnpm dev:backend\""
   },
   "keywords": [],
   "author": "",
