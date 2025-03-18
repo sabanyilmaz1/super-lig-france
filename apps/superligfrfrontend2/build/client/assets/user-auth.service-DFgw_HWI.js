@@ -1,0 +1,1 @@
+import{H as r,s}from"./http-CHaSCwl_.js";class i extends r{async login(e){const t=await this.postWithoutAuth("/login",e);return s(t.token),t}async register(e){const t=await this.postWithoutAuth("/register",e);return s(t.token),t}async getMe(){return this.get("/me")}}export{i as U};
