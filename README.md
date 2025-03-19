@@ -3,7 +3,7 @@
 Application web complète permettant aux utilisateurs de suivre les matchs, classements,
 et statistiques des équipes et joueurs de la Super Lig turque.
 
-## 🚀 Fonctionnalités
+## Fonctionnalités
 
 ### Backend (AdonisJS)
 
@@ -20,7 +20,7 @@ et statistiques des équipes et joueurs de la Super Lig turque.
 - Notation des joueurs et des matchs
 - Expérience utilisateur fluide et performante
 
-## 📋 Architecture du Projet
+##  Architecture du Projet
 
 ```
 super-lig-france/
@@ -46,7 +46,7 @@ super-lig-france/
 └── node_modules/                  # Dépendances
 ```
 
-## 🛠️ Technologies Utilisées
+## Technologies Utilisées
 
 ### Backend
 
@@ -61,7 +61,7 @@ super-lig-france/
 - **Shadcn UI**: Composants UI accessibles et personnalisables
 - **TypeScript**: Pour un développement plus fiable
 
-## 🔧 Installation et Configuration
+##  Installation et Configuration
 
 ### Prérequis
 
@@ -126,7 +126,7 @@ super-lig-france/
 - **Matchs à venir** : `/fixture` - Calendrier des prochains matchs
 - **Blog** : `/blog` - Articles et actualités
 
-## 🤝 Contribution
+## Contribution
 
 1. Fork le projet
 2. Créer une branche pour votre fonctionnalité
@@ -143,7 +143,7 @@ super-lig-france/
    ```
 5. Ouvrir une Pull Request
 
-## 📝 Informations Supplémentaires
+## Informations Supplémentaires
 
 ### Démo
 
@@ -155,7 +155,7 @@ super-lig-france/
 - Le projet utilise Docker pour faciliter le déploiement
 - Configuration Nginx incluse pour la production
 
-## 📄 Licence
+## Licence
 
 Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
 
