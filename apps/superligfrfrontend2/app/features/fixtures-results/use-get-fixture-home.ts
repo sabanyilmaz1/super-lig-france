@@ -16,10 +16,31 @@ export function useGetFixtureHome() {
   );
 
   const roundData = roundQuery.data;
-  const currentRound = roundData?.find((round) => round.is_current === true);
-  const currentRoundName = currentRound?.name || "";
-  const startingDate = currentRound?.starting_at;
-  const endingDate = currentRound?.ending_at;
+  console.log(
+    "roundData",
+    roundData
+      ?.sort((a, b) => parseInt(a.name) - parseInt(b.name))
+      .map((round) => ({
+        name: round.name,
+        is_current: round.is_current,
+        finished: round.finished,
+      }))
+  );
+  let currentRound1: Round | undefined = undefined;
+  if (roundData) {
+    currentRound1 = roundData?.find((round) => round.is_current === true);
+    if (currentRound1?.finished === true) {
+      const intRound = parseInt(currentRound1.name);
+      currentRound1 = roundData?.find(
+        (round) => parseInt(round.name) === intRound + 1
+      );
+    }
+  }
+  const currentRoundName = currentRound1?.name || "";
+
+  // Date range for fixtures
+  const startingDate = currentRound1?.starting_at;
+  const endingDate = currentRound1?.ending_at;
 
   return useFetchQuery<FixtureHomeReturn>(
     ["fixturesByDateRange", startingDate || "", endingDate || ""],
