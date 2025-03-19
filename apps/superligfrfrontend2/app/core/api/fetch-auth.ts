@@ -1,8 +1,6 @@
 interface TokenData {
   token: string;
-  expiresAt: number;
 }
-
 
 export async function fetchWithAuth(url: string, options: RequestInit = {}) {
   const token = getValidToken();
@@ -23,8 +21,8 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
 export const storeAuthToken = (token: string) => {
   const tokenData: TokenData = {
     token,
-    expiresAt: new Date().getTime() + 168 * 60 * 60 * 1000, // 168 hours
   };
+
   localStorage.setItem("token", JSON.stringify(tokenData));
 };
 
@@ -44,10 +42,6 @@ export function getValidToken(): string | null {
 
   try {
     const tokenData = JSON.parse(tokenDataStr);
-    if (new Date().getTime() > tokenData.expiresAt) {
-      localStorage.removeItem("token");
-      return null;
-    }
     return tokenData.token;
   } catch {
     localStorage.removeItem("token");
