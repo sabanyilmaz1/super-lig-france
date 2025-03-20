@@ -19,5 +19,6 @@ export default [
     route("results", "routes/private/result.tsx"),
     route("fixture", "routes/private/fixture.tsx"),
     route("blog", "routes/private/blog.tsx"),
+    route("blog/all-articles", "routes/private/blog-all-articles.tsx"),
   ]),
 ] satisfies RouteConfig;

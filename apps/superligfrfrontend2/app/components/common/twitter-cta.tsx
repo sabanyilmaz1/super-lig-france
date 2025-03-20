@@ -17,11 +17,11 @@ export const TwitterCta = () => {
           <Button
             className="bg-white border-2 border-[#000]/20 hover:bg-transparent text-black"
             onClick={() =>
-              window.open("https://twitter.com/votre_compte", "_blank")
+              window.open("https://twitter.com/superligfrance0", "_blank")
             }
           >
             <TwitterLogo />
-            Suivre @votre_compte
+            Suivre @superligfrance0
           </Button>
         </div>
       </CardContent>
